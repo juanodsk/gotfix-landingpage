@@ -17,7 +17,7 @@ const Navbar = () => {
         <div className="flex items-center">
           {/* Logo */}
           <div className="flex-1">
-            <img src={Logo} alt="Logo Gotfix" className="w-75" />
+            <img src={Logo} alt="Logo Gotfix" className="w-75 md:w-60" />
           </div>
           {/* Desktop Menu */}
           <div className="hidden md:flex flex-auto justify-start items-center text-lg">
