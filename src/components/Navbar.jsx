@@ -65,7 +65,11 @@ const Navbar = () => {
               className="text-white text-2xl focus:outline-none"
               aria-label="Abrir menú"
             >
-              {menuOpen ? <FaTimes /> : <FaBars />}
+              {menuOpen ? (
+                <FaTimes className="cursor-pointer" />
+              ) : (
+                <FaBars className="cursor-pointer" />
+              )}
             </button>
           </div>
         </div>
