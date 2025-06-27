@@ -13,23 +13,23 @@ const Navbar = () => {
 
   return (
     <nav>
-      <div className="bg-[#00162b] container mx-auto px-4 py-2 w-full rounded-xl mt-4">
-        <div className="flex items-center">
+      <div className="bg-[#00162b] w-full  ">
+        <div className="max-w-[1300px] mx-auto px-4 flex items-center py-4">
           {/* Logo */}
           <div className="flex-1">
             <img
               src={Logo}
               alt="Logo Gotfix"
-              className="w-50 md:w-75 xl:w-75"
+              className="w-50 md:w-75 xl:w-75 cursor-pointer transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-amber-100"
             />
           </div>
           {/* Desktop Menu */}
-          <div className="hidden md:flex flex-auto justify-start items-center text-lg">
-            <ul className="flex space-x-4">
+          <div className="hidden md:flex flex-auto justify-center items-center text-lg">
+            <ul className="flex space-x-10">
               <li>
                 <a
                   href="/"
-                  className="text-white transition delay-10 hover:text-[#0087fa]"
+                  className="text-white text-[18px]transition delay-10 hover:text-[#0087fa]"
                 >
                   Inicio
                 </a>
@@ -37,7 +37,7 @@ const Navbar = () => {
               <li>
                 <a
                   href="/about"
-                  className="text-white transition delay-10 hover:text-[#0087fa]"
+                  className="text-white text-[18px] transition delay-10 hover:text-[#0087fa]"
                 >
                   Servicios
                 </a>
@@ -45,7 +45,7 @@ const Navbar = () => {
               <li>
                 <a
                   href="/contact"
-                  className="text-white transition delay-10 hover:text-[#0087fa]"
+                  className="text-white text-[18px] transition delay-10 hover:text-[#0087fa]"
                 >
                   Contactanos
                 </a>
