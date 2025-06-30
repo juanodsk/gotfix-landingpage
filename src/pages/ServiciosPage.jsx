@@ -79,7 +79,9 @@ const ServiciosPage = () => {
                 <h3 className="text-lg font-semibold mb-2 text-white">
                   {servicio.titulo}
                 </h3>
-                <p className="text-white/80 text-sm">{servicio.descripcion}</p>
+                <p className="text-white/80 text-sm text-bold">
+                  {servicio.descripcion}
+                </p>
               </div>
             </div>
           ))}
