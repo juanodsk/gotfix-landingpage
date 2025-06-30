@@ -14,6 +14,7 @@ import {
   FaSmile,
 } from "react-icons/fa";
 import heroBG from "../assets/local2.jpg";
+import ricardo1 from "../assets/ricardo1.jpg";
 
 const LandingPage = () => {
   useEffect(() => {
@@ -61,7 +62,7 @@ const LandingPage = () => {
 
       {/* Hero */}
       <section
-        className="relative bg-gray-100 py-50 text-center "
+        className="relative bg-gray-100 py-50 text-center sm:py-25"
         style={{
           backgroundImage: `url(${heroBG})`,
           backgroundSize: "cover",
@@ -80,7 +81,7 @@ const LandingPage = () => {
       </section>
 
       {/* ¿Por qué elegirnos? */}
-      <section className="py-20 bg-gradient-to-b from-white to-gray-50 mb-15">
+      <section className="py-20 bg-gradient-to-b from-white to-gray-50 ">
         <div className="container mx-auto px-6">
           <motion.h2
             initial={{ opacity: 0, y: -30 }}
@@ -88,7 +89,7 @@ const LandingPage = () => {
             transition={{ duration: 0.6 }}
             className="text-4xl font-extrabold text-center mb-12 text-gray-800"
           >
-            ¿Por qué elegir <span className="text-primary">GotFix</span>?
+            ¿Por qué elegir <span className="text-primary">GOTFIX</span>?
           </motion.h2>
 
           <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
@@ -111,35 +112,33 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* Servicios */}
-      <section className="py-16 bg-gray-100">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-2xl font-bold mb-8">Nuestros servicios</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-gray-800">
-            <div className="bg-white rounded shadow p-6">
-              📱 Reparación de pantalla
-            </div>
-            <div className="bg-white rounded shadow p-6">
-              🔋 Cambio de batería
-            </div>
-            <div className="bg-white rounded shadow p-6">
-              🔌 Reparación de puertos
-            </div>
-            <div className="bg-white rounded shadow p-6">
-              💻 Diagnóstico de MacBook
-            </div>
-            <div className="bg-white rounded shadow p-6">
-              🧽 Mantenimiento preventivo
-            </div>
-            <div className="bg-white rounded shadow p-6">
-              🛠 Restauración de sistema
-            </div>
+      <section className="py-20 bg-gradient-to-b from-white to-gray-50 ">
+        <div className="container mx-auto max-w-[1100px] px-6 grid grid-cols-1 md:grid-cols-2 gap-10 items-center ">
+          {/* Columna izquierda: texto */}
+          <div>
+            <h2 className="text-4xl font-extrabold mb-6 text-gray-800">
+              ¿Nuestra misión?
+            </h2>
+            <p className="text-gray-700 text-lg mb-4">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Laudantium voluptatibus consequuntur optio, cupiditate consequatur
+              fugiat ab expedita, deserunt rem sequi nesciunt, enim commodi
+              facilis id delectus!
+            </p>
+          </div>
+          {/* Columna derecha: imagen */}
+          <div className="flex justify-center">
+            <img
+              src={ricardo1}
+              alt="Técnico GotFix"
+              className="rounded-xl shadow-lg max-w-100 h-auto"
+            />
           </div>
         </div>
       </section>
 
       {/* Proceso */}
-      <section className="py-20 bg-white">
+      <section className="py-10 bg-white">
         <div className="max-w-6xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
