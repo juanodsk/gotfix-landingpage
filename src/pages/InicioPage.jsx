@@ -4,17 +4,16 @@ import NuestroTrabajo from "../components/NuestroTrabajoSection.jsx"; // Asegúr
 import { motion } from "framer-motion";
 import {
   FaUserCog,
-  FaShieldAlt,
-  FaLightbulb,
-  FaHandshake,
   FaLock,
   FaWhatsapp,
   FaBoxOpen,
   FaTools,
   FaSmile,
+  FaCheck,
 } from "react-icons/fa";
 import heroBG from "../assets/local2.jpg";
 import ricardo1 from "../assets/ricardo1.jpg";
+import Dispositivos from "../components/Dispositivos.jsx";
 
 const LandingPage = () => {
   useEffect(() => {
@@ -49,10 +48,10 @@ const LandingPage = () => {
     },
     {
       icon: <FaUserCog className="text-4xl text-primary" />,
-      texto: "Técnicos especializados y preparados",
+      texto: "Técnicos especializados en la marca Apple",
     },
     {
-      icon: <FaLock className="text-4xl text-primary" />,
+      icon: <FaCheck className="text-4xl text-primary" />,
       texto: "Garantía en la reparación de tu equipo",
     },
   ];
@@ -109,7 +108,8 @@ const LandingPage = () => {
               </motion.div>
             ))}
           </div>
-        </div>
+        </div>{" "}
+        <Dispositivos />
       </section>
 
       <section className="py-20 bg-gradient-to-b from-white to-gray-50 ">
@@ -131,7 +131,7 @@ const LandingPage = () => {
             <img
               src={ricardo1}
               alt="Técnico GotFix"
-              className="rounded-xl shadow-lg max-w-100 h-auto"
+              className="rounded-xl max-w-100 h-auto shadow-xl"
             />
           </div>
         </div>
