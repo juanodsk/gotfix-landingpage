@@ -62,7 +62,7 @@ const LandingPage = () => {
 
       {/* Hero */}
       <section
-        className="relative bg-gray-100 py-50 text-center sm:py-25"
+        className="relative bg-gray-100 py-25 text-center md:py-55 "
         style={{
           backgroundImage: `url(${heroBG})`,
           backgroundSize: "cover",
