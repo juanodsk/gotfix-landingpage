@@ -82,7 +82,7 @@ const LandingPage = () => {
             </span>
           </h1>
           <p className="text-gray-700 text-[25px] mb-6">
-            Somos un centro de reparación para equipos Apple
+            Somos un centro de reparación para equipos Apple.
           </p>
           <button className="bg-[#0087fa] text-white cursor-pointer transition delay-10 px-6 py-3 rounded font-semibold hover:bg-blue-600">
             Cotiza tu reparación
