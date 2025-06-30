@@ -14,6 +14,7 @@ import {
 import heroBG from "../assets/local2.jpg";
 import ricardo1 from "../assets/ricardo1.jpg";
 import Dispositivos from "../components/Dispositivos.jsx";
+import Reseñas from "../components/Reseñas.jsx"; // Asegúrate que esté creado
 
 const LandingPage = () => {
   useEffect(() => {
@@ -80,7 +81,7 @@ const LandingPage = () => {
       </section>
 
       {/* ¿Por qué elegirnos? */}
-      <section className="py-20 bg-gradient-to-b from-white to-gray-50 ">
+      <section className="py-10  ">
         <div className="container mx-auto px-6">
           <motion.h2
             initial={{ opacity: 0, y: -30 }}
@@ -112,7 +113,7 @@ const LandingPage = () => {
         <Dispositivos />
       </section>
 
-      <section className="py-20 bg-gradient-to-b from-white to-gray-50 ">
+      <section className=" mb-15 bg-gradient-to-b from-white to-gray-50 ">
         <div className="container mx-auto max-w-[1100px] px-6 grid grid-cols-1 md:grid-cols-2 gap-10 items-center ">
           {/* Columna izquierda: texto */}
           <div>
@@ -173,56 +174,10 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* Testimonios */}
-      <section className="py-16 bg-gray-100">
-        <div className="container mx-auto px-4">
-          <h2 className="text-2xl font-bold mb-8 text-center">
-            Lo que dicen nuestros clientes
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-800">
-            <blockquote className="bg-white p-6 rounded shadow">
-              “GotFix me salvó. Repararon mi iPhone en solo 2 horas. Excelente
-              atención.”
-              <footer className="mt-2 text-sm text-gray-500">
-                – Ana Rodríguez
-              </footer>
-            </blockquote>
-            <blockquote className="bg-white p-6 rounded shadow">
-              “Trabajo serio, rápido y con garantía. Muy recomendado.”
-              <footer className="mt-2 text-sm text-gray-500">
-                – Jorge Ramírez
-              </footer>
-            </blockquote>
-          </div>
-        </div>
-      </section>
-
-      {/* Galería de trabajos */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-2xl font-bold mb-6 text-center">
-            Nuestro trabajo
-          </h2>
-        </div>
-      </section>
-
-      {/* CTA final */}
-      <section className="py-16 bg-[#00162b] text-white text-center">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-4">
-            ¿Tu dispositivo necesita ayuda?
-          </h2>
-          <p className="text-lg mb-6">
-            No esperes más. Confía en los expertos Apple.
-          </p>
-          <button className="bg-[#0087fa] px-6 py-3 cursor-pointer transition delay-10 rounded font-semibold hover:bg-blue-600">
-            Agenda tu reparación ahora
-          </button>
-        </div>
-      </section>
+      <Reseñas />
 
       {/* Contacto */}
-      <footer className="bg-gray-900 text-white py-8">
+      <footer className="bg-[#00162b] text-white py-8">
         <div className="container mx-auto px-4 text-center">
           <p>📍 Neiva, Huila — Atención de lunes a sábado</p>
           <p className="mt-2">📞 (+57) 3125042689 | 📩 contacto@gotfix.co</p>

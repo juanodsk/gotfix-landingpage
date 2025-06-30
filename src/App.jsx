@@ -3,6 +3,8 @@ import InicioPage from "../src/pages/InicioPage";
 import ContactanosPage from "../src/pages/ContactanosPage";
 import ServiciosPage from "../src/pages/ServiciosPage";
 import ScrollToTop from "./components/ScrollTop";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 function App() {
   return (
     <BrowserRouter>
