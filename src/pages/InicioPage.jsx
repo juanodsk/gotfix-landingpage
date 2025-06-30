@@ -61,24 +61,15 @@ const LandingPage = () => {
 
       {/* Hero */}
       <section
-        className="relative bg-gray-100 py-40 text-center"
+        className="relative bg-gray-100 py-50 text-center "
         style={{
           backgroundImage: `url(${heroBG})`,
           backgroundSize: "cover",
-          backgroundPosition: "center",
+          backgroundPosition: "center 25%",
         }}
       >
         <div className="absolute inset-0 bg-black/75"></div>
         <div className="relative container mx-auto px-4">
-          <h1 className="text-[65px] text-white font-bold mb-4">
-            Somos{" "}
-            <span className="text-white">
-              <TypeWritter text="GOT" />
-            </span>
-            <span className="text-white">
-              <TypeWritter text="FIX" speed={300} />
-            </span>
-          </h1>
           <p className="text-white text-[25px] mb-6 font-bold drop-shadow-lg">
             Somos un centro de reparación para equipos Apple.
           </p>
