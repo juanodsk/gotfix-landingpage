@@ -25,14 +25,13 @@ const servicios = [
   },
   {
     icono: <FaChargingStation className="text-5xl text-white" />,
-    titulo: "Reparación de puertos",
-    descripcion: "Solución a problemas de carga o conexión USB en tu equipo.",
+    titulo: "Reparación de Placa eléctronica",
+    descripcion: "Solución a problemas de placa electronica en tu equipo.",
   },
   {
     icono: <FaLaptop className="text-5xl text-white" />,
-    titulo: "Diagnóstico de MacBook",
-    descripcion:
-      "Evaluación profesional de fallas en tu MacBook sin costo inicial.",
+    titulo: "Diagnóstico de dispositivos",
+    descripcion: "Evaluación profesional de fallas en tus dispositivos.",
   },
   {
     icono: <FaBroom className="text-5xl text-white" />,
