@@ -10,8 +10,8 @@ const videos = [
     url: "https://www.instagram.com/reel/CwYcPE4uiMJ/embed",
   },
   {
-    titulo: "Limpieza interna y mantenimiento",
-    url: "https://www.instagram.com/reel/CzABCDE1234/embed",
+    titulo: "¿Como realizamos un diagnostico?",
+    url: "https://www.instagram.com/reel/Curs85-O02T/embed",
   },
 ];
 
@@ -39,7 +39,7 @@ const VideoCarrusel = () => {
           <iframe
             key={videos[indiceActual].url}
             src={videos[indiceActual].url}
-            className="w-full h-[650px] rounded-xl border-none overflow-hidden"
+            className="w-full h-[400px] rounded-xl border-none overflow-hidden md:h-[650px]"
             allowtransparency="true"
             allow="encrypted-media"
             title={videos[indiceActual].titulo}
