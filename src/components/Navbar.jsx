@@ -36,7 +36,7 @@ const Navbar = () => {
               </li>
               <li>
                 <a
-                  href="/about"
+                  href="/servicios"
                   className="text-white text-[18px] transition delay-10 hover:text-[#0087fa]"
                 >
                   Servicios
@@ -88,7 +88,7 @@ const Navbar = () => {
               </li>
               <li>
                 <a
-                  href="/about"
+                  href="/servicios"
                   className="text-white block transition delay-10 hover:text-[#0087fa]"
                   onClick={() => setMenuOpen(false)}
                 >

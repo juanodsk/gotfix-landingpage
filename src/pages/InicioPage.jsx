@@ -3,19 +3,43 @@ import Navbar from "../components/Navbar.jsx"; // Asegúrate que esté creado
 import TypeWritter from "../plugins/TypeWritter.jsx"; // Tu animación
 import { motion } from "framer-motion";
 import {
-  FaTools,
   FaUserCog,
   FaShieldAlt,
   FaLightbulb,
   FaHandshake,
   FaLock,
+  FaWhatsapp,
+  FaBoxOpen,
+  FaTools,
+  FaSmile,
 } from "react-icons/fa";
 
 const LandingPage = () => {
   useEffect(() => {
     document.title = "GotFix | Servicio Técnico Apple";
   }, []);
-
+  const pasos = [
+    {
+      icono: <FaWhatsapp className="text-4xl text-primary mb-4" />,
+      titulo: "Paso 1",
+      descripcion: "Nos contactas por WhatsApp o formulario.",
+    },
+    {
+      icono: <FaBoxOpen className="text-4xl text-primary mb-4" />,
+      titulo: "Paso 2",
+      descripcion: "Recibimos tu equipo o coordinamos la entrega.",
+    },
+    {
+      icono: <FaTools className="text-4xl text-primary mb-4" />,
+      titulo: "Paso 3",
+      descripcion: "Diagnóstico y/o reparación profesional.",
+    },
+    {
+      icono: <FaSmile className="text-4xl text-primary mb-4" />,
+      titulo: "Paso 4",
+      descripcion: "Te devolvemos el dispositivo como nuevo.",
+    },
+  ];
   const beneficios = [
     {
       icon: <FaTools className="text-4xl text-primary" />,
@@ -128,17 +152,37 @@ const LandingPage = () => {
       </section>
 
       {/* Proceso */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-2xl font-bold mb-6 text-center">
-            ¿Cómo funciona?
-          </h2>
-          <ol className="list-decimal pl-6 text-gray-700 text-lg space-y-3">
-            <li>Nos contactas por WhatsApp o formulario</li>
-            <li>Recibimos tu equipo o coordinamos la entrega</li>
-            <li>Diagnóstico y reparación profesional</li>
-            <li>Te devolvemos el dispositivo como nuevo</li>
-          </ol>
+      <section className="py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="bg-[#00162b] text-white rounded-2xl p-10 shadow-lg"
+          >
+            <h2 className="text-3xl font-bold text-center mb-10">
+              ¿Cómo reparamos tu equipo?
+            </h2>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              {pasos.map((paso, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: index * 0.2 }}
+                  viewport={{ once: true }}
+                  className="group bg-[#011d3a] hover:bg-[#072c4f] rounded-xl p-6 text-center flex flex-col items-center 
+                           transition duration-300 ease-in-out transform hover:-translate-y-2 hover:shadow-2xl"
+                >
+                  {paso.icono}
+                  <h3 className="text-xl font-semibold mb-2">{paso.titulo}</h3>
+                  <p className="text-base">{paso.descripcion}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -184,7 +228,7 @@ const LandingPage = () => {
           <p className="text-lg mb-6">
             No esperes más. Confía en los expertos Apple.
           </p>
-          <button className="bg-[#0087fa] px-6 py-3 rounded font-semibold hover:bg-blue-600">
+          <button className="bg-[#0087fa] px-6 py-3 cursor-pointer transition delay-10 rounded font-semibold hover:bg-blue-600">
             Agenda tu reparación ahora
           </button>
         </div>
@@ -194,8 +238,8 @@ const LandingPage = () => {
       <footer className="bg-gray-900 text-white py-8">
         <div className="container mx-auto px-4 text-center">
           <p>📍 Neiva, Huila — Atención de lunes a sábado</p>
-          <p className="mt-2">📞 +57 300 000 0000 | 📩 contacto@gotfix.co</p>
-          <p className="mt-2">Síguenos en Instagram y Facebook @gotfix</p>
+          <p className="mt-2">📞 (+57) 3125042689 | 📩 contacto@gotfix.co</p>
+          <p className="mt-2">Síguenos en Instagram y Facebook @gotfixco</p>
         </div>
       </footer>
     </>
