@@ -73,18 +73,16 @@ const LandingPage = () => {
       {/* Hero */}
       <section className="bg-gray-100 py-16 text-center">
         <div className="container mx-auto px-4">
-          <h1 className="text-[65px] font-bold mb-4">
-            Somos{" "}
+          <h1 className="text-[60px] font-bold mb-4">
             <span className="text-[#0087fa]">
-              <TypeWritter text="Got" />
+              <TypeWritter text="GOT" />
             </span>
             <span className="text-[#00162b]">
-              <TypeWritter text="Fix" speed={300} />
+              <TypeWritter text="FIX" speed={300} />
             </span>
           </h1>
-          <p className="text-gray-700 text-lg mb-6">
-            Más de <strong>4000 reparaciones</strong> en iPhone, iPad y MacBook.
-            Servicio técnico confiable, innovador y seguro.
+          <p className="text-gray-700 text-[25px] mb-6">
+            Somos un centro de reparación para equipos Apple
           </p>
           <button className="bg-[#0087fa] text-white cursor-pointer transition delay-10 px-6 py-3 rounded font-semibold hover:bg-blue-600">
             Cotiza tu reparación

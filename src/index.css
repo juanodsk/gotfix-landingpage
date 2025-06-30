@@ -1,13 +1,13 @@
 @font-face {
   font-family: "karst";
-  src: url("../public/fonts/Karst-ExtraBold.woff2") format("woff2");
+  src: url("../public/fonts/DMSans-Bold.woff") format("woff2");
   font-weight: 800;
   font-style: normal;
 }
 
 @font-face {
   font-family: "karst";
-  src: url("../public/fonts/Karst-Light.woff2") format("woff2");
+  src: url("../public/fonts/DMSans-Regular.woff") format("woff2");
   font-weight: 300;
   font-style: normal;
 }
