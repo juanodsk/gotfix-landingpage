@@ -13,6 +13,7 @@ import {
   FaTools,
   FaSmile,
 } from "react-icons/fa";
+import heroBG from "../assets/local2.jpg";
 
 const LandingPage = () => {
   useEffect(() => {
@@ -47,23 +48,11 @@ const LandingPage = () => {
     },
     {
       icon: <FaUserCog className="text-4xl text-primary" />,
-      texto: "Equipo experto y preparado",
-    },
-    {
-      icon: <FaShieldAlt className="text-4xl text-primary" />,
-      texto: "Procesos técnicos seguros y certificados",
-    },
-    {
-      icon: <FaLightbulb className="text-4xl text-primary" />,
-      texto: "Soluciones modernas e innovadoras",
-    },
-    {
-      icon: <FaHandshake className="text-4xl text-primary" />,
-      texto: "Servicio honesto y transparente",
+      texto: "Técnicos especializados y preparados",
     },
     {
       icon: <FaLock className="text-4xl text-primary" />,
-      texto: "Cuidamos la integridad de tu equipo",
+      texto: "Garantía en la reparación de tu equipo",
     },
   ];
   return (
@@ -71,20 +60,29 @@ const LandingPage = () => {
       <Navbar />
 
       {/* Hero */}
-      <section className="bg-gray-100 py-16 text-center">
-        <div className="container mx-auto px-4">
-          <h1 className="text-[60px]  mb-4">
-            <span className="text-[#0087fa]">
+      <section
+        className="relative bg-gray-100 py-40 text-center"
+        style={{
+          backgroundImage: `url(${heroBG})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <div className="absolute inset-0 bg-black/75"></div>
+        <div className="relative container mx-auto px-4">
+          <h1 className="text-[65px] text-white font-bold mb-4">
+            Somos{" "}
+            <span className="text-white">
               <TypeWritter text="GOT" />
             </span>
-            <span className="text-[#00162b]">
+            <span className="text-white">
               <TypeWritter text="FIX" speed={300} />
             </span>
           </h1>
-          <p className="text-gray-700 text-[25px] mb-6">
+          <p className="text-white text-[25px] mb-6 font-bold drop-shadow-lg">
             Somos un centro de reparación para equipos Apple.
           </p>
-          <button className="bg-[#0087fa] text-white cursor-pointer transition delay-10 px-6 py-3 rounded font-semibold hover:bg-blue-600">
+          <button className="bg-[#0087fa] text-white cursor-pointer transition delay-10 px-6 py-3 rounded font-semibold hover:bg-blue-600 relative z-10">
             Cotiza tu reparación
           </button>
         </div>
