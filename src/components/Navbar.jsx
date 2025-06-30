@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom"; // Asegúrate de tener esto importado
 import Logo from "../assets/Logo.png";
 import {
   FaFacebook,
@@ -13,51 +14,56 @@ const Navbar = () => {
 
   return (
     <nav>
-      <div className="bg-[#00162b] w-full  ">
+      <div className="bg-[#00162b] w-full">
         <div className="max-w-[1300px] mx-auto px-4 flex items-center py-4">
           {/* Logo */}
           <div className="flex-1">
-            <img
-              src={Logo}
-              alt="Logo Gotfix"
-              className="w-50 md:w-75 xl:w-75 cursor-pointer transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-amber-100"
-            />
+            <Link to="/">
+              <img
+                src={Logo}
+                alt="Logo Gotfix"
+                className="w-50 md:w-75 xl:w-75 cursor-pointer transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-amber-100"
+              />
+            </Link>
           </div>
+
           {/* Desktop Menu */}
           <div className="hidden md:flex flex-auto justify-center items-center text-lg">
             <ul className="flex space-x-10">
               <li>
-                <a
-                  href="/"
-                  className="text-white text-[18px]transition delay-10 hover:text-[#0087fa]"
+                <Link
+                  to="/"
+                  className="text-white text-[18px] transition delay-10 hover:text-[#0087fa]"
                 >
                   Inicio
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/servicios"
+                <Link
+                  to="/servicios"
                   className="text-white text-[18px] transition delay-10 hover:text-[#0087fa]"
                 >
                   Servicios
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/contact"
+                <Link
+                  to="/contact"
                   className="text-white text-[18px] transition delay-10 hover:text-[#0087fa]"
                 >
-                  Contactanos
-                </a>
+                  Contáctanos
+                </Link>
               </li>
             </ul>
           </div>
+
           {/* Redes sociales */}
           <div className="flex-1 hidden md:flex justify-end mr-5">
             <FaFacebook className="text-white mx-2 cursor-pointer text-[22px] transition-transform duration-300 ease-in-out hover:text-[#0087fa] hover:scale-125" />
             <FaWhatsapp className="text-white mx-2 cursor-pointer text-[22px] transition-transform duration-300 ease-in-out hover:text-[#0087fa] hover:scale-125" />
             <FaInstagram className="text-white mx-2 cursor-pointer text-[22px] transition-transform duration-300 ease-in-out hover:text-[#0087fa] hover:scale-125" />
           </div>
+
           {/* Hamburguesa */}
           <div className="md:hidden flex items-center ml-auto">
             <button
@@ -65,44 +71,41 @@ const Navbar = () => {
               className="text-white text-2xl focus:outline-none"
               aria-label="Abrir menú"
             >
-              {menuOpen ? (
-                <FaTimes className="cursor-pointer" />
-              ) : (
-                <FaBars className="cursor-pointer" />
-              )}
+              {menuOpen ? <FaTimes /> : <FaBars />}
             </button>
           </div>
         </div>
+
         {/* Menú móvil */}
         {menuOpen && (
           <div className="md:hidden mt-2">
             <ul className="flex flex-col space-y-2 bg-[#00162b] rounded-lg p-4">
               <li>
-                <a
-                  href="/"
+                <Link
+                  to="/"
                   className="text-white block transition delay-10 hover:text-[#0087fa]"
                   onClick={() => setMenuOpen(false)}
                 >
                   Inicio
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/servicios"
+                <Link
+                  to="/servicios"
                   className="text-white block transition delay-10 hover:text-[#0087fa]"
                   onClick={() => setMenuOpen(false)}
                 >
                   Servicios
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/contact"
+                <Link
+                  to="/contact"
                   className="text-white block transition delay-10 hover:text-[#0087fa]"
                   onClick={() => setMenuOpen(false)}
                 >
-                  Contactanos
-                </a>
+                  Contáctanos
+                </Link>
               </li>
               <li className="flex space-x-4 pt-2 justify-center">
                 <FaFacebook className="text-white cursor-pointer text-[22px] transition-transform duration-300 ease-in-out hover:text-[#0087fa] hover:scale-125" />
