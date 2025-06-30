@@ -7,6 +7,7 @@ import {
   FaLaptop,
   FaBroom,
   FaRedo,
+  FaWhatsapp,
 } from "react-icons/fa";
 
 const servicios = [
@@ -53,10 +54,10 @@ const ServiciosPage = () => {
   }, []);
 
   return (
-    <div className="bg-[#00162b62] backdrop-blur-md min-h-screen">
+    <div className="bg-[#4592da] backdrop-blur-3xl min-h-screen">
       <Navbar />
 
-      <section className="pt-24 pb-16 px-6 bg-gradient-to-b from-[#00162b] to-[#002147]">
+      <section className="pt-24 pb-16 px-6 bg-gradient-to-b from-[#00162bf3] to-[#002147]">
         <h1 className="text-4xl font-extrabold text-center mb-6 text-white">
           Servicios de reparación
         </h1>
@@ -84,6 +85,12 @@ const ServiciosPage = () => {
               </p>
             </div>
           ))}
+        </div>
+        <div className="mt-12 text-center">
+          <button className="bg-[#0087fa] text-white cursor-pointer transition delay-10 px-6 py-3 rounded font-semibold hover:bg-blue-600">
+            <FaWhatsapp className="inline-block mb-[2px] mr-2 text-[22px]" />
+            Cotiza tu reparación
+          </button>{" "}
         </div>
       </section>
     </div>

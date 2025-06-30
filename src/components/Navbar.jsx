@@ -13,7 +13,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav>
+    <nav className="sticky top-0 z-50 bg-[#00162b]/90 backdrop-blur-md shadow-lg">
       <div className="bg-[#00162b] w-full">
         <div className="max-w-[1300px] mx-auto px-4 flex items-center py-4">
           {/* Logo */}
