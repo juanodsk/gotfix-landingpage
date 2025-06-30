@@ -136,6 +136,25 @@ const LandingPage = () => {
           </div>
         </div>
       </section>
+      <section className="relative py-16 bg-[#00162b] text-white">
+        <div className="absolute inset-0 z-0 bg-gradient-to-br from-[#002c57] via-[#00162b] to-black opacity-70 blur-md" />
+
+        <div className="relative z-10 container mx-auto px-6">
+          <h2 className="text-4xl font-extrabold mb-8 text-center drop-shadow-sm">
+            Nuestro trabajo
+          </h2>
+
+          <div className="max-w-xl mx-auto bg-white/10 backdrop-blur-lg rounded-2xl p-4 shadow-lg border border-white/10">
+            <iframe
+              src="https://www.instagram.com/reel/DLbAQnHMF_t/embed"
+              className="w-full h-[500px] rounded-xl border-none overflow-hidden"
+              allowtransparency="true"
+              allow="encrypted-media"
+              title="Instagram Reel"
+            />
+          </div>
+        </div>
+      </section>
 
       {/* Proceso */}
       <section className="py-10 bg-white">
