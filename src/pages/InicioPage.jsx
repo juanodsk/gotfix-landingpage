@@ -73,7 +73,7 @@ const LandingPage = () => {
       {/* Hero */}
       <section className="bg-gray-100 py-16 text-center">
         <div className="container mx-auto px-4">
-          <h1 className="text-[60px] font-bold mb-4">
+          <h1 className="text-[60px]  mb-4">
             <span className="text-[#0087fa]">
               <TypeWritter text="GOT" />
             </span>
