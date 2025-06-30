@@ -62,10 +62,10 @@ const ServiciosPage = () => {
           Servicios de reparación
         </h1>
         <p className="text-center text-white/80 mb-12 max-w-2xl mx-auto">
-          En GotFix ofrecemos una amplia gama de servicios técnicos
-          especializados para dispositivos Apple. Usamos herramientas
-          certificadas y contamos con técnicos altamente capacitados para
-          garantizar tu seguridad y la de tu equipo.
+          En <span className="font-bold">GotFix</span> ofrecemos una amplia gama
+          de servicios técnicos especializados para dispositivos Apple. Usamos
+          herramientas certificadas y contamos con técnicos altamente
+          capacitados para garantizar tu seguridad y la de tu equipo.
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
