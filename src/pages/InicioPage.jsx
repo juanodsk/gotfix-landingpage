@@ -10,7 +10,10 @@ import {
   FaTools,
   FaSmile,
   FaCheck,
+  FaFacebook,
+  FaInstagram,
 } from "react-icons/fa";
+import { PiCertificateFill } from "react-icons/pi";
 import heroBG from "../assets/local2.jpg";
 import ricardo1 from "../assets/ricardo1.jpg";
 import Dispositivos from "../components/Dispositivos.jsx";
@@ -24,7 +27,7 @@ const LandingPage = () => {
     {
       icono: <FaWhatsapp className="text-4xl text-primary mb-4" />,
       titulo: "Paso 1",
-      descripcion: "Nos contactas por WhatsApp o formulario.",
+      descripcion: "Nos contactas por WhatsApp o te acercas al punto físico.",
     },
     {
       icono: <FaBoxOpen className="text-4xl text-primary mb-4" />,
@@ -54,6 +57,10 @@ const LandingPage = () => {
     {
       icon: <FaCheck className="text-4xl text-primary" />,
       texto: "Garantía en la reparación de tu equipo",
+    },
+    {
+      icon: <PiCertificateFill className="text-4xl text-primary" />,
+      texto: "Repuestos originales y de alta calidad",
     },
   ];
   return (
@@ -92,22 +99,30 @@ const LandingPage = () => {
             ¿Por qué elegir <span className="text-primary">GOTFIX</span>?
           </motion.h2>
 
-          <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-            {beneficios.map((beneficio, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="bg-white shadow-xl rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-2xl transition duration-300"
-              >
-                <div className="mb-4">{beneficio.icon}</div>
-                <p className="text-gray-700 text-lg font-medium">
-                  {beneficio.texto}
-                </p>
-              </motion.div>
-            ))}
+          <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-center">
+            {beneficios.map((beneficio, index) => {
+              // Si es el último elemento y hay 4 elementos, aplicar col-span-2 + centrar
+              const isLastItem =
+                index === beneficios.length - 1 && beneficios.length % 3 === 1;
+
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className={`bg-white shadow-xl rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-2xl transition duration-300 ${
+                    isLastItem ? "lg:col-span-1 lg:col-start-2" : ""
+                  }`}
+                >
+                  <div className="mb-4">{beneficio.icon}</div>
+                  <p className="text-gray-700 text-lg font-medium">
+                    {beneficio.texto}
+                  </p>
+                </motion.div>
+              );
+            })}
           </div>
         </div>{" "}
         <Dispositivos />
@@ -117,14 +132,14 @@ const LandingPage = () => {
         <div className="container mx-auto max-w-[1100px] px-6 grid grid-cols-1 md:grid-cols-2 gap-10 items-center ">
           {/* Columna izquierda: texto */}
           <div>
-            <h2 className="text-4xl font-extrabold mb-6 text-gray-800">
+            <h2 className="text-4xl font-extrabold mb-6 text-gray-800 text-center">
               ¿Nuestra misión?
             </h2>
-            <p className="text-gray-700 text-lg mb-4">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Laudantium voluptatibus consequuntur optio, cupiditate consequatur
-              fugiat ab expedita, deserunt rem sequi nesciunt, enim commodi
-              facilis id delectus!
+            <p className="text-gray-700 text-lg mb-4 text-justify">
+              Brindar soluciones confiables, rápidas y especializadas para
+              equipos Apple, mediante un equipo capacitado, procesos
+              estandarizados y una experiencia de atención única, generando
+              confianza y fidelización en nuestros clientes.
             </p>
           </div>
           {/* Columna derecha: imagen */}
@@ -184,10 +199,43 @@ const LandingPage = () => {
 
       {/* Contacto */}
       <footer className="bg-[#00162b] text-white py-8">
-        <div className="container mx-auto px-4 text-center">
+        <div className="container mx-auto px-4 text-center space-y-2">
           <p>📍 Neiva, Huila — Atención de lunes a sábado</p>
-          <p className="mt-2">📞 (+57) 3125042689 | 📩 contacto@gotfix.co</p>
-          <p className="mt-2">Síguenos en Instagram y Facebook @gotfixco</p>
+          <p>📞 (+57) 3125042689 | 📩 contacto@gotfix.co</p>
+          <p>Síguenos en nuestras redes sociales</p>
+          <div className="flex-1 hidden md:flex justify-center mr-5">
+            <a
+              href="https://www.facebook.com/Gotfixco/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+            >
+              <FaFacebook className="text-white mx-2 cursor-pointer text-[22px] transition-transform duration-300 ease-in-out hover:text-[#0087fa] hover:scale-125" />
+            </a>
+
+            <a
+              href="https://wa.me/573125042689"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp"
+            >
+              <FaWhatsapp className="text-white mx-2 cursor-pointer text-[22px] transition-transform duration-300 ease-in-out hover:text-[#0087fa] hover:scale-125" />
+            </a>
+
+            <a
+              href="https://www.instagram.com/gotfix_co?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+            >
+              <FaInstagram className="text-white mx-2 cursor-pointer text-[22px] transition-transform duration-300 ease-in-out hover:text-[#0087fa] hover:scale-125" />
+            </a>
+          </div>
+
+          <hr className="my-4 border-white/20 w-1/2 mx-auto" />
+          <p className="text-sm text-gray-300">
+            © {new Date().getFullYear()} GotFix. Todos los derechos reservados.
+          </p>
         </div>
       </footer>
     </>

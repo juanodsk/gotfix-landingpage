@@ -12,6 +12,11 @@ const Dispositivos = () => {
           Servicio técnico especializado
         </h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-end justify-items-center">
+          {/* iPhone */}
+          <div className="flex flex-col items-center transition-transform duration-300 hover:scale-125">
+            <img src={iphoneLogo} alt="iPhone" className="h-25 mb-2" />
+            <span className="text-lg font-semibold mt-2">iPhone</span>
+          </div>
           {/* MacBook */}
           <div className="flex flex-col items-center transition-transform duration-300 hover:scale-125">
             <img src={macLogo} alt="MacBook" className="h-25 mb-2" />
@@ -22,11 +27,7 @@ const Dispositivos = () => {
             <img src={ipadLogo} alt="iPad" className="h-25 mb-2" />
             <span className="text-lg font-semibold mt-2">iPad</span>
           </div>
-          {/* iPhone */}
-          <div className="flex flex-col items-center transition-transform duration-300 hover:scale-125">
-            <img src={iphoneLogo} alt="iPhone" className="h-25 mb-2" />
-            <span className="text-lg font-semibold mt-2">iPhone</span>
-          </div>
+
           {/* iMac */}
           <div className="flex flex-col items-center transition-transform duration-300 hover:scale-125">
             <img src={imacLogo} alt="iMac" className="h-25 mb-2" />
