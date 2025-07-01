@@ -99,11 +99,11 @@ const LandingPage = () => {
             ¿Por qué elegir <span className="text-primary">GOTFIX</span>?
           </motion.h2>
 
-          <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-center">
+          <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 justify-center">
             {beneficios.map((beneficio, index) => {
               // Si es el último elemento y hay 4 elementos, aplicar col-span-2 + centrar
               const isLastItem =
-                index === beneficios.length - 1 && beneficios.length % 3 === 1;
+                index === beneficios.length - 1 && beneficios.length % 4 === 1;
 
               return (
                 <motion.div
