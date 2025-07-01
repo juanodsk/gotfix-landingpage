@@ -69,7 +69,7 @@ const Navbar = () => {
             </a>
 
             <a
-              href="https://wa.me/573125042689"
+              href="https://wa.link/7jzopx"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="WhatsApp"
