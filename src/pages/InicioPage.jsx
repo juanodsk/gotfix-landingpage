@@ -14,10 +14,10 @@ import {
   FaInstagram,
 } from "react-icons/fa";
 import { PiCertificateFill } from "react-icons/pi";
-import heroBG from "../assets/local2.jpg";
-import ricardo1 from "../assets/ricardo1.jpg";
+import ricardo1 from "../assets/ricardo2.png";
 import Dispositivos from "../components/Dispositivos.jsx";
 import Reseñas from "../components/Reseñas.jsx"; // Asegúrate que esté creado
+import Carrousel from "../components/Carrousel.jsx"; // Asegúrate que esté creado
 
 const LandingPage = () => {
   useEffect(() => {
@@ -27,17 +27,17 @@ const LandingPage = () => {
     {
       icono: <FaWhatsapp className="text-4xl text-primary mb-4" />,
       titulo: "Paso 1",
-      descripcion: "Nos contactas por WhatsApp o te acercas al punto físico.",
+      descripcion: "Nos contactas por WhatsApp y te acercas al punto físico.",
     },
     {
       icono: <FaBoxOpen className="text-4xl text-primary mb-4" />,
       titulo: "Paso 2",
-      descripcion: "Recibimos tu equipo o coordinamos la entrega.",
+      descripcion: "Recibimos tu equipo y coordinamos la entrega.",
     },
     {
       icono: <FaTools className="text-4xl text-primary mb-4" />,
       titulo: "Paso 3",
-      descripcion: "Diagnóstico y/o reparación profesional.",
+      descripcion: "Diagnósticamos y reparamos tu dispositivo.",
     },
     {
       icono: <FaSmile className="text-4xl text-primary mb-4" />,
@@ -68,25 +68,7 @@ const LandingPage = () => {
       <Navbar />
 
       {/* Hero */}
-      <section
-        className="relative bg-gray-100 py-25 text-center md:py-55 "
-        style={{
-          backgroundImage: `url(${heroBG})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center 25%",
-        }}
-      >
-        <div className="absolute inset-0 bg-black/75"></div>
-        <div className="relative container mx-auto px-4">
-          <p className="text-white text-[25px] mb-6 font-bold drop-shadow-lg">
-            Somos un centro de reparación para equipos Apple.
-          </p>
-          <button className="bg-[#0087fa] text-white cursor-pointer transition delay-10 px-6 py-3 rounded font-semibold hover:bg-blue-600 relative z-10">
-            Cotiza tu reparación
-          </button>
-        </div>
-      </section>
-
+      <Carrousel />
       {/* ¿Por qué elegirnos? */}
       <section className="py-10  ">
         <div className="container mx-auto px-6">
