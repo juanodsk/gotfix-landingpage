@@ -123,7 +123,7 @@ const Navbar = () => {
               </li>
               <li>
                 <Link
-                  to="/contact"
+                  to="/contactanos"
                   className="text-white block transition delay-10 hover:text-[#0087fa]"
                   onClick={() => setMenuOpen(false)}
                 >
