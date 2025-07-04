@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import img1 from "../assets/Carrousel/img1.jpg";
 import img2 from "../assets/Carrousel/img2.jpg";
 import img3 from "../assets/Carrousel/img3.jpg"; // Asegúrate de tener varias imágenes
+import { FaWhatsapp } from "react-icons/fa"; // Asegúrate de tener react-icons instalado
 
 const images = [img1, img2, img3];
 
@@ -45,9 +46,16 @@ function Carrousel() {
         <p className="text-[25px] mb-6 font-bold drop-shadow-lg">
           Somos un centro de reparación para equipos Apple.
         </p>
-        <button className="bg-[#0087fa] text-white cursor-pointer px-6 py-3 rounded font-semibold hover:bg-blue-600">
+        <a
+          href="https://wa.link/7jzopx"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="WhatsApp"
+          className="bg-[#0087fa] text-white cursor-pointer transition delay-10 px-6 py-3 rounded font-semibold hover:bg-blue-600 z-50 inline-flex items-center"
+        >
+          <FaWhatsapp className="mb-[2px] mr-2 text-[22px]" />
           Cotiza tu reparación
-        </button>
+        </a>
       </div>
 
       {/* Indicadores */}

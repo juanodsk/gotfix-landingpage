@@ -170,10 +170,16 @@ const LandingPage = () => {
               ))}
             </div>
             <div className="mt-10 text-center ">
-              <button className="bg-[#0087fa] text-white cursor-pointer transition delay-10 px-6 py-3 rounded font-semibold hover:bg-blue-600 z-50">
-                <FaWhatsapp className="inline-block mb-[2px] mr-2 text-[22px]" />
+              <a
+                href="https://wa.link/7jzopx"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp"
+                className="bg-[#0087fa] text-white cursor-pointer transition delay-10 px-6 py-3 rounded font-semibold hover:bg-blue-600 z-50 inline-flex items-center"
+              >
+                <FaWhatsapp className="mb-[2px] mr-2 text-[22px]" />
                 Cotiza tu reparación
-              </button>
+              </a>
             </div>
           </motion.div>
         </div>

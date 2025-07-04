@@ -53,10 +53,11 @@ const ContactanosPage = () => {
               href="https://wa.link/7jzopx"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#0087fa] text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300"
+              aria-label="WhatsApp"
+              className="bg-[#0087fa] text-white cursor-pointer transition delay-10 px-6 py-3 rounded font-semibold hover:bg-blue-600 z-50 inline-flex items-center"
             >
-              Contáctanos por WhatsApp{" "}
-              <FaWhatsapp className="inline-block mb-[2px] mr-2 text-[22px]" />
+              <FaWhatsapp className="mb-[2px] mr-2 text-[22px]" />
+              Cotiza tu reparación
             </a>
           </div>
         </div>
