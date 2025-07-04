@@ -37,7 +37,7 @@ const ContactanosPage = () => {
               <img
                 src={Local}
                 alt="Local GotFix"
-                className="rounded-xl max-w-150 h-auto shadow-xl"
+                className="rounded-xl max-w-100 md:max-w-150 h-auto shadow-xl"
               />
             </div>
           </div>
