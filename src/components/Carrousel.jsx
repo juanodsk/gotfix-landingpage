@@ -11,7 +11,7 @@ function Carrousel() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % images.length);
-    }, 5000); // Cambia cada 5 segundos
+    }, 7000); // Cambia cada 5 segundos
 
     return () => clearInterval(timer); // Limpieza del intervalo
   }, []);
@@ -45,7 +45,7 @@ function Carrousel() {
         <p className="text-[25px] mb-6 font-bold drop-shadow-lg">
           Somos un centro de reparación para equipos Apple.
         </p>
-        <button className="bg-[#0087fa] text-white px-6 py-3 rounded font-semibold hover:bg-blue-600">
+        <button className="bg-[#0087fa] text-white cursor-pointer px-6 py-3 rounded font-semibold hover:bg-blue-600">
           Cotiza tu reparación
         </button>
       </div>
@@ -55,7 +55,7 @@ function Carrousel() {
         {images.map((_, index) => (
           <button
             key={index}
-            className={`w-3 h-3 rounded-full ${
+            className={`w-3 h-3 cursor-pointer rounded-full ${
               index === current ? "bg-white" : "bg-white/50"
             }`}
             onClick={() => goToSlide(index)}

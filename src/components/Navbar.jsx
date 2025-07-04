@@ -48,7 +48,7 @@ const Navbar = () => {
               </li>
               <li>
                 <Link
-                  to="/contact"
+                  to="/contactanos"
                   className="text-white text-[18px] transition delay-10 hover:text-[#0087fa]"
                 >
                   Contáctanos

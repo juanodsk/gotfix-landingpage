@@ -18,6 +18,7 @@ import ricardo1 from "../assets/ricardo2.png";
 import Dispositivos from "../components/Dispositivos.jsx";
 import Reseñas from "../components/Reseñas.jsx"; // Asegúrate que esté creado
 import Carrousel from "../components/Carrousel.jsx"; // Asegúrate que esté creado
+import Footer from "../components/Footer.jsx"; // Asegúrate que esté creado
 
 const LandingPage = () => {
   useEffect(() => {
@@ -27,7 +28,7 @@ const LandingPage = () => {
     {
       icono: <FaWhatsapp className="text-4xl text-primary mb-4" />,
       titulo: "Paso 1",
-      descripcion: "Nos contactas por WhatsApp y te acercas al punto físico.",
+      descripcion: "Nos contactas por WhatsApp ó te acercas al punto físico.",
     },
     {
       icono: <FaBoxOpen className="text-4xl text-primary mb-4" />,
@@ -48,7 +49,8 @@ const LandingPage = () => {
   const beneficios = [
     {
       icon: <FaTools className="text-4xl text-primary" />,
-      texto: "Más de 4000 dispositivos Apple reparados",
+      texto:
+        "Llevamos más de 7 años en el mercado y más de 5.000 dispositivos apple reparados",
     },
     {
       icon: <FaUserCog className="text-4xl text-primary" />,
@@ -118,10 +120,10 @@ const LandingPage = () => {
               ¿Nuestra misión?
             </h2>
             <p className="text-gray-700 text-lg mb-4 text-justify">
-              Brindar soluciones confiables, rápidas y especializadas para
-              equipos Apple, mediante un equipo capacitado, procesos
-              estandarizados y una experiencia de atención única, generando
-              confianza y fidelización en nuestros clientes.
+              Brindar soluciones confiables, rápidas y especializadas, mediante
+              un equipo capacitado, procesos estandarizados y una experiencia de
+              atención única, generando confianza y fidelización en
+              nuestros clientes.
             </p>
           </div>
           {/* Columna derecha: imagen */}
@@ -180,46 +182,7 @@ const LandingPage = () => {
       <Reseñas />
 
       {/* Contacto */}
-      <footer className="bg-[#00162b] text-white py-8">
-        <div className="container mx-auto px-4 text-center space-y-2">
-          <p>📍 Neiva, Huila — Atención de lunes a sábado</p>
-          <p>📞 (+57) 3125042689 | 📩 contacto@gotfix.co</p>
-          <p>Síguenos en nuestras redes sociales</p>
-          <div className="flex-1 hidden md:flex justify-center mr-5">
-            <a
-              href="https://www.facebook.com/Gotfixco/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Facebook"
-            >
-              <FaFacebook className="text-white mx-2 cursor-pointer text-[22px] transition-transform duration-300 ease-in-out hover:text-[#0087fa] hover:scale-125" />
-            </a>
-
-            <a
-              href="https://wa.link/7jzopx"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="WhatsApp"
-            >
-              <FaWhatsapp className="text-white mx-2 cursor-pointer text-[22px] transition-transform duration-300 ease-in-out hover:text-[#0087fa] hover:scale-125" />
-            </a>
-
-            <a
-              href="https://www.instagram.com/gotfix_co?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram"
-            >
-              <FaInstagram className="text-white mx-2 cursor-pointer text-[22px] transition-transform duration-300 ease-in-out hover:text-[#0087fa] hover:scale-125" />
-            </a>
-          </div>
-
-          <hr className="my-4 border-white/20 w-1/2 mx-auto" />
-          <p className="text-sm text-gray-300">
-            © {new Date().getFullYear()} GotFix. Todos los derechos reservados.
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 };
