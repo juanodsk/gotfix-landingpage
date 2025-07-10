@@ -9,6 +9,7 @@ import {
   FaRedo,
   FaWhatsapp,
 } from "react-icons/fa";
+import Footer from "../components/Footer"; // Asegúrate que esté creado
 
 const servicios = [
   {
@@ -98,6 +99,7 @@ const ServiciosPage = () => {
           </a>
         </div>
       </section>
+      <Footer />
     </div>
   );
 };

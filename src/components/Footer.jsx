@@ -16,7 +16,7 @@ function Footer() {
     <footer className="bg-[#00162b] text-white py-8">
       <div className="container mx-auto px-4 text-center space-y-2">
         <p>📍 Neiva, Huila — Atención de lunes a sábado</p>
-        <p>📞 (+57) 3125042689 | 📩 contacto@gotfix.co</p>
+        <p>📞 (+57) 3125042689</p>
         <p>Síguenos en nuestras redes sociales</p>
         <div className="flex-1 hidden md:flex justify-center mr-5">
           <a
