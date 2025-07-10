@@ -59,7 +59,7 @@ const VideoCarrusel = () => {
             controls
             className="w-full h-[400px] md:h-[600px] rounded-xl"
           >
-            Tu navegador no soporta el video.
+            Tu navegador no soporta el video..
           </video>
           <div className="mt-6 flex justify-center gap-6">
             <button
