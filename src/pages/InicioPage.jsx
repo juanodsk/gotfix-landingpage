@@ -178,7 +178,7 @@ const LandingPage = () => {
                 className="bg-[#0087fa] text-white cursor-pointer transition delay-10 px-6 py-3 rounded font-semibold hover:bg-blue-600 z-50 inline-flex items-center"
               >
                 <FaWhatsapp className="mb-[2px] mr-2 text-[22px]" />
-                Cotiza tu reparación
+                Cotiza tu reparación.
               </a>
             </div>
           </motion.div>
