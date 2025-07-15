@@ -1,30 +1,20 @@
 import React, { useState } from "react";
+import Vid1 from "../assets/videos/vid1.MOV";
+import Vid2 from "../assets/videos/vid2.mp4";
+import Vid3 from "../assets/videos/vid3.mp4";
 
 const videos = [
   {
-    titulo: "Señales que indican que tu iPhone tiene problemas de placa",
-    // Este es un folder, no es un archivo de video. No se puede reproducir directamente.
-    url: "", // Necesitas compartir un enlace individual de video
+    titulo: "Cristal de Pantalla IPhone 15 Pro Max",
+    url: Vid1,
   },
   {
-    titulo: "Reemplazo de Cristal de Pantalla IPhone 15 Pro Max",
-    url: "https://drive.google.com/uc?export=download&id=1tzzZ6MqOKkr2smk1aSEUq-gdHSNV9FzP",
+    titulo: "iPhone 13 bateria y cristal trasero",
+    url: Vid2,
   },
   {
-    titulo: "Aumento de Memoria IPhone 11",
-    url: "https://drive.google.com/uc?export=download&id=1YEwRahz3uylPjWPVeGPNDDWK0i3I2Hwu",
-  },
-  {
-    titulo: "Reemplazo de mica táctil y batería",
-    url: "https://drive.google.com/uc?export=download&id=1MsBj6V6S_2v_OOzxNxhBm5kIobB_SUne",
-  },
-  {
-    titulo: "iPhone 13 cambio de batería y cristal trasero",
-    url: "https://drive.google.com/uc?export=download&id=1j3Cq-_vKYiPfn6D2yolTnGRW0TyX_tod",
-  },
-  {
-    titulo: "Servicio Cargador MacBook",
-    url: "https://drive.google.com/uc?export=download&id=1H-n1X05s9KMPSErKXwdd-QyUScKbAgix",
+    titulo: "iPhone SE reemplazo de cristal trasero y pantalla",
+    url: Vid3,
   },
 ];
 
