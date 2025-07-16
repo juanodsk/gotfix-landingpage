@@ -3,7 +3,7 @@ import React, { useState } from "react";
 const videos = [
   {
     titulo: "Cristal de Pantalla IPhone 15 Pro Max",
-    url: "../assets/videos/vid1.mp4",
+    url: "../assets/videos/vid1_converted.mp4",
   },
   {
     titulo: "iPhone 13 bateria y cristal trasero",
@@ -41,7 +41,7 @@ const VideoCarrusel = () => {
             controls
             className="w-full h-[400px] md:h-[600px] rounded-xl"
           >
-            Tu navegador no soporta el video.
+            Tu navegador no soporta el video..
           </video>
           <div className="mt-6 flex justify-center gap-6">
             <button
