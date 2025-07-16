@@ -3,15 +3,15 @@ import React, { useState } from "react";
 const videos = [
   {
     titulo: "Cristal de Pantalla IPhone 15 Pro Max",
-    url: "../assets/videos/vid1_converted.mp4",
+    url: "../assets/videos/vid2_compatible.mp4",
   },
   {
     titulo: "iPhone 13 bateria y cristal trasero",
-    url: "../assets/videos/vid3.mp4",
+    url: "../assets/videos/vid2_compatible.mp4",
   },
   {
     titulo: "iPhone SE reemplazo de cristal trasero y pantalla",
-    url: "../assets/videos/vid3.mp4",
+    url: "../assets/videos/vid2_compatible.mp4",
   },
 ];
 
