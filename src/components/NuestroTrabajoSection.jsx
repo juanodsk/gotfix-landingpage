@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import ReactPlayer from "react-player";
 
-// URLs servidas desde Vercel Blob (ya incluyen Accept‑Ranges y funcionan en Safari)
+// URLs servidas desde Vercel Blob (ya incluyen Accept‑Ranges y funcionan en Safari)
 const videos = [
   {
-    titulo: "Cristal de Pantalla iPhone 15 Pro Max",
+    titulo: "Cristal de Pantalla iPhone 15 Pro Max",
     url: "https://r4jqupdeweqtqoj7.public.blob.vercel-storage.com/vid1.mp4",
   },
   {
-    titulo: "iPhone 13 – batería y cristal trasero",
+    titulo: "iPhone 13 – batería y cristal trasero",
     url: "https://r4jqupdeweqtqoj7.public.blob.vercel-storage.com/vid2.mp4",
   },
   {
-    titulo: "iPhone SE – reemplazo de cristal trasero y pantalla",
+    titulo: "iPhone SE – reemplazo de cristal trasero y pantalla",
     url: "https://r4jqupdeweqtqoj7.public.blob.vercel-storage.com/vid3.mp4",
   },
 ];
@@ -30,7 +30,7 @@ const VideoCarrusel = () => {
 
       <div className="relative z-10 container mx-auto px-6 text-center">
         <div className="max-w-xl mx-auto bg-white/10 backdrop-blur-md rounded-2xl p-4 shadow-lg border border-white/10">
-          <h2 className="text-3xl md:text-3xl font-bold mb-6 drop-shadow-md">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6 drop-shadow-md text-center break-words px-2 max-w-full">
             {videos[indiceActual].titulo}
           </h2>
 
@@ -71,5 +71,4 @@ const VideoCarrusel = () => {
     </section>
   );
 };
-
 export default VideoCarrusel;
