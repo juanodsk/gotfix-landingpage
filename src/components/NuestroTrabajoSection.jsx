@@ -3,15 +3,15 @@ import React, { useState } from "react";
 const videos = [
   {
     titulo: "Cristal de Pantalla IPhone 15 Pro Max",
-    url: "../assets/videos/vid2_compatible.mp4",
+    url: "../assets/videos/vid1.mp4",
   },
   {
     titulo: "iPhone 13 bateria y cristal trasero",
-    url: "../assets/videos/vid2_compatible.mp4",
+    url: "../assets/videos/vid2.mp4",
   },
   {
     titulo: "iPhone SE reemplazo de cristal trasero y pantalla",
-    url: "../assets/videos/vid2_compatible.mp4",
+    url: "../assets/videos/vid3.mp4",
   },
 ];
 
@@ -36,6 +36,7 @@ const VideoCarrusel = () => {
             {videos[indiceActual].titulo}
           </h2>
           <video
+            type="video/mp4"
             key={videos[indiceActual].url}
             src={videos[indiceActual].url}
             controls
