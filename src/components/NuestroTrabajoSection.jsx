@@ -1,22 +1,24 @@
 import React, { useState } from "react";
 import ReactPlayer from "react-player";
 
-import Vid1 from "../assets/videos/vid1.mp4";
-import Vid2 from "../assets/videos/vid2.mp4";
-import Vid3 from "../assets/videos/vid3.mp4";
+// NOTA:
+// Los archivos mp4 están ahora en la carpeta `public/videos/`.
+// No hace falta importarlos; basta con apuntar a la ruta absoluta
+// que será resolvida por el servidor estático (Vite/React).
+// Ej.: /videos/vid1.mp4 👉 public/videos/vid1.mp4
 
 const videos = [
   {
     titulo: "Cristal de Pantalla IPhone 15 Pro Max",
-    url: Vid1,
+    url: "/videos/vid1.mp4",
   },
   {
     titulo: "iPhone 13 batería y cristal trasero",
-    url: Vid2,
+    url: "/videos/vid2.mp4",
   },
   {
     titulo: "iPhone SE reemplazo de cristal trasero y pantalla",
-    url: Vid3,
+    url: "/videos/vid3.mp4",
   },
 ];
 
@@ -41,7 +43,7 @@ const VideoCarrusel = () => {
             {videos[indiceActual].titulo}
           </h2>
 
-          {/* Player responsivo manteniendo proporción 16:9 */}
+          {/* Player responsivo 16:9 */}
           <div className="relative w-full h-[400px] md:h-[600px] rounded-xl overflow-hidden">
             <ReactPlayer
               key={videos[indiceActual].url}
@@ -49,6 +51,14 @@ const VideoCarrusel = () => {
               controls
               width="100%"
               height="100%"
+              playing={false}
+              config={{
+                file: {
+                  attributes: {
+                    controlsList: "nodownload", // evita descarga directa en algunos navegadores
+                  },
+                },
+              }}
               className="absolute top-0 left-0 rounded-xl"
             />
           </div>
