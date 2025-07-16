@@ -1,20 +1,17 @@
 import React, { useState } from "react";
-import Vid1 from "../assets/videos/vid1.mp4";
-import Vid2 from "../assets/videos/vid2.mp4";
-import Vid3 from "../assets/videos/vid3.mp4";
 
 const videos = [
   {
     titulo: "Cristal de Pantalla IPhone 15 Pro Max",
-    url: Vid1,
+    url: "../assets/videos/vid1.mp4",
   },
   {
     titulo: "iPhone 13 bateria y cristal trasero",
-    url: Vid2,
+    url: "../assets/videos/vid3.mp4",
   },
   {
     titulo: "iPhone SE reemplazo de cristal trasero y pantalla",
-    url: Vid3,
+    url: "../assets/videos/vid3.mp4",
   },
 ];
 
