@@ -1,37 +1,28 @@
 import React, { useState } from "react";
 import ReactPlayer from "react-player";
 
-// NOTA:
-// Los archivos mp4 están ahora en la carpeta `public/videos/`.
-// No hace falta importarlos; basta con apuntar a la ruta absoluta
-// que será resolvida por el servidor estático (Vite/React).
-// Ej.: /videos/vid1.mp4 👉 public/videos/vid1.mp4
-
+// URLs servidas desde Vercel Blob (ya incluyen Accept‑Ranges y funcionan en Safari)
 const videos = [
   {
-    titulo: "Cristal de Pantalla IPhone 15 Pro Max",
-    url: "/videos/vid1.mp4",
+    titulo: "Cristal de Pantalla iPhone 15 Pro Max",
+    url: "https://r4jqupdeweqtqoj7.public.blob.vercel-storage.com/vid1.mp4",
   },
   {
-    titulo: "iPhone 13 batería y cristal trasero",
-    url: "/videos/vid2.mp4",
+    titulo: "iPhone 13 – batería y cristal trasero",
+    url: "https://r4jqupdeweqtqoj7.public.blob.vercel-storage.com/vid2.mp4",
   },
   {
-    titulo: "iPhone SE reemplazo de cristal trasero y pantalla",
-    url: "/videos/vid3.mp4",
+    titulo: "iPhone SE – reemplazo de cristal trasero y pantalla",
+    url: "https://r4jqupdeweqtqoj7.public.blob.vercel-storage.com/vid3.mp4",
   },
 ];
 
 const VideoCarrusel = () => {
   const [indiceActual, setIndiceActual] = useState(0);
 
-  const siguiente = () => {
-    setIndiceActual((prev) => (prev + 1) % videos.length);
-  };
-
-  const anterior = () => {
-    setIndiceActual((prev) => (prev === 0 ? videos.length - 1 : prev - 1));
-  };
+  const siguiente = () => setIndiceActual((i) => (i + 1) % videos.length);
+  const anterior = () =>
+    setIndiceActual((i) => (i === 0 ? videos.length - 1 : i - 1));
 
   return (
     <section className="relative py-16 bg-[#00162b] text-white">
@@ -54,9 +45,7 @@ const VideoCarrusel = () => {
               playing={false}
               config={{
                 file: {
-                  attributes: {
-                    controlsList: "nodownload", // evita descarga directa en algunos navegadores
-                  },
+                  attributes: { controlsList: "nodownload" },
                 },
               }}
               className="absolute top-0 left-0 rounded-xl"
@@ -66,13 +55,13 @@ const VideoCarrusel = () => {
           <div className="mt-6 flex justify-center gap-6">
             <button
               onClick={anterior}
-              className="px-4 py-2 cursor-pointer bg-white/10 rounded-lg border border-white/20 hover:bg-white/20 transition"
+              className="px-4 py-2 bg-white/10 rounded-lg border border-white/20 hover:bg-white/20 transition"
             >
               ◀ Anterior
             </button>
             <button
               onClick={siguiente}
-              className="px-4 py-2 cursor-pointer bg-white/10 rounded-lg border border-white/20 hover:bg-white/20 transition"
+              className="px-4 py-2 bg-white/10 rounded-lg border border-white/20 hover:bg-white/20 transition"
             >
               Siguiente ▶
             </button>
