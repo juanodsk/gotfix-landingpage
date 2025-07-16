@@ -1,17 +1,22 @@
 import React, { useState } from "react";
+import ReactPlayer from "react-player";
+
+import Vid1 from "../assets/videos/vid1.mp4";
+import Vid2 from "../assets/videos/vid2.mp4";
+import Vid3 from "../assets/videos/vid3.mp4";
 
 const videos = [
   {
     titulo: "Cristal de Pantalla IPhone 15 Pro Max",
-    url: "../assets/videos/vid1.mp4",
+    url: Vid1,
   },
   {
-    titulo: "iPhone 13 bateria y cristal trasero",
-    url: "../assets/videos/vid2.mp4",
+    titulo: "iPhone 13 batería y cristal trasero",
+    url: Vid2,
   },
   {
     titulo: "iPhone SE reemplazo de cristal trasero y pantalla",
-    url: "../assets/videos/vid3.mp4",
+    url: Vid3,
   },
 ];
 
@@ -35,15 +40,19 @@ const VideoCarrusel = () => {
           <h2 className="text-3xl md:text-3xl font-bold mb-6 drop-shadow-md">
             {videos[indiceActual].titulo}
           </h2>
-          <video
-            type="video/mp4"
-            key={videos[indiceActual].url}
-            src={videos[indiceActual].url}
-            controls
-            className="w-full h-[400px] md:h-[600px] rounded-xl"
-          >
-            Tu navegador no soporta el video..
-          </video>
+
+          {/* Player responsivo manteniendo proporción 16:9 */}
+          <div className="relative w-full h-[400px] md:h-[600px] rounded-xl overflow-hidden">
+            <ReactPlayer
+              key={videos[indiceActual].url}
+              url={videos[indiceActual].url}
+              controls
+              width="100%"
+              height="100%"
+              className="absolute top-0 left-0 rounded-xl"
+            />
+          </div>
+
           <div className="mt-6 flex justify-center gap-6">
             <button
               onClick={anterior}
