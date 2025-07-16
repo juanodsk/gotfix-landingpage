@@ -138,6 +138,14 @@ const Navbar = () => {
                   Contáctanos
                 </Link>
               </li>
+              <li>
+                <Link
+                  to="/formulario"
+                  className="text-white text-[18px] transition delay-10 hover:text-[#0087fa]"
+                >
+                  Formulario
+                </Link>
+              </li>
               <li className="flex space-x-4 pt-2 justify-center">
                 <FaFacebook className="text-white cursor-pointer text-[22px] transition-transform duration-300 ease-in-out hover:text-[#0087fa] hover:scale-125" />
                 <FaWhatsapp className="text-white cursor-pointer text-[22px] transition-transform duration-300 ease-in-out hover:text-[#0087fa] hover:scale-125" />
