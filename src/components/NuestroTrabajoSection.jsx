@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Vid1 from "../assets/videos/vid1.h264";
+import Vid1 from "../assets/videos/vid1.mp4";
 import Vid2 from "../assets/videos/vid2.mp4";
 import Vid3 from "../assets/videos/vid3.mp4";
 
