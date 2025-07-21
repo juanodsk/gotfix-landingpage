@@ -46,7 +46,7 @@ const Countdown = () => {
           key={item.label}
           className="bg-[#111] px-4 py-2 rounded-xl shadow text-center"
         >
-          <div className="text-[#00e676] text-2xl md:text-3xl">
+          <div className="text-[#ec930d] text-2xl md:text-3xl">
             {String(item.value).padStart(2, "0")}
           </div>
           <div className="text-sm text-gray-400 uppercase">{item.label}</div>

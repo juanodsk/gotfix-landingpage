@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Countdown from "../components/Countdown.jsx";
 import axios from "axios";
+import flier from "../assets/squeeze/flier.png";
+import { FaArrowLeft } from "react-icons/fa"; // Agrega este import
 
 const SqueezePage = () => {
   const [form, setForm] = useState({ nombre: "", correo: "" });
@@ -28,7 +30,7 @@ const SqueezePage = () => {
     setLoading(true);
     setError("");
     try {
-      await axios.post("https://formulario-gotfix.onrender.com/api/registro", {
+      await axios.post(`${import.meta.env.HOST_URI}/api/registro`, {
         ...form,
         fuente,
       });
@@ -44,13 +46,22 @@ const SqueezePage = () => {
 
   return (
     <main className="min-h-screen bg-[#0d0d0d] text-white flex flex-col font-sans ">
+      <div className="absolute left-4 top-4 z-50">
+        <a
+          href="/"
+          className="flex items-center gap-2 text-[#ffbd59] hover:text-[#c7a572] font-semibold text-base md:text-lg transition"
+        >
+          <FaArrowLeft className="text-lg" />
+          Volver a GotFix
+        </a>
+      </div>
       {/* Hero */}
       <section className="flex-1 flex flex-col items-center justify-center px-4 text-center mt-20">
         <motion.h1
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-3xl md:text-5xl font-extrabold text-[#0087fa]"
+          className="text-3xl md:text-5xl font-extrabold text-[#ffbd59]"
         >
           Master Class:
           <br /> De Novato a Experto en iPhone
@@ -62,12 +73,12 @@ const SqueezePage = () => {
 
         <p className="mt-6 max-w-xl text-gray-400">
           Descubre los{" "}
-          <span className="text-[#0087fa] font-semibold">3 secretos</span> para
+          <span className="text-[#ffbd59] font-semibold">3 secretos</span> para
           construir un negocio rentable como técnico experto en iPhone más
           rápido de lo que te imaginas aunque no tengas experiencia.
         </p>
         <a href="#registro" className="mt-8">
-          <button className="bg-[#0087fa] hover:bg-[#006ed1] transition-colors cursor-pointer delay-10 px-8 py-3 rounded-lg font-semibold">
+          <button className="bg-[#ffbd59] hover:bg-[#c7a572] transition-colors cursor-pointer delay-10 px-8 py-3 rounded-lg font-semibold">
             Quiero asegurar mi cupo
           </button>
         </a>
@@ -76,7 +87,7 @@ const SqueezePage = () => {
       {/* Paso 1 – Registro */}
       <section id="registro" className="bg-[#111111] py-16">
         <div className="container mx-auto px-4 max-w-lg">
-          <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 text-[#0087fa]">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 text-[#ffbd59]">
             Paso 1: Regístrate para asegurar tu espacio
           </h2>
 
@@ -96,7 +107,7 @@ const SqueezePage = () => {
                 onChange={handleChange}
                 placeholder="Nombre completo"
                 required
-                className="p-4 rounded-lg bg-[#0d0d0d] border border-[#333] focus:outline-none focus:border-[#0087fa]"
+                className="p-4 rounded-lg bg-[#0d0d0d] border border-[#333] focus:outline-none focus:border-[#ffbd59]"
               />
               <input
                 type="email"
@@ -112,7 +123,7 @@ const SqueezePage = () => {
               )}
               <button
                 disabled={loading}
-                className="bg-[#0087fa] hover:bg-[#006ed1] transition-colors cursor-pointer delay-10 py-3 rounded-lg font-semibold disabled:opacity-50"
+                className="bg-[#ffbd59] hover:bg-[#d3af7a] transition-colors cursor-pointer delay-10 py-3 rounded-lg font-semibold disabled:opacity-50"
               >
                 {loading ? "Enviando…" : "¡Quiero asistir al evento!"}
               </button>
@@ -125,13 +136,13 @@ const SqueezePage = () => {
       <section className="py-20 bg-[#0d0d0d]">
         <div className="container mx-auto px-4 max-w-5xl grid md:grid-cols-2 gap-10 items-center">
           <img
-            src="https://via.placeholder.com/400x400.png?text=Ricardo"
+            src={flier}
             alt="Ricardo – Experto en iPhone"
             className="rounded-2xl shadow-lg"
           />
 
           <div>
-            <h3 className="text-2xl md:text-3xl font-bold text-[#0087fa] mb-4">
+            <h3 className="text-2xl md:text-3xl font-bold text-[#ffbd59] mb-4">
               Conoce a tu Instructor
             </h3>
             <p className="text-gray-300 leading-relaxed">
