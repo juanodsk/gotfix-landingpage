@@ -30,7 +30,7 @@ const SqueezePage = () => {
     setLoading(true);
     setError("");
     try {
-      await axios.post(`${import.meta.env.HOST_URI}/api/registro`, {
+      await axios.post(`${import.meta.env.VITE_HOST_URI}/api/registro`, {
         ...form,
         fuente,
       });
