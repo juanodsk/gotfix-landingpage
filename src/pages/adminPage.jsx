@@ -11,6 +11,7 @@ const AdminPage = () => {
     const fetchFormularios = async () => {
       try {
         const res = await axios.get(`${API_URL}/api/registro`);
+        console.log("Respuesta del backend:", res.data);
         setFormularios(res.data);
       } catch (err) {
         console.error("Error al cargar los formularios:", err);
