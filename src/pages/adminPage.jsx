@@ -20,7 +20,7 @@ const AdminPage = () => {
       queryParams.append("page", page);
       queryParams.append("limit", limit);
 
-      const res = await axios.get(`${API_URL}/api/formularios?${queryParams}`);
+      const res = await axios.get(`${API_URL}/api/registro?${queryParams}`);
       setFormularios(res.data.data);
       setTotalPages(res.data.totalPages);
     } catch (err) {
