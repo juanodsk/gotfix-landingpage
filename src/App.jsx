@@ -4,6 +4,7 @@ import ContactanosPage from "../src/pages/ContactanosPage";
 import ServiciosPage from "../src/pages/ServiciosPage";
 import ScrollToTop from "./components/ScrollTop";
 import SqueezePage from "../src/pages/SqueezePage";
+import GraciasPage from "../src/pages/graciasPage";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route path="/servicios" element={<ServiciosPage />}></Route>
         <Route path="/contactanos" element={<ContactanosPage />}></Route>
         <Route path="/formulario" element={<SqueezePage />}></Route>
+        <Route path="/gracias" element={<GraciasPage />}></Route>
       </Routes>
     </BrowserRouter>
   );

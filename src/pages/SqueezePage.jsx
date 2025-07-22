@@ -3,28 +3,27 @@ import { motion } from "framer-motion";
 import Countdown from "../components/Countdown.jsx";
 import axios from "axios";
 import flier from "../assets/squeeze/flier.png";
-import { FaArrowLeft } from "react-icons/fa"; // Agrega este import
+import { FaArrowLeft } from "react-icons/fa";
+import { useNavigate } from "react-router-dom"; // 👈 Asegúrate de tener esto
 
 const SqueezePage = () => {
   const [form, setForm] = useState({ nombre: "", correo: "" });
   const [fuente, setFuente] = useState("desconocido");
-  const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  /* ----- Detectar ?fuente= o ?utm_source= al montar ----- */
+  const navigate = useNavigate(); // 👈 React Router hook para redireccionar
+
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const f = params.get("fuente") || params.get("utm_source") || "organico";
     setFuente(f);
   }, []);
 
-  /* ----- Actualizar campos ----- */
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  /* ----- Enviar formulario ----- */
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -34,8 +33,8 @@ const SqueezePage = () => {
         ...form,
         fuente,
       });
-      setSubmitted(true);
       setForm({ nombre: "", correo: "" });
+      navigate("/gracias"); // 👈 Redireccionar tras envío exitoso
     } catch (err) {
       console.error(err.response || err);
       setError("Algo salió mal, intenta de nuevo.");
@@ -45,7 +44,7 @@ const SqueezePage = () => {
   };
 
   return (
-    <main className="min-h-screen bg-[#0d0d0d] text-white flex flex-col font-sans ">
+    <main className="min-h-screen bg-[#0d0d0d] text-white flex flex-col font-sans">
       <div className="absolute left-4 top-4 z-50">
         <a
           href="/"
@@ -55,6 +54,7 @@ const SqueezePage = () => {
           Volver a GotFix
         </a>
       </div>
+
       {/* Hero */}
       <section className="flex-1 flex flex-col items-center justify-center px-4 text-center mt-20">
         <motion.h1
@@ -70,7 +70,6 @@ const SqueezePage = () => {
           Evento online y sin costo · Martes 23 de julio 2025
         </p>
         <Countdown />
-
         <p className="mt-6 max-w-xl text-gray-400">
           Descubre los{" "}
           <span className="text-[#ffbd59] font-semibold">3 secretos</span> para
@@ -84,51 +83,45 @@ const SqueezePage = () => {
         </a>
       </section>
 
-      {/* Paso 1 – Registro */}
+      {/* Paso 1 – Registro */}
       <section id="registro" className="bg-[#111111] py-16">
         <div className="container mx-auto px-4 max-w-lg">
           <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 text-[#ffbd59]">
             Paso 1: Regístrate para asegurar tu espacio
           </h2>
 
-          {submitted ? (
-            <div className="text-center text-xl text-green-400">
-              ¡Gracias! Revisa tu correo para confirmar tu asistencia.
-            </div>
-          ) : (
-            <form
-              onSubmit={handleSubmit}
-              className="flex flex-col gap-6 bg-[#1b1b1b] p-8 rounded-2xl shadow-lg"
+          <form
+            onSubmit={handleSubmit}
+            className="flex flex-col gap-6 bg-[#1b1b1b] p-8 rounded-2xl shadow-lg"
+          >
+            <input
+              type="text"
+              name="nombre"
+              value={form.nombre}
+              onChange={handleChange}
+              placeholder="Nombre completo"
+              required
+              className="p-4 rounded-lg bg-[#0d0d0d] border border-[#333] focus:outline-none focus:border-[#ffbd59]"
+            />
+            <input
+              type="email"
+              name="correo"
+              value={form.correo}
+              onChange={handleChange}
+              placeholder="Correo electrónico"
+              required
+              className="p-4 rounded-lg bg-[#0d0d0d] border border-[#333] focus:outline-none focus:border-[#0087fa]"
+            />
+            {error && (
+              <p className="text-red-500 text-sm text-center">{error}</p>
+            )}
+            <button
+              disabled={loading}
+              className="bg-[#ffbd59] hover:bg-[#d3af7a] transition-colors cursor-pointer delay-10 py-3 rounded-lg font-semibold disabled:opacity-50"
             >
-              <input
-                type="text"
-                name="nombre"
-                value={form.nombre}
-                onChange={handleChange}
-                placeholder="Nombre completo"
-                required
-                className="p-4 rounded-lg bg-[#0d0d0d] border border-[#333] focus:outline-none focus:border-[#ffbd59]"
-              />
-              <input
-                type="email"
-                name="correo"
-                value={form.correo}
-                onChange={handleChange}
-                placeholder="Correo electrónico"
-                required
-                className="p-4 rounded-lg bg-[#0d0d0d] border border-[#333] focus:outline-none focus:border-[#0087fa]"
-              />
-              {error && (
-                <p className="text-red-500 text-sm text-center">{error}</p>
-              )}
-              <button
-                disabled={loading}
-                className="bg-[#ffbd59] hover:bg-[#d3af7a] transition-colors cursor-pointer delay-10 py-3 rounded-lg font-semibold disabled:opacity-50"
-              >
-                {loading ? "Enviando…" : "¡Quiero asistir al evento!"}
-              </button>
-            </form>
-          )}
+              {loading ? "Enviando…" : "¡Quiero asistir al evento!"}
+            </button>
+          </form>
         </div>
       </section>
 
