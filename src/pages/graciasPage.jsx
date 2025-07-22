@@ -1,38 +1,55 @@
 import React from "react";
-import { FaWhatsapp } from "react-icons/fa";
+import { FaArrowRight } from "react-icons/fa";
 import { motion } from "framer-motion";
+import collage from "../assets/squeeze/collage.png";
 
 const GraciasPage = () => {
   return (
-    <main className="min-h-screen bg-[#e5f7ed] flex flex-col items-center justify-center px-6 text-center text-[#075E54] font-sans">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="max-w-md bg-white rounded-2xl shadow-xl p-8"
-      >
-        <h1 className="text-3xl font-bold mb-4">
-          ¡Gracias por registrarte! 🎉
-        </h1>
-        <p className="text-lg text-[#333333] mb-6">
-          Hemos recibido tus datos correctamente. Únete a nuestro grupo de
-          WhatsApp para estar al tanto de todo antes del evento.
-        </p>
+    <main className="relative min-h-screen text-white font-sans overflow-hidden">
+      {/* Fondo con imagen */}
+      <div
+        className="absolute inset-0 bg-center bg-cover bg-no-repeat z-0"
+        style={{ backgroundImage: `url(${collage})` }}
+      ></div>
 
-        <a
-          href="https://chat.whatsapp.com/GXTKiMWrGqi2KVbJewy0jg?mode=ac_t"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-3 bg-[#25D366] hover:bg-[#1DA851] text-white px-6 py-3 rounded-lg font-semibold transition-colors"
-        >
-          <FaWhatsapp className="text-2xl" />
-          Unirme al grupo de WhatsApp
-        </a>
-      </motion.div>
+      {/* Degradado oscuro */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/80 z-10"></div>
 
-      <footer className="mt-10 text-sm text-[#555]">
-        © {new Date().getFullYear()} GotFix · Todos los derechos reservados
-      </footer>
+      {/* Contenido centrado con tarjeta */}
+      <div className="relative z-20 flex items-center justify-center min-h-screen px-6 py-16">
+        <section className="w-full max-w-3xl bg-white/10 backdrop-blur-lg border border-white/20 shadow-xl rounded-2xl p-10 text-center">
+          <motion.h1
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl md:text-5xl font-extrabold mb-6 text-[#ffbd59]"
+          >
+            ¡Gracias por registrarte!
+          </motion.h1>
+
+          <p className="text-lg text-gray-300 mb-8">
+            Estás a un paso de transformar tu futuro como técnico especializado
+            en Apple. Únete al grupo exclusivo para contenido avanzado y
+            asesoría directa.
+          </p>
+
+          <motion.a
+            href="https://chat.whatsapp.com/GXTKiMWrGqi2KVbJewy0jg?mode=ac_t"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="inline-flex items-center gap-3 bg-[#ffbd59] hover:bg-[#d3af7a] text-[#1a1a1a] font-semibold py-3 px-6 rounded-full shadow-lg transition-all mb-4"
+          >
+            <FaArrowRight />
+            Unirme al grupo de WhatsApp
+          </motion.a>
+
+          <footer className="mt-6 text-center text-gray-400 text-sm">
+            © {new Date().getFullYear()} GotFix · Todos los derechos reservados
+          </footer>
+        </section>
+      </div>
     </main>
   );
 };
