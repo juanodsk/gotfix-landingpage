@@ -31,7 +31,7 @@ const AdminPage = () => {
   const handleExportCSV = async () => {
     try {
       const res = await fetch(
-        `${import.meta.env.VITE_HOST_URI}/api/formularios?csv=true${
+        `${import.meta.env.VITE_HOST_URI}/api/registro?csv=true${
           fuente ? `&fuente=${fuente}` : ""
         }`
       );
