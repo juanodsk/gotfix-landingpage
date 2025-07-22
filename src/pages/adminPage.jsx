@@ -11,8 +11,11 @@ const AdminPage = () => {
     const fetchFormularios = async () => {
       try {
         const res = await axios.get(`${API_URL}/api/registro`);
-        console.log("Respuesta del backend:", res.data);
-        setFormularios(res.data);
+        if (res.data && Array.isArray(res.data.data)) {
+          setFormularios(res.data.data); // ← AQUÍ se extrae el array
+        } else {
+          console.warn("La respuesta no contiene un array válido:", res.data);
+        }
       } catch (err) {
         console.error("Error al cargar los formularios:", err);
       } finally {
@@ -43,9 +46,13 @@ const AdminPage = () => {
               <tr key={f._id}>
                 <td className="border px-4 py-2">{f.nombre}</td>
                 <td className="border px-4 py-2">{f.correo}</td>
-                <td className="border px-4 py-2 capitalize">{f.fuente}</td>
+                <td className="border px-4 py-2 capitalize">
+                  {f.fuente || "desconocido"}
+                </td>
                 <td className="border px-4 py-2">
-                  {new Date(f.createdAt).toLocaleString()}
+                  {f.createdAt
+                    ? new Date(f.createdAt).toLocaleString()
+                    : "Sin fecha"}
                 </td>
               </tr>
             ))}
