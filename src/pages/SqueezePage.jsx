@@ -63,7 +63,10 @@ const SqueezePage = () => {
           className="text-3xl md:text-5xl font-extrabold text-white"
         >
           Master Class:
-          <br /> De Novato a Experto en iPhone
+          <br />{" "}
+          <h1 className="text-3xl md:text-5xl font-extrabold text-[#fcbc18]">
+            De Novato a Experto en iPhone
+          </h1>
         </motion.h1>
         <p className="mt-4 text-lg md:text-xl text-gray-300">
           Evento online y sin costo · Martes 23 de julio 2025
@@ -76,7 +79,7 @@ const SqueezePage = () => {
           rápido de lo que te imaginas aunque no tengas experiencia.
         </p>
         <a href="#registro" className="mt-8">
-          <button className="bg-[#ffbd59] hover:bg-[#c7a572] transition-colors cursor-pointer delay-10 px-8 py-3 rounded-lg font-semibold">
+          <button className="bg-[#fcbc18] hover:bg-[#c7a572] transition-colors cursor-pointer delay-10 px-8 py-3 rounded-lg font-semibold">
             Quiero asegurar mi cupo
           </button>
         </a>
@@ -84,7 +87,7 @@ const SqueezePage = () => {
 
       <section id="registro" className="bg-[#111111] py-16">
         <div className="container mx-auto px-4 max-w-lg">
-          <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 text-[#ffbd59]">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 text-[#fcbc18]">
             Paso 1: Regístrate para asegurar tu espacio
           </h2>
 
@@ -115,7 +118,7 @@ const SqueezePage = () => {
             )}
             <button
               disabled={loading}
-              className="bg-[#ffbd59] hover:bg-[#d3af7a] transition-colors cursor-pointer delay-10 py-3 rounded-lg font-semibold disabled:opacity-50"
+              className="bg-[#fcbc18] hover:bg-[#d3af7a] transition-colors cursor-pointer delay-10 py-3 rounded-lg font-semibold disabled:opacity-50"
             >
               {loading ? "Enviando…" : "¡Quiero asistir al evento!"}
             </button>
@@ -132,7 +135,7 @@ const SqueezePage = () => {
           />
 
           <div>
-            <h3 className="text-2xl md:text-3xl font-bold text-[#ffbd59] mb-4">
+            <h3 className="text-2xl md:text-3xl font-bold text-[#fcbc18] mb-4">
               Conoce a tu Instructor
             </h3>
             <div className="text-gray-300 leading-relaxed space-y-4">
@@ -169,6 +172,46 @@ const SqueezePage = () => {
               </p>
             </div>
           </div>
+        </div>
+      </section>
+      <section id="registro" className="bg-[#111111] py-16">
+        <div className="container mx-auto px-4 max-w-lg">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 text-[#fcbc18]">
+            Paso 1: Regístrate para asegurar tu espacio
+          </h2>
+
+          <form
+            onSubmit={handleSubmit}
+            className="flex flex-col gap-6 bg-[#1b1b1b] p-8 rounded-2xl shadow-lg"
+          >
+            <input
+              type="text"
+              name="nombre"
+              value={form.nombre}
+              onChange={handleChange}
+              placeholder="Nombre completo"
+              required
+              className="p-4 rounded-lg bg-[#0d0d0d] border border-[#333] focus:outline-none focus:border-[#ffbd59]"
+            />
+            <input
+              type="email"
+              name="correo"
+              value={form.correo}
+              onChange={handleChange}
+              placeholder="Correo electrónico"
+              required
+              className="p-4 rounded-lg bg-[#0d0d0d] border border-[#333] focus:outline-none focus:border-[#0087fa]"
+            />
+            {error && (
+              <p className="text-red-500 text-sm text-center">{error}</p>
+            )}
+            <button
+              disabled={loading}
+              className="bg-[#fcbc18] hover:bg-[#d3af7a] transition-colors cursor-pointer delay-10 py-3 rounded-lg font-semibold disabled:opacity-50"
+            >
+              {loading ? "Enviando…" : "¡Quiero asistir al evento!"}
+            </button>
+          </form>
         </div>
       </section>
 
