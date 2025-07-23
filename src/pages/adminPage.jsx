@@ -16,7 +16,7 @@ const AdminPage = () => {
   const fetchFormularios = async () => {
     try {
       const res = await axios.get(
-        `${import.meta.env.VITE_HOST_URI}/api/formularios`,
+        `${import.meta.env.VITE_HOST_URI}/api/registro`,
         {
           params: { page, limit, fuente },
         }
