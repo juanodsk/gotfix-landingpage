@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import Navbar from "../components/Navbar.jsx"; // Asegúrate que esté creado
-import NuestroTrabajo from "../components/NuestroTrabajoSection.jsx"; // Asegúrate que esté creado
+import Navbar from "../components/Navbar.jsx";
+import NuestroTrabajo from "../components/NuestroTrabajoSection.jsx";
 import { motion } from "framer-motion";
 import {
   FaUserCog,
@@ -16,9 +16,9 @@ import {
 import { PiCertificateFill } from "react-icons/pi";
 import ricardo1 from "../assets/ricardo2.png";
 import Dispositivos from "../components/Dispositivos.jsx";
-import Reseñas from "../components/Reseñas.jsx"; // Asegúrate que esté creado
-import Carrousel from "../components/Carrousel.jsx"; // Asegúrate que esté creado
-import Footer from "../components/Footer.jsx"; // Asegúrate que esté creado
+import Reseñas from "../components/Reseñas.jsx";
+import Carrousel from "../components/Carrousel.jsx";
+import Footer from "../components/Footer.jsx";
 
 const LandingPage = () => {
   useEffect(() => {
@@ -85,7 +85,6 @@ const LandingPage = () => {
 
           <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 justify-center">
             {beneficios.map((beneficio, index) => {
-              // Si es el último elemento y hay 4 elementos, aplicar col-span-2 + centrar
               const isLastItem =
                 index === beneficios.length - 1 && beneficios.length % 4 === 1;
 
@@ -175,7 +174,7 @@ const LandingPage = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp"
-                className="bg-[#0087fa] text-white cursor-pointer transition delay-10 px-6 py-3 rounded font-semibold hover:bg-blue-600 z-50 inline-flex items-center"
+                className="bg-[#25d366] text-white cursor-pointer transition delay-10 px-6 py-3 rounded font-semibold hover:bg-[#25d365af] z-50 inline-flex items-center"
               >
                 <FaWhatsapp className="mb-[2px] mr-2 text-[22px]" />
                 Cotiza tu reparación.

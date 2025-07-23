@@ -92,7 +92,7 @@ const ServiciosPage = () => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="WhatsApp"
-            className="bg-[#0087fa] text-white cursor-pointer transition delay-10 px-6 py-3 rounded font-semibold hover:bg-blue-600 z-50 inline-flex items-center"
+            className="bg-[#25d366] hover:bg-[#25d365b2] text-white cursor-pointer transition delay-10 px-6 py-3 rounded font-semibold  z-50 inline-flex items-center"
           >
             <FaWhatsapp className="mb-[2px] mr-2 text-[22px]" />
             Cotiza tu reparación

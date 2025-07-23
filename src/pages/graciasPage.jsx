@@ -39,7 +39,7 @@ const GraciasPage = () => {
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center gap-3 bg-[#ffbd59] hover:bg-[#d3af7a] text-[#1a1a1a] font-semibold py-3 px-6 rounded-full shadow-lg transition-all mb-4"
+            className="inline-flex items-center gap-3 bg-[#25d366] hover:bg-[#25d365a2] text-[#1a1a1a] font-semibold py-3 px-6 rounded-full shadow-lg transition-all mb-4"
           >
             <FaArrowRight />
             Unirme al grupo de WhatsApp

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 // Cuenta regresiva fija al 23‑jul‑2025 23:59
-const TARGET_DATE = new Date("2025-07-23T14:00:00-05:00");
+const TARGET_DATE = new Date("2025-08-05T19:00:00-05:00");
 
 const Countdown = () => {
   const [timeLeft, setTimeLeft] = useState({

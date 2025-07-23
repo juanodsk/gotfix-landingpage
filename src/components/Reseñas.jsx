@@ -13,21 +13,32 @@ import {
 
 const reviews = [
   {
-    nombre: "Camila R.",
+    nombre: "Luis Alfredo Lozano Lozano",
     mensaje:
-      "Excelente servicio. Repararon mi iPhone en el mismo día. ¡Súper recomendado!",
+      "Me gusto el servicio, aunque la pantalla de mi celular estaba dañada, primero intentaron arreglarla (que funcionó) antes de venderme una nueva. Y la potencializacion de mi IMac funcionó muy bien, se nota el cambio en la velocidad y fluidez del equipo. Quedo como si estuviera estrenando. Totalmente Recomendados.",
     rating: 5,
   },
   {
-    nombre: "Andrés M.",
+    nombre: "Jefferon David Cantillo",
     mensaje:
-      "Muy profesionales. Me explicaron todo el proceso con claridad y confianza.",
+      "Excelente servicio, recomiendo los trabajos realizados en la tienda y recomiendo mucho la atención antes, durante y finalizado el servicio, además te escriben luego para verificar que todo está muy bien con el equipo, quedo muy agradecido con la atención!! 🤗🤗",
     rating: 5,
   },
   {
-    nombre: "Laura G.",
+    nombre: "MARIA PAULA MORA CHILA",
     mensaje:
-      "Rápido, seguro y confiable. GotFix es mi lugar de confianza para reparaciones Apple.",
+      "Excelente experiencia con esta empresa! Su servicio técnico para equipos Apple es verdaderamente excepcional.Rápidos, eficientes y profesionales. Súper recomendados.",
+    rating: 5,
+  },
+  {
+    nombre: "Andres Galeano",
+    mensaje:
+      "Prestan un grandioso servicio, el personal es muy amable a la hora de atención, sus costos son accesibles y lo más importante, los equipos quedan muy bien reparados. Los recomiendo.",
+    rating: 5,
+  },
+  {
+    nombre: "jennifer andrea ramirez salazar",
+    mensaje: "Excelente servicio , rápido y muy eficiente, muy recomendado",
     rating: 5,
   },
 ];

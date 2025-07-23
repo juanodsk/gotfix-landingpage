@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import img1 from "../assets/Carrousel/img1.jpg";
 import img2 from "../assets/Carrousel/img2.jpg";
-import img3 from "../assets/Carrousel/img3.jpg"; // Asegúrate de tener varias imágenes
-import { FaWhatsapp } from "react-icons/fa"; // Asegúrate de tener react-icons instalado
+import img3 from "../assets/Carrousel/img3.jpg";
+import { FaWhatsapp } from "react-icons/fa";
 
 const images = [img1, img2, img3];
 
@@ -12,9 +12,9 @@ function Carrousel() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % images.length);
-    }, 7000); // Cambia cada 5 segundos
+    }, 7000);
 
-    return () => clearInterval(timer); // Limpieza del intervalo
+    return () => clearInterval(timer);
   }, []);
 
   const goToSlide = (index) => {
@@ -51,7 +51,7 @@ function Carrousel() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="WhatsApp"
-          className="bg-[#0087fa] text-white cursor-pointer transition delay-10 px-6 py-3 rounded font-semibold hover:bg-blue-600 z-50 inline-flex items-center"
+          className="bg-[#25d366] hover:bg-[#25d365b2] text-white cursor-pointer transition delay-10 px-6 py-3 rounded font-semibold  z-50 inline-flex items-center"
         >
           <FaWhatsapp className="mb-[2px] mr-2 text-[22px]" />
           Cotiza tu reparación

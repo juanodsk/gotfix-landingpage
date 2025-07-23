@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 const AdminPage = () => {
+  const [autenticado, setAutenticado] = useState(false);
+  const [clave, setClave] = useState("");
   const [formularios, setFormularios] = useState([]);
   const [fuente, setFuente] = useState("");
   const [page, setPage] = useState(1);
@@ -10,8 +12,29 @@ const AdminPage = () => {
   const limit = 10;
 
   useEffect(() => {
-    fetchFormularios();
-  }, [page, fuente]);
+    const saved = localStorage.getItem("adminAuth");
+    if (saved === "ok") setAutenticado(true);
+  }, []);
+
+  useEffect(() => {
+    if (autenticado) {
+      fetchFormularios();
+    }
+  }, [page, fuente, autenticado]);
+
+  const manejarLogin = () => {
+    if (clave === "gotfix2025") {
+      setAutenticado(true);
+      localStorage.setItem("adminAuth", "ok");
+    } else {
+      alert("Contraseña incorrecta");
+    }
+  };
+
+  const cerrarSesion = () => {
+    setAutenticado(false);
+    localStorage.removeItem("adminAuth");
+  };
 
   const fetchFormularios = async () => {
     try {
@@ -49,12 +72,35 @@ const AdminPage = () => {
     }
   };
 
+  if (!autenticado) {
+    return (
+      <div className="h-screen flex items-center justify-center bg-gray-100">
+        <div className="bg-white p-6 rounded shadow-md">
+          <h2 className="text-lg font-bold mb-4">Acceso restringido</h2>
+          <input
+            type="password"
+            placeholder="Ingresa la contraseña"
+            value={clave}
+            onChange={(e) => setClave(e.target.value)}
+            className="border px-4 py-2 rounded w-full mb-4"
+          />
+          <button
+            onClick={manejarLogin}
+            className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-4 py-2 rounded w-full"
+          >
+            Entrar
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="p-4">
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-xl font-bold">Registros de formularios</h2>
 
-        <div className="flex gap-4">
+        <div className="flex gap-4 items-center">
           <select
             value={fuente}
             onChange={(e) => {
@@ -74,6 +120,13 @@ const AdminPage = () => {
             className="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded"
           >
             Descargar Excel
+          </button>
+
+          <button
+            onClick={cerrarSesion}
+            className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded"
+          >
+            Cerrar sesión
           </button>
         </div>
       </div>

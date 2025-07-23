@@ -69,9 +69,8 @@ const SqueezePage = () => {
           </h1>
         </motion.h1>
         <p className="mt-4 text-lg md:text-xl text-gray-300">
-          Evento online y sin costo · Martes 23 de julio 2025
+          Evento online y sin costo · Martes 05 de agosto 2025
         </p>
-        <Countdown />
         <p className="mt-6 max-w-xl text-gray-400">
           Descubre los{" "}
           <span className="text-[#ffbd59] font-semibold">3 secretos</span> para

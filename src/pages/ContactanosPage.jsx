@@ -2,9 +2,9 @@ import React from "react";
 import { useEffect } from "react";
 import Reseñas from "../components/Reseñas.jsx";
 import Navbar from "../components/Navbar.jsx";
-import Footer from "../components/Footer.jsx"; // Asegúrate que esté creado
+import Footer from "../components/Footer.jsx";
 import { FaWhatsapp } from "react-icons/fa";
-import Local from "../assets/localafuera.JPG"; // Asegúrate de tener una imagen de local o usa un ícono
+import Local from "../assets/localafuera.JPG";
 
 const ContactanosPage = () => {
   useEffect(() => {
@@ -54,7 +54,7 @@ const ContactanosPage = () => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="WhatsApp"
-              className="bg-[#0087fa] text-white cursor-pointer transition delay-10 px-6 py-3 rounded font-semibold hover:bg-blue-600 z-50 inline-flex items-center"
+              className="bg-[#25d366] hover:bg-[#25d365b2] text-white cursor-pointer transition delay-10 px-6 py-3 rounded font-semibold  z-50 inline-flex items-center"
             >
               <FaWhatsapp className="mb-[2px] mr-2 text-[22px]" />
               Cotiza tu reparación
