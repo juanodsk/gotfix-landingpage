@@ -45,16 +45,6 @@ const SqueezePage = () => {
 
   return (
     <main className="min-h-screen bg-[#0d0d0d] text-white flex flex-col font-sans">
-      <div className="absolute left-4 top-4 z-50">
-        <a
-          href="/"
-          className="flex items-center gap-2 text-[#ffbd59] hover:text-[#c7a572] font-semibold text-base md:text-lg transition"
-        >
-          <FaArrowLeft className="text-lg" />
-          Volver a GotFix
-        </a>
-      </div>
-
       <section className="flex-1 flex flex-col items-center justify-center px-4 text-center mt-20">
         <motion.h1
           initial={{ opacity: 0, y: 40 }}
