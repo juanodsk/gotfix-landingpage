@@ -91,7 +91,7 @@ const SqueezePage = () => {
               onChange={handleChange}
               placeholder="Nombre completo"
               required
-              className="p-4 rounded-lg bg-[#0d0d0d] border border-[#333] focus:outline-none focus:border-[#ffbd59]"
+              className="p-4 rounded-lg bg-[#0d0d0d] border border-[#bebdbd] focus:outline-none focus:border-[#ffbd59]"
             />
             <input
               type="email"
@@ -100,7 +100,7 @@ const SqueezePage = () => {
               onChange={handleChange}
               placeholder="Correo electrónico"
               required
-              className="p-4 rounded-lg bg-[#0d0d0d] border border-[#333] focus:outline-none focus:border-[#0087fa]"
+              className="p-4 rounded-lg bg-[#0d0d0d] border border-[#bebdbd] focus:outline-none focus:border-[#0087fa]"
             />
             {error && (
               <p className="text-red-500 text-sm text-center">{error}</p>
@@ -180,7 +180,7 @@ const SqueezePage = () => {
               onChange={handleChange}
               placeholder="Nombre completo"
               required
-              className="p-4 rounded-lg bg-[#0d0d0d] border border-[#333] focus:outline-none focus:border-[#ffbd59]"
+              className="p-4 rounded-lg bg-[#0d0d0d] border border-[#bebdbd] focus:outline-none focus:border-[#ffbd59]"
             />
             <input
               type="email"
@@ -189,7 +189,7 @@ const SqueezePage = () => {
               onChange={handleChange}
               placeholder="Correo electrónico"
               required
-              className="p-4 rounded-lg bg-[#0d0d0d] border border-[#333] focus:outline-none focus:border-[#0087fa]"
+              className="p-4 rounded-lg bg-[#0d0d0d] border border-[#bebdbd] focus:outline-none focus:border-[#0087fa]"
             />
             {error && (
               <p className="text-red-500 text-sm text-center">{error}</p>
