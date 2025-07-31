@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom"; // Asegúrate de tener esto importado
 
 const PoliticaDePrivacidad = () => {
   const navigate = useNavigate();
@@ -75,11 +76,8 @@ const PoliticaDePrivacidad = () => {
         </p>
 
         <div className="mt-10 text-center">
-          <button
-            onClick={() => navigate(-1)}
-            className="bg-[#fcbc18] text-black font-semibold px-6 py-2 rounded-lg hover:bg-[#d3af7a] transition-colors  cursor-pointer"
-          >
-            Volver atrás
+          <button className="bg-[#fcbc18] text-black font-semibold px-6 py-2 rounded-lg hover:bg-[#d3af7a] transition-colors  cursor-pointer">
+            <Link to="/formulario">Volver atrás</Link>
           </button>
         </div>
       </div>
