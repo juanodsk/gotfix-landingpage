@@ -78,7 +78,7 @@ const LandingPage = () => {
             initial={{ opacity: 0, y: -30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-4xl font-extrabold text-center mb-12 text-gray-800"
+            className="xl:text-4xl text-2xl font-bold text-center mb-12 text-gray-800"
           >
             ¿Por qué elegir <span className="text-primary">GOTFIX</span>?
           </motion.h2>
@@ -100,7 +100,7 @@ const LandingPage = () => {
                   }`}
                 >
                   <div className="mb-4">{beneficio.icon}</div>
-                  <p className="text-gray-700 text-lg font-medium">
+                  <p className="text-gray-700 xl:text-lg sm:text-md font-medium">
                     {beneficio.texto}
                   </p>
                 </motion.div>
@@ -115,7 +115,7 @@ const LandingPage = () => {
         <div className="container mx-auto max-w-[1100px] px-6 grid grid-cols-1 md:grid-cols-2 gap-10 items-center ">
           {/* Columna izquierda: texto */}
           <div>
-            <h2 className="text-4xl font-extrabold mb-6 text-gray-800 text-center">
+            <h2 className="xl:text-4xl text-2xl font-extrabold mb-6 text-gray-800 text-center">
               ¿Nuestra misión?
             </h2>
             <p className="text-gray-700 text-lg mb-4 text-justify">
@@ -147,7 +147,7 @@ const LandingPage = () => {
             viewport={{ once: true }}
             className="bg-[#00162b] text-white rounded-2xl p-10 shadow-lg"
           >
-            <h2 className="text-3xl font-bold text-center mb-10">
+            <h2 className="xl:text-4xl text-2xl font-bold text-center mb-10">
               ¿Cómo reparamos tu equipo?
             </h2>
 
@@ -163,7 +163,9 @@ const LandingPage = () => {
                            transition duration-300 ease-in-out transform hover:-translate-y-2 hover:shadow-2xl"
                 >
                   {paso.icono}
-                  <h3 className="text-xl font-semibold mb-2">{paso.titulo}</h3>
+                  <h3 className="xl:text-xl text-2xl font-semibold mb-2">
+                    {paso.titulo}
+                  </h3>
                   <p className="text-base">{paso.descripcion}</p>
                 </motion.div>
               ))}

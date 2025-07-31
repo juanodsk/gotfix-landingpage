@@ -61,6 +61,9 @@ const SqueezePage = () => {
         <p className="mt-4 text-lg md:text-xl text-gray-300">
           Evento online y sin costo · Martes 05 de agosto 2025
         </p>
+        <p className="mt-4 text-lg md:text-xl text-gray-300">
+          7PM Hora Colombia 🇨🇴
+        </p>
         <p className="mt-6 max-w-xl text-gray-400">
           Descubre los{" "}
           <span className="text-[#ffbd59] font-semibold">3 secretos</span> para
