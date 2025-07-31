@@ -1,6 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const PoliticaDePrivacidad = () => {
+  const navigate = useNavigate();
+
   return (
     <main className="bg-[#111111] min-h-screen text-[#ececec] px-6 py-16">
       <div className="max-w-3xl mx-auto">
@@ -70,6 +73,15 @@ const PoliticaDePrivacidad = () => {
         <p className="text-sm text-[#888888] mt-12 text-center">
           Última actualización: {new Date().toLocaleDateString("es-CO")}
         </p>
+
+        <div className="mt-10 text-center">
+          <button
+            onClick={() => navigate(-1)}
+            className="bg-[#fcbc18] text-black font-semibold px-6 py-2 rounded-lg hover:bg-[#d3af7a] transition-colors  cursor-pointer"
+          >
+            Volver atrás
+          </button>
+        </div>
       </div>
     </main>
   );
