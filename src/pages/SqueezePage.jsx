@@ -5,6 +5,7 @@ import axios from "axios";
 import flier from "../assets/squeeze/flier.png";
 import { FaArrowLeft, FaWhatsapp } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom"; // Asegúrate de tener esto importado
 
 const SqueezePage = () => {
   const [form, setForm] = useState({ nombre: "", correo: "" });
@@ -62,7 +63,7 @@ const SqueezePage = () => {
           Evento online y sin costo · Martes 05 de agosto 2025
         </p>
         <p className="mt-4 text-lg md:text-xl text-gray-300">
-          7PM Hora Colombia 🇨🇴
+          7:00 PM Hora Colombia 🇨🇴
         </p>
         <p className="mt-6 max-w-xl text-gray-400">
           Descubre los{" "}
@@ -114,6 +115,19 @@ const SqueezePage = () => {
             >
               {loading ? "Enviando…" : "¡Quiero asistir al evento!"}
             </button>
+
+            <p className="text-xs text-center text-[#bebdbd] mt-2">
+              Al registrarte, aceptas nuestra{" "}
+              <Link
+                to="/politica-de-privacidad"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-[#fcbc18] transition-colors"
+              >
+                Política de Privacidad
+              </Link>
+              .
+            </p>
           </form>
         </div>
       </section>
@@ -203,6 +217,19 @@ const SqueezePage = () => {
             >
               {loading ? "Enviando…" : "¡Quiero asistir al evento!"}
             </button>
+
+            <p className="text-xs text-center text-[#bebdbd] mt-2">
+              Al registrarte, aceptas nuestra{" "}
+              <Link
+                to="/politica-de-privacidad"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-[#fcbc18] transition-colors"
+              >
+                Política de Privacidad
+              </Link>
+              .
+            </p>
           </form>
         </div>
       </section>
