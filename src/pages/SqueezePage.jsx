@@ -19,6 +19,38 @@ const SqueezePage = () => {
     const params = new URLSearchParams(window.location.search);
     const f = params.get("fuente") || params.get("utm_source") || "organico";
     setFuente(f);
+
+    // Código Meta Pixel
+    if (!window.fbq) {
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = true;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = true;
+        t.src = "https://connect.facebook.net/en_US/fbevents.js";
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(window, document, "script");
+
+      window.fbq("init", "760147466498011"); // ✅ Tu ID de Pixel
+    }
+
+    window.fbq("track", "PageView");
+  }, []);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const f = params.get("fuente") || params.get("utm_source") || "organico";
+    setFuente(f);
   }, []);
 
   const handleChange = (e) => {
@@ -29,11 +61,21 @@ const SqueezePage = () => {
     e.preventDefault();
     setLoading(true);
     setError("");
+
     try {
       await axios.post(`${import.meta.env.VITE_HOST_URI}/api/registro`, {
         ...form,
         fuente,
       });
+
+      // ✅ Evento de conversión para Meta Pixel
+      if (window.fbq) {
+        window.fbq("track", "Lead", {
+          content_name: "Registro Masterclass",
+          source: fuente,
+        });
+      }
+
       setForm({ nombre: "", correo: "" });
       navigate("/gracias");
     } catch (err) {
