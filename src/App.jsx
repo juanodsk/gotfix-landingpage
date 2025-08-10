@@ -17,9 +17,7 @@ function App() {
         <Route path="/" element={<InicioPage />}></Route>
         <Route path="/servicios" element={<ServiciosPage />}></Route>
         <Route path="/contactanos" element={<ContactanosPage />}></Route>
-        <Route path="/formulario" element={<SqueezePage />}></Route>
-        <Route path="/gracias" element={<GraciasPage />}></Route>
-        <Route path="/admin" element={<AdminPage />}></Route>
+
         <Route
           path="/politica-de-privacidad"
           element={<PoliticaPage />}
