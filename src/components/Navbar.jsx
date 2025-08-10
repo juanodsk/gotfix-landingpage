@@ -54,14 +54,7 @@ const Navbar = () => {
                   Contáctanos
                 </Link>
               </li>
-              <li>
-                <Link
-                  to="/formulario"
-                  className="text-white text-[18px] transition delay-10 hover:text-[#0087fa]"
-                >
-                  Formulario
-                </Link>
-              </li>
+              
             </ul>
           </div>
 
