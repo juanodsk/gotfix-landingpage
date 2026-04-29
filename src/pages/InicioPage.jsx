@@ -75,13 +75,20 @@ const LandingPage = () => {
 
       {/* Hero */}
       {/* <Carrousel /> */}
-      <section className="relative min-h-[560px] overflow-hidden bg-[#00162b] text-white md:min-h-[620px]">
+      <section className="relative min-h-[520px] overflow-hidden bg-[#00162b] text-white md:min-h-[620px]">
         <div
           className="absolute inset-0 z-0 scale-110 bg-cover bg-left opacity-20 blur-2xl"
           style={{ backgroundImage: `url(${ricardo2})` }}
         />
         <div
-          className="absolute inset-y-0 left-0 z-0 h-full w-full bg-cover opacity-45 md:w-[46%] md:opacity-85"
+          className="absolute inset-0 z-0 bg-cover opacity-45 md:hidden"
+          style={{
+            backgroundImage: `url(${ricardo2})`,
+            backgroundPosition: "34% 34%",
+          }}
+        />
+        <div
+          className="absolute inset-y-0 left-0 z-0 hidden h-full bg-cover opacity-85 md:block md:w-[46%]"
           style={{
             backgroundImage: `url(${ricardo2})`,
             backgroundPosition: "left 32%",
@@ -91,22 +98,23 @@ const LandingPage = () => {
               "linear-gradient(90deg, #000 0%, #000 45%, rgba(0,0,0,0.58) 66%, transparent 100%)",
           }}
         />
-        <div className="absolute inset-0 z-0 bg-[linear-gradient(90deg,rgba(0,22,43,0.12)_0%,rgba(0,44,87,0.32)_28%,rgba(0,22,43,0.86)_54%,#00162b_100%)]" />
+        <div className="absolute inset-0 z-0 bg-[linear-gradient(180deg,rgba(0,22,43,0.5)_0%,rgba(0,22,43,0.48)_45%,#00162b_100%)] md:hidden" />
+        <div className="absolute inset-0 z-0 hidden bg-[linear-gradient(90deg,rgba(0,22,43,0.12)_0%,rgba(0,44,87,0.32)_28%,rgba(0,22,43,0.86)_54%,#00162b_100%)] md:block" />
         <div className="absolute inset-0 z-0 bg-gradient-to-br from-[#003d78]/35 via-transparent to-black/80" />
 
-        <div className="relative z-10 container mx-auto flex min-h-[560px] max-w-[1120px] items-center px-6 py-16 md:min-h-[620px]">
+        <div className="relative z-10 container mx-auto flex min-h-[520px] max-w-[1120px] items-center px-6 py-12 md:min-h-[620px] md:py-16">
           <MotionDiv
             initial={{ opacity: 0, x: 28 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
-            className="ml-auto max-w-xl text-center md:text-left"
+            className="mx-auto max-w-[340px] text-center md:ml-auto md:mr-0 md:max-w-xl md:text-left"
           >
-            <h1 className="mt-5 text-4xl font-extrabold leading-tight text-white md:text-5xl">
+            <h1 className="text-[2.15rem] font-extrabold leading-[1.12] text-white sm:text-4xl md:text-5xl md:leading-tight">
               Reparamos tu iPhone como si fuera nuestro.
             </h1>
 
-            <p className="mx-auto mt-5 max-w-xl text-base leading-8 text-white/85 md:mx-0 md:text-lg">
+            <p className="mx-auto mt-4 max-w-[320px] text-base leading-7 text-white/85 md:mx-0 md:mt-5 md:max-w-xl md:text-lg md:leading-8">
               Diagnóstico claro, repuestos de calidad y técnicos especializados
               para que tu equipo vuelva a tus manos con la confianza de siempre.
             </p>
