@@ -15,14 +15,14 @@ const Navbar = () => {
   return (
     <nav className="sticky top-0 z-50 bg-[#00162b]/90 backdrop-blur-md shadow-lg">
       <div className="bg-[#00162b] w-full">
-        <div className="max-w-[1300px] mx-auto px-4 flex items-center py-4">
+        <div className="max-w-[1300px] mx-auto px-4 flex items-center py-2">
           {/* Logo */}
           <div className="flex-1">
             <Link to="/">
               <img
                 src={Logo}
                 alt="Logo Gotfix"
-                className="w-50 md:w-75 xl:w-75 cursor-pointer transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-amber-100"
+                className="w-[148px] md:w-[196px] xl:w-[212px] cursor-pointer transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-amber-100"
               />
             </Link>
           </div>

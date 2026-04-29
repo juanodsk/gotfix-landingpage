@@ -15,11 +15,14 @@ import {
 } from "react-icons/fa";
 import { PiCertificateFill } from "react-icons/pi";
 import ricardo1 from "../assets/IMG_4655.jpeg";
+import ricardo2 from "../assets/IMG_0852.jpg";
 
 import Dispositivos from "../components/Dispositivos.jsx";
 import Reseñas from "../components/Reseñas.jsx";
 import Carrousel from "../components/Carrousel.jsx";
 import Footer from "../components/Footer.jsx";
+
+const MotionDiv = motion.div;
 
 const LandingPage = () => {
   useEffect(() => {
@@ -72,7 +75,44 @@ const LandingPage = () => {
 
       {/* Hero */}
       {/* <Carrousel /> */}
-      {/* ¿Por qué elegirnos? */}
+      <section className="relative min-h-[560px] overflow-hidden bg-[#00162b] text-white md:min-h-[620px]">
+        <div
+          className="absolute inset-0 z-0 scale-110 bg-cover bg-left opacity-20 blur-2xl"
+          style={{ backgroundImage: `url(${ricardo2})` }}
+        />
+        <div
+          className="absolute inset-y-0 left-0 z-0 h-full w-full bg-cover opacity-45 md:w-[46%] md:opacity-85"
+          style={{
+            backgroundImage: `url(${ricardo2})`,
+            backgroundPosition: "left 32%",
+            WebkitMaskImage:
+              "linear-gradient(90deg, #000 0%, #000 45%, rgba(0,0,0,0.58) 66%, transparent 100%)",
+            maskImage:
+              "linear-gradient(90deg, #000 0%, #000 45%, rgba(0,0,0,0.58) 66%, transparent 100%)",
+          }}
+        />
+        <div className="absolute inset-0 z-0 bg-[linear-gradient(90deg,rgba(0,22,43,0.12)_0%,rgba(0,44,87,0.32)_28%,rgba(0,22,43,0.86)_54%,#00162b_100%)]" />
+        <div className="absolute inset-0 z-0 bg-gradient-to-br from-[#003d78]/35 via-transparent to-black/80" />
+
+        <div className="relative z-10 container mx-auto flex min-h-[560px] max-w-[1120px] items-center px-6 py-16 md:min-h-[620px]">
+          <MotionDiv
+            initial={{ opacity: 0, x: 28 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="ml-auto max-w-xl text-center md:text-left"
+          >
+            <h1 className="mt-5 text-4xl font-extrabold leading-tight text-white md:text-5xl">
+              Reparamos tu iPhone como si fuera nuestro.
+            </h1>
+
+            <p className="mx-auto mt-5 max-w-xl text-base leading-8 text-white/85 md:mx-0 md:text-lg">
+              Diagnóstico claro, repuestos de calidad y técnicos especializados
+              para que tu equipo vuelva a tus manos con la confianza de siempre.
+            </p>
+          </MotionDiv>
+        </div>
+      </section>
       <section className="py-10  ">
         <div className="container mx-auto px-6">
           <motion.h2
@@ -122,8 +162,8 @@ const LandingPage = () => {
             <p className="text-gray-700 text-lg mb-4 text-justify">
               Brindar soluciones confiables, rápidas y especializadas, mediante
               un equipo capacitado, procesos estandarizados y una experiencia de
-              atención única, generando confianza y fidelización en
-              nuestros clientes.
+              atención única, generando confianza y fidelización en nuestros
+              clientes.
             </p>
           </div>
           {/* Columna derecha: imagen */}
