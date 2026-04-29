@@ -71,7 +71,7 @@ const LandingPage = () => {
       <Navbar />
 
       {/* Hero */}
-      <Carrousel />
+      {/* <Carrousel /> */}
       {/* ¿Por qué elegirnos? */}
       <section className="py-10  ">
         <div className="container mx-auto px-6">
