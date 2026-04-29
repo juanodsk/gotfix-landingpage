@@ -1,104 +1,235 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Navbar from "../components/Navbar";
-import {
-  FaMobileAlt,
-  FaBatteryHalf,
-  FaChargingStation,
-  FaLaptop,
-  FaBroom,
-  FaRedo,
-  FaWhatsapp,
-} from "react-icons/fa";
-import Footer from "../components/Footer"; // Asegúrate que esté creado
+import Footer from "../components/Footer";
 
-const servicios = [
-  {
-    icono: <FaMobileAlt className="text-5xl text-white" />,
-    titulo: "Reparación de pantalla",
-    descripcion:
-      "Reemplazo de pantallas dañadas con piezas originales y garantía.",
-  },
-  {
-    icono: <FaBatteryHalf className="text-5xl text-white" />,
-    titulo: "Cambio de batería",
-    descripcion:
-      "Sustitución de baterías degradadas para mejorar el rendimiento.",
-  },
-  {
-    icono: <FaChargingStation className="text-5xl text-white" />,
-    titulo: "Reparación de Placa eléctronica",
-    descripcion: "Solución a problemas de placa electronica en tu equipo.",
-  },
-  {
-    icono: <FaLaptop className="text-5xl text-white" />,
-    titulo: "Diagnóstico de dispositivos",
-    descripcion: "Evaluación profesional de fallas en tus dispositivos.",
-  },
-  {
-    icono: <FaBroom className="text-5xl text-white" />,
-    titulo: "Mantenimiento preventivo",
-    descripcion:
-      "Limpieza y revisión interna para prolongar la vida útil del dispositivo.",
-  },
-  {
-    icono: <FaRedo className="text-5xl text-white" />,
-    titulo: "Restauración de sistema",
-    descripcion:
-      "Reinstalación y optimización del sistema operativo de tu equipo.",
-  },
-];
+const WHATSAPP_URL = "https://wa.link/7jzopx";
+
+const serviceImages = import.meta.glob("../assets/services/*.webp", {
+  eager: true,
+  import: "default",
+});
+
+const images = Object.entries(serviceImages)
+  .sort(([a], [b]) => {
+    const aNumber = Number(a.match(/(\d+)\.webp$/)?.[1] ?? 0);
+    const bNumber = Number(b.match(/(\d+)\.webp$/)?.[1] ?? 0);
+    return aNumber - bNumber;
+  })
+  .map(([, image]) => image);
+
+const getWrappedIndex = (index) => {
+  if (index < 0) {
+    return images.length - 1;
+  }
+
+  if (index >= images.length) {
+    return 0;
+  }
+
+  return index;
+};
 
 const ServiciosPage = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const thumbsRef = useRef(null);
+
   useEffect(() => {
     document.title = "GotFix | Servicios";
   }, []);
 
+  const previousImage = () => {
+    setActiveIndex((current) => getWrappedIndex(current - 1));
+  };
+
+  const nextImage = () => {
+    setActiveIndex((current) => getWrappedIndex(current + 1));
+  };
+
+  const scrollThumbnails = (direction) => {
+    if (!thumbsRef.current) {
+      return;
+    }
+
+    thumbsRef.current.scrollBy({
+      left: direction * 260,
+      behavior: "smooth",
+    });
+  };
+
+  useEffect(() => {
+    const strip = thumbsRef.current;
+    const activeThumb = strip?.querySelector(`[data-thumb-index="${activeIndex}"]`);
+
+    if (!strip || !activeThumb) {
+      return;
+    }
+
+    const thumbLeft = activeThumb.offsetLeft;
+    const thumbWidth = activeThumb.clientWidth;
+    const stripWidth = strip.clientWidth;
+    const targetLeft = Math.max(0, thumbLeft - stripWidth / 2 + thumbWidth / 2);
+
+    strip.scrollTo({
+      left: targetLeft,
+      behavior: "smooth",
+    });
+  }, [activeIndex]);
+
   return (
-    <div className="bg-[#4592da] backdrop-blur-3xl min-h-screen">
+    <div className="min-h-screen bg-[#02111f]">
       <Navbar />
 
-      <section className="pt-24 pb-16 px-6 bg-gradient-to-b from-[#00162bf3] to-[#002147]">
-        <h1 className="text-4xl font-extrabold text-center mb-6 text-white">
-          Servicios de reparación
-        </h1>
-        <p className="text-center text-white/80 mb-12 max-w-2xl mx-auto">
-          En <span className="font-bold">GotFix</span> ofrecemos una amplia gama
-          de servicios técnicos especializados para dispositivos Apple. Usamos
-          herramientas certificadas y contamos con técnicos altamente
-          capacitados para garantizar tu seguridad y la de tu equipo.
-        </p>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {servicios.map((servicio, index) => (
-            <div
-              key={index}
-              className="relative group bg-white/10 border border-white/20 backdrop-blur-md rounded-2xl p-8 h-72 flex flex-col items-center justify-center text-center transform transition duration-300 hover:scale-105 hover:shadow-2xl hover:bg-white/20"
-            >
-              <div className="mb-4 group-hover:rotate-3 transition-transform duration-300">
-                {servicio.icono}
-              </div>
-              <h3 className="text-xl font-semibold text-white drop-shadow-sm mb-2">
-                {servicio.titulo}
-              </h3>
-              <p className="text-white/80 text-sm px-2">
-                {servicio.descripcion}
-              </p>
+      <section className="overflow-hidden bg-[radial-gradient(circle_at_top,_rgba(69,146,218,0.2),_transparent_30%),linear-gradient(180deg,#00162b_0%,#02111f_54%,#042141_100%)] px-3 pb-6 pt-16 sm:px-5 sm:pb-8 sm:pt-18">
+        <div className="mx-auto max-w-4xl">
+          <div className="relative overflow-hidden rounded-[1.6rem] border border-white/10 bg-[#0b223b]/80 px-3 py-4 shadow-[0_18px_52px_rgba(0,0,0,0.2)] sm:px-5 sm:py-5">
+            <div className="pointer-events-none absolute inset-0">
+              <div
+                className="absolute inset-0 scale-110 bg-center bg-cover opacity-18 blur-3xl"
+                style={{ backgroundImage: `url(${images[activeIndex]})` }}
+              />
+              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,22,43,0.35),rgba(2,17,31,0.72))]" />
             </div>
-          ))}
-        </div>
-        <div className="mt-12 text-center">
-          <a
-            href="https://wa.link/7jzopx"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="WhatsApp"
-            className="bg-[#25d366] hover:bg-[#25d365b2] text-white cursor-pointer transition delay-10 px-6 py-3 rounded font-semibold  z-50 inline-flex items-center"
-          >
-            <FaWhatsapp className="mb-[2px] mr-2 text-[22px]" />
-            Cotiza tu reparación
-          </a>
+
+            <div className="relative z-10">
+              <div className="mb-4 flex items-center justify-between">
+                <div>
+                  <h1 className="mt-1.5 text-xl text-white sm:text-2xl">
+                    Nuestros Servicios
+                  </h1>
+                </div>
+
+                <div className="hidden items-center gap-2 sm:flex">
+                  <button
+                    type="button"
+                    onClick={previousImage}
+                    aria-label="Imagen anterior"
+                    className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/12 bg-white/8 text-sm text-white/90 transition hover:bg-white/14"
+                  >
+                    <FaChevronLeft />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={nextImage}
+                    aria-label="Siguiente imagen"
+                    className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/12 bg-white/8 text-sm text-white/90 transition hover:bg-white/14"
+                  >
+                    <FaChevronRight />
+                  </button>
+                </div>
+              </div>
+
+              <div className="mx-auto max-w-[560px] space-y-3">
+                <div className="relative overflow-hidden rounded-[1.2rem] border border-white/12 bg-white/6 p-1.5 shadow-[0_12px_34px_rgba(0,0,0,0.12)]">
+                  <a
+                    href={WHATSAPP_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Escribir por WhatsApp sobre este servicio"
+                    className="block"
+                  >
+                    <img
+                      key={images[activeIndex]}
+                      src={images[activeIndex]}
+                      alt={`Servicio GotFix ${activeIndex + 1}`}
+                      width="1080"
+                      height="1080"
+                      fetchPriority="high"
+                      className="aspect-square w-full rounded-[0.95rem] object-cover"
+                    />
+                  </a>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => scrollThumbnails(-1)}
+                    aria-label="Ver miniaturas anteriores"
+                    className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/12 bg-white/8 text-xs text-white/90 transition hover:bg-white/14"
+                  >
+                    <FaChevronLeft />
+                  </button>
+
+                  <div
+                    ref={thumbsRef}
+                    className="services-thumbs-strip flex flex-1 gap-1.5 overflow-x-auto scroll-smooth"
+                  >
+                    {images.map((image, index) => {
+                      const isActive = index === activeIndex;
+
+                      return (
+                        <button
+                          key={image}
+                          type="button"
+                          onClick={() => setActiveIndex(index)}
+                          target="_blank"
+                          data-thumb-index={index}
+                          aria-label={`Ver imagen ${index + 1}`}
+                          className={`group relative w-[72px] shrink-0 overflow-hidden rounded-[0.8rem] border bg-white/6 transition duration-300 sm:w-[82px] ${
+                            isActive
+                              ? "border-[#7ed0ff]/70 shadow-[0_12px_26px_rgba(16,95,168,0.18)]"
+                              : "border-white/10 hover:border-white/25"
+                          }`}
+                        >
+                          <img
+                            src={image}
+                            alt={`Miniatura ${index + 1}`}
+                            loading="lazy"
+                            decoding="async"
+                            width="1080"
+                            height="1080"
+                            className={`aspect-square w-full object-cover transition duration-300 ${
+                              isActive
+                                ? "scale-100 opacity-100"
+                                : "scale-[1.03] opacity-58 group-hover:opacity-85"
+                            }`}
+                          />
+                          <div
+                            className={`absolute inset-0 transition duration-300 ${
+                              isActive
+                                ? "bg-transparent"
+                                : "bg-[#031321]/35 group-hover:bg-[#031321]/20"
+                            }`}
+                          />
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => scrollThumbnails(1)}
+                    aria-label="Ver siguientes miniaturas"
+                    className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/12 bg-white/8 text-xs text-white/90 transition hover:bg-white/14"
+                  >
+                    <FaChevronRight />
+                  </button>
+                </div>
+
+                <div className="flex items-center justify-center gap-2 pt-1 sm:hidden">
+                  <button
+                    type="button"
+                    onClick={previousImage}
+                    aria-label="Imagen anterior"
+                    className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/12 bg-white/8 text-sm text-white/90 transition hover:bg-white/14"
+                  >
+                    <FaChevronLeft />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={nextImage}
+                    aria-label="Siguiente imagen"
+                    className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/12 bg-white/8 text-sm text-white/90 transition hover:bg-white/14"
+                  >
+                    <FaChevronRight />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
+
       <Footer />
     </div>
   );

@@ -14,7 +14,8 @@ import {
   FaInstagram,
 } from "react-icons/fa";
 import { PiCertificateFill } from "react-icons/pi";
-import ricardo1 from "../assets/ricardo2.png";
+import ricardo1 from "../assets/IMG_4655.jpeg";
+
 import Dispositivos from "../components/Dispositivos.jsx";
 import Reseñas from "../components/Reseñas.jsx";
 import Carrousel from "../components/Carrousel.jsx";

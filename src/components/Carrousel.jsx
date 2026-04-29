@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
-import img1 from "../assets/Carrousel/img1.jpg";
-import img2 from "../assets/Carrousel/img2.jpg";
-import img3 from "../assets/Carrousel/img3.jpg";
+import img1 from "../assets/Carrousel/1.png";
+import img2 from "../assets/Carrousel/2.png";
+import img3 from "../assets/Carrousel/3.png";
+import img4 from "../assets/Carrousel/4.png";
+
 import { FaWhatsapp } from "react-icons/fa";
 
-const images = [img1, img2, img3];
+const images = [img1, img2, img3, img4];
 
 function Carrousel() {
   const [current, setCurrent] = useState(0);
@@ -44,7 +46,7 @@ function Carrousel() {
       {/* Contenido */}
       <div className="relative z-20 text-white px-4">
         <p className="text-[25px] mb-6 font-bold drop-shadow-lg">
-          Somos un centro de reparación para equipos Apple.
+          Reparamos tus equipo Apple como si fuera nuestro
         </p>
         <a
           href="https://wa.link/7jzopx"

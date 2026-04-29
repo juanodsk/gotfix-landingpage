@@ -34,3 +34,13 @@ body {
 .animate-fade-in {
   animation: fade-in 0.3s ease-out;
 }
+
+.services-thumbs-strip {
+  -ms-overflow-style: none;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
+
+.services-thumbs-strip::-webkit-scrollbar {
+  display: none;
+}
