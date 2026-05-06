@@ -16,6 +16,8 @@ import {
 import { PiCertificateFill } from "react-icons/pi";
 import ricardo1 from "../assets/IMG_4655.jpeg";
 import ricardo2 from "../assets/IMG_0852.jpg";
+import heroReparacion from "../assets/IMG_4657.jpeg";
+import garantiaGotfix from "../assets/garantia_gotfix_final.png";
 
 import Dispositivos from "../components/Dispositivos.jsx";
 import Reseñas from "../components/Reseñas.jsx";
@@ -62,7 +64,7 @@ const LandingPage = () => {
     },
     {
       icon: <FaCheck className="text-4xl text-primary" />,
-      texto: "Garantía en la reparación de tu equipo",
+      texto: "Garantía de 6 meses en la reparación de tu equipo",
     },
     {
       icon: <PiCertificateFill className="text-4xl text-primary" />,
@@ -76,31 +78,36 @@ const LandingPage = () => {
       {/* Hero */}
       {/* <Carrousel /> */}
       <section className="relative min-h-[520px] overflow-hidden bg-[#00162b] text-white md:min-h-[620px]">
-        <div
-          className="absolute inset-0 z-0 scale-110 bg-cover bg-left opacity-20 blur-2xl"
-          style={{ backgroundImage: `url(${ricardo2})` }}
-        />
-        <div
-          className="absolute inset-0 z-0 bg-cover opacity-45 md:hidden"
-          style={{
-            backgroundImage: `url(${ricardo2})`,
-            backgroundPosition: "34% 34%",
-          }}
-        />
-        <div
-          className="absolute inset-y-0 left-0 z-0 hidden h-full bg-cover opacity-85 md:block md:w-[46%]"
-          style={{
-            backgroundImage: `url(${ricardo2})`,
-            backgroundPosition: "left 32%",
-            WebkitMaskImage:
-              "linear-gradient(90deg, #000 0%, #000 45%, rgba(0,0,0,0.58) 66%, transparent 100%)",
-            maskImage:
-              "linear-gradient(90deg, #000 0%, #000 45%, rgba(0,0,0,0.58) 66%, transparent 100%)",
-          }}
-        />
-        <div className="absolute inset-0 z-0 bg-[linear-gradient(180deg,rgba(0,22,43,0.5)_0%,rgba(0,22,43,0.48)_45%,#00162b_100%)] md:hidden" />
-        <div className="absolute inset-0 z-0 hidden bg-[linear-gradient(90deg,rgba(0,22,43,0.12)_0%,rgba(0,44,87,0.32)_28%,rgba(0,22,43,0.86)_54%,#00162b_100%)] md:block" />
-        <div className="absolute inset-0 z-0 bg-gradient-to-br from-[#003d78]/35 via-transparent to-black/80" />
+        <div className="absolute inset-0 z-0 bg-[#00162b]">
+          <div className="absolute inset-y-0 left-0 w-[46%] bg-[radial-gradient(circle_at_28%_38%,rgba(0,135,250,0.34),transparent_30%),linear-gradient(135deg,#002c57_0%,#00162b_58%,#000b16_100%)]" />
+          <div className="absolute inset-y-0 left-0 w-[42%] bg-[#00162b]/35 blur-3xl" />
+          <div
+            className="absolute inset-y-0 left-[28%] w-[44%] bg-cover opacity-90"
+            style={{
+              backgroundImage: `url(${heroReparacion})`,
+              backgroundPosition: "center 38%",
+              WebkitMaskImage:
+                "linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.68) 16%, #000 34%, #000 66%, rgba(0,0,0,0.68) 84%, transparent 100%)",
+              maskImage:
+                "linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.68) 16%, #000 34%, #000 66%, rgba(0,0,0,0.68) 84%, transparent 100%)",
+            }}
+          />
+          <div
+            className="absolute inset-y-0 right-0 w-[42%] bg-cover opacity-95"
+            style={{
+              backgroundImage: `url(${ricardo2})`,
+              backgroundPosition: "right 32%",
+              WebkitMaskImage:
+                "linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.68) 16%, #000 34%, #000 100%)",
+              maskImage:
+                "linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.68) 16%, #000 34%, #000 100%)",
+            }}
+          />
+          <div className="absolute inset-y-0 left-[30%] w-[14%] bg-[#00162b]/20 blur-3xl" />
+          <div className="absolute inset-y-0 left-[61%] w-[14%] bg-[#00162b]/20 blur-3xl" />
+        </div>
+        <div className="absolute inset-0 z-0 bg-[linear-gradient(90deg,rgba(0,12,25,0.68)_0%,rgba(0,22,43,0.46)_38%,rgba(0,22,43,0.28)_72%,rgba(0,8,16,0.34)_100%)]" />
+        <div className="absolute inset-0 z-0 bg-gradient-to-b from-black/20 via-transparent to-[#00162b]/50" />
 
         <div className="relative z-10 container mx-auto flex min-h-[520px] max-w-[1120px] items-center px-6 py-12 md:min-h-[620px] md:py-16">
           <MotionDiv
@@ -108,16 +115,22 @@ const LandingPage = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
-            className="mx-auto max-w-[340px] text-center md:ml-auto md:mr-0 md:max-w-xl md:text-left"
+            className="mx-auto max-w-[340px] text-center md:mx-0 md:max-w-xl md:text-left"
           >
             <h1 className="text-[2.15rem] font-extrabold leading-[1.12] text-white sm:text-4xl md:text-5xl md:leading-tight">
-              Reparamos tu iPhone como si fuera nuestro.
+              Reparamos tu equipo Apple como si fuera nuestro.
             </h1>
 
-            <p className="mx-auto mt-4 max-w-[320px] text-base leading-7 text-white/85 md:mx-0 md:mt-5 md:max-w-xl md:text-lg md:leading-8">
-              Diagnóstico claro, repuestos de calidad y técnicos especializados
-              para que tu equipo vuelva a tus manos con la confianza de siempre.
-            </p>
+            <a
+              href="https://wa.link/7jzopx"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Contacta un especialista por WhatsApp"
+              className="mt-7 inline-flex items-center rounded bg-[#25d366] px-6 py-3 font-semibold text-white transition hover:bg-[#25d365b2]"
+            >
+              <FaWhatsapp className="mb-[2px] mr-2 text-[22px]" />
+              Contactar un especialista
+            </a>
           </MotionDiv>
         </div>
       </section>
@@ -156,6 +169,42 @@ const LandingPage = () => {
               );
             })}
           </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+            viewport={{ once: true }}
+            className="relative mt-12 overflow-hidden rounded-3xl bg-[#00162b] px-6 py-8 text-white shadow-2xl sm:px-10 md:py-10"
+          >
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_30%,rgba(0,135,250,0.35),transparent_34%),linear-gradient(135deg,rgba(0,44,87,0.95),rgba(0,12,25,0.98))]" />
+            <div className="absolute -right-16 -top-20 h-52 w-52 rounded-full bg-primary/20 blur-3xl" />
+
+            <div className="relative z-10 grid items-center gap-7 md:grid-cols-[auto_1fr]">
+              <motion.img
+                src={garantiaGotfix}
+                alt="Garantía GotFix de 6 meses"
+                initial={{ opacity: 0, rotate: -8, scale: 0.9 }}
+                whileInView={{ opacity: 1, rotate: -4, scale: 1 }}
+                transition={{ duration: 0.55, delay: 0.25 }}
+                viewport={{ once: true }}
+                className="mx-auto w-36 drop-shadow-[0_18px_28px_rgba(0,0,0,0.35)] sm:w-44 md:w-48"
+              />
+
+              <div className="text-center md:text-left">
+                <span className="mb-3 inline-flex rounded-full border border-white/20 bg-white/10 px-4 py-1 text-sm font-semibold text-white/90 backdrop-blur">
+                  Reparaciones respaldadas
+                </span>
+                <h3 className="text-2xl font-extrabold leading-tight sm:text-3xl">
+                  Tu equipo queda cubierto con garantía GotFix de 6 meses.
+                </h3>
+                <p className="mt-4 text-base leading-relaxed text-white/80 sm:text-lg">
+                  Reparamos con técnicos especializados, repuestos de alta
+                  calidad y un respaldo claro para que salgas tranquilo.
+                </p>
+              </div>
+            </div>
+          </motion.div>
         </div>{" "}
         <Dispositivos />
       </section>
