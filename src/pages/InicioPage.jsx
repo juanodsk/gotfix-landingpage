@@ -15,16 +15,12 @@ import {
 } from "react-icons/fa";
 import { PiCertificateFill } from "react-icons/pi";
 import ricardo1 from "../assets/IMG_4655.jpeg";
-import ricardo2 from "../assets/IMG_0852.jpg";
-import heroReparacion from "../assets/IMG_4657.jpeg";
 import garantiaGotfix from "../assets/garantia_gotfix_final.png";
 
 import Dispositivos from "../components/Dispositivos.jsx";
 import Reseñas from "../components/Reseñas.jsx";
 import Carrousel from "../components/Carrousel.jsx";
 import Footer from "../components/Footer.jsx";
-
-const MotionDiv = motion.div;
 
 const LandingPage = () => {
   useEffect(() => {
@@ -76,64 +72,7 @@ const LandingPage = () => {
       <Navbar />
 
       {/* Hero */}
-      {/* <Carrousel /> */}
-      <section className="relative min-h-[520px] overflow-hidden bg-[#00162b] text-white md:min-h-[620px]">
-        <div className="absolute inset-0 z-0 bg-[#00162b]">
-          <div className="absolute inset-y-0 left-0 w-[46%] bg-[radial-gradient(circle_at_28%_38%,rgba(0,135,250,0.34),transparent_30%),linear-gradient(135deg,#002c57_0%,#00162b_58%,#000b16_100%)]" />
-          <div className="absolute inset-y-0 left-0 w-[42%] bg-[#00162b]/35 blur-3xl" />
-          <div
-            className="absolute inset-y-0 left-[28%] w-[44%] bg-cover opacity-90"
-            style={{
-              backgroundImage: `url(${heroReparacion})`,
-              backgroundPosition: "center 38%",
-              WebkitMaskImage:
-                "linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.68) 16%, #000 34%, #000 66%, rgba(0,0,0,0.68) 84%, transparent 100%)",
-              maskImage:
-                "linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.68) 16%, #000 34%, #000 66%, rgba(0,0,0,0.68) 84%, transparent 100%)",
-            }}
-          />
-          <div
-            className="absolute inset-y-0 right-0 w-[42%] bg-cover opacity-95"
-            style={{
-              backgroundImage: `url(${ricardo2})`,
-              backgroundPosition: "right 32%",
-              WebkitMaskImage:
-                "linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.68) 16%, #000 34%, #000 100%)",
-              maskImage:
-                "linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.68) 16%, #000 34%, #000 100%)",
-            }}
-          />
-          <div className="absolute inset-y-0 left-[30%] w-[14%] bg-[#00162b]/20 blur-3xl" />
-          <div className="absolute inset-y-0 left-[61%] w-[14%] bg-[#00162b]/20 blur-3xl" />
-        </div>
-        <div className="absolute inset-0 z-0 bg-[linear-gradient(90deg,rgba(0,12,25,0.68)_0%,rgba(0,22,43,0.46)_38%,rgba(0,22,43,0.28)_72%,rgba(0,8,16,0.34)_100%)]" />
-        <div className="absolute inset-0 z-0 bg-gradient-to-b from-black/20 via-transparent to-[#00162b]/50" />
-
-        <div className="relative z-10 container mx-auto flex min-h-[520px] max-w-[1120px] items-center px-6 py-12 md:min-h-[620px] md:py-16">
-          <MotionDiv
-            initial={{ opacity: 0, x: 28 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            viewport={{ once: true }}
-            className="mx-auto max-w-[340px] text-center md:mx-0 md:max-w-xl md:text-left"
-          >
-            <h1 className="text-[2.15rem] font-extrabold leading-[1.12] text-white sm:text-4xl md:text-5xl md:leading-tight">
-              Reparamos tu equipo Apple como si fuera nuestro.
-            </h1>
-
-            <a
-              href="https://wa.link/7jzopx"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Contacta un especialista por WhatsApp"
-              className="mt-7 inline-flex items-center rounded bg-[#25d366] px-6 py-3 font-semibold text-white transition hover:bg-[#25d365b2]"
-            >
-              <FaWhatsapp className="mb-[2px] mr-2 text-[22px]" />
-              Contactar un especialista
-            </a>
-          </MotionDiv>
-        </div>
-      </section>
+      <Carrousel />
       <section className="py-10  ">
         <div className="container mx-auto px-6">
           <motion.h2
