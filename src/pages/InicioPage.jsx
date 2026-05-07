@@ -123,8 +123,8 @@ const LandingPage = () => {
               <motion.img
                 src={garantiaGotfix}
                 alt="Garantía GotFix de 6 meses"
-                initial={{ opacity: 0, rotate: -8, scale: 0.9 }}
-                whileInView={{ opacity: 1, rotate: -4, scale: 1 }}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.55, delay: 0.25 }}
                 viewport={{ once: true }}
                 className="mx-auto w-36 drop-shadow-[0_18px_28px_rgba(0,0,0,0.35)] sm:w-44 md:w-48"

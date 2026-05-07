@@ -1,6 +1,9 @@
-import heroImage from "../assets/Carrousel/IMG_5356.jpeg";
+import heroImage from "../assets/IMG_0852.jpg";
 
 import { FaWhatsapp } from "react-icons/fa";
+
+const imageFadeMask =
+  "linear-gradient(90deg, transparent 0%, transparent 52%, rgba(0,0,0,0.18) 62%, rgba(0,0,0,0.62) 76%, #000 92%, #000 100%)";
 
 function Carrousel() {
   return (
@@ -8,16 +11,15 @@ function Carrousel() {
       <div className="absolute inset-0 z-0 bg-[#00162b]">
         <div className="absolute inset-y-0 left-0 w-[60%] bg-[radial-gradient(circle_at_28%_38%,rgba(0,135,250,0.34),transparent_30%),linear-gradient(135deg,#002c57_0%,#00162b_58%,#000b16_100%)]" />
         <div
-          className="absolute inset-y-0 right-0 w-[68%] bg-cover opacity-95 sm:w-[58%] md:w-[48%]"
+          className="absolute inset-0 bg-[length:68%_auto] bg-no-repeat opacity-90 brightness-[0.68] saturate-[0.9] sm:bg-[length:58%_auto] md:bg-[length:48%_auto]"
           style={{
             backgroundImage: `url(${heroImage})`,
-            backgroundPosition: "center center",
-            WebkitMaskImage:
-              "linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.72) 18%, #000 36%, #000 100%)",
-            maskImage:
-              "linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.72) 18%, #000 36%, #000 100%)",
+            backgroundPosition: "right 32%",
+            WebkitMaskImage: imageFadeMask,
+            maskImage: imageFadeMask,
           }}
         />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,#00162b_0%,#00162b_50%,rgba(0,22,43,0.98)_58%,rgba(0,22,43,0.82)_68%,rgba(0,22,43,0.42)_80%,transparent_94%)]" />
         <div className="absolute inset-y-0 left-0 w-[48%] bg-[#00162b]/35 blur-3xl" />
         <div className="absolute inset-y-0 left-[48%] w-[18%] bg-[#00162b]/20 blur-3xl" />
       </div>
