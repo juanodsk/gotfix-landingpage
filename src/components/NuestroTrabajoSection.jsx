@@ -6,24 +6,21 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 // URLs servidas desde Vercel Blob (ya incluyen Accept‑Ranges y funcionan en Safari)
 const videos = [
   {
-    titulo: "Cristal de pantalla iphone 16 pro max",
-    url: "https://res.cloudinary.com/dnfarbnys/video/upload/v1777419510/vid_3_whehkg.mp4",
-  },
-  {
-    titulo: "Aumento de memoria Iphone 16 Pro",
-    url: "https://res.cloudinary.com/dnfarbnys/video/upload/v1777419510/vid_4_xlnkoh.mp4",
-  },
-  {
     titulo: "Reemplazo de pantalla Iphone 15 pro max",
-    url: "https://res.cloudinary.com/dnfarbnys/video/upload/v1777419507/vid_1_btp6ub.mp4",
+    url: "https://res.cloudinary.com/dkiltig52/video/upload/v1782331059/vid_1_s6ls80.mp4",
   },
   {
     titulo: "Reemplazo de cristal trasero 16 Pro max",
-    url: "https://res.cloudinary.com/dnfarbnys/video/upload/v1777419505/vid_2_ofzqgb.mp4",
+    url: "https://res.cloudinary.com/dkiltig52/video/upload/v1782331057/vid_2_xfjrnw.mp4",
+  },
+
+  {
+    titulo: "Cristal de pantalla iphone 16 pro max",
+    url: "https://res.cloudinary.com/dkiltig52/video/upload/v1782331070/vid_3_mvjinq.mp4",
   },
   {
-    titulo: "Cambio de bateria Iphone 13 Pro max",
-    url: "https://res.cloudinary.com/dnfarbnys/video/upload/v1777419499/vid_5_ljinlr.mp4",
+    titulo: "Aumento de memoria Iphone 16 Pro",
+    url: "https://res.cloudinary.com/dkiltig52/video/upload/v1782331101/vid_4_vjmq4h.mp4",
   },
 ];
 
