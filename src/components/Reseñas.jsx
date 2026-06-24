@@ -1,15 +1,5 @@
-import React from "react";
 import Slider from "react-slick";
 import { FaStar } from "react-icons/fa";
-import {
-  FaMobileAlt,
-  FaBatteryHalf,
-  FaChargingStation,
-  FaLaptop,
-  FaBroom,
-  FaRedo,
-  FaWhatsapp,
-} from "react-icons/fa";
 
 const reviews = [
   {
@@ -56,7 +46,10 @@ const GoogleReviews = () => {
   };
 
   return (
-    <section className="relative py-16 bg-[#00162b] text-white">
+    <section
+      className="relative py-16 bg-[#00162b] text-white"
+      data-nosnippet
+    >
       <div className="absolute inset-0  blur-sm" />
       <div className="relative z-10 container mx-auto px-6">
         <h2 className="text-4xl font-bold mb-10 text-center">

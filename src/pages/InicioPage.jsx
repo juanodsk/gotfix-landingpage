@@ -1,7 +1,6 @@
-import { useEffect } from "react";
 import Navbar from "../components/Navbar.jsx";
 import NuestroTrabajo from "../components/NuestroTrabajoSection.jsx";
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 import {
   FaUserCog,
   FaLock,
@@ -21,11 +20,28 @@ import Dispositivos from "../components/Dispositivos.jsx";
 import Reseñas from "../components/Reseñas.jsx";
 import Carrousel from "../components/Carrousel.jsx";
 import Footer from "../components/Footer.jsx";
+import SEO from "../components/SEO.jsx";
+import { gotfixBusinessSchema } from "../data/seo.js";
+
+const homeDescription =
+  "GotFix es servicio técnico Apple en Neiva para iPhone, MacBook, iPad e iMac. Diagnóstico, reparaciones especializadas, repuestos de calidad y garantía de 6 meses.";
+
+const homeSchema = [
+  gotfixBusinessSchema,
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://gotfix.co/#inicio",
+    url: "https://gotfix.co/",
+    name: "GotFix | Servicio técnico Apple en Neiva",
+    description: homeDescription,
+    about: {
+      "@id": "https://gotfix.co/#gotfix",
+    },
+  },
+];
 
 const LandingPage = () => {
-  useEffect(() => {
-    document.title = "GotFix | Servicio Técnico Apple";
-  }, []);
   const pasos = [
     {
       icono: <FaWhatsapp className="text-4xl text-primary mb-4" />,
@@ -69,20 +85,26 @@ const LandingPage = () => {
   ];
   return (
     <>
+      <SEO
+        title="GotFix | Servicio técnico Apple en Neiva"
+        description={homeDescription}
+        path="/"
+        schema={homeSchema}
+      />
       <Navbar />
 
       {/* Hero */}
       <Carrousel />
       <section className="py-10  ">
         <div className="container mx-auto px-6">
-          <motion.h2
+          <Motion.h2
             initial={{ opacity: 0, y: -30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="xl:text-4xl text-2xl font-bold text-center mb-12 text-gray-800"
           >
             ¿Por qué elegir <span className="text-primary">GOTFIX</span>?
-          </motion.h2>
+          </Motion.h2>
 
           <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 justify-center">
             {beneficios.map((beneficio, index) => {
@@ -90,7 +112,7 @@ const LandingPage = () => {
                 index === beneficios.length - 1 && beneficios.length % 4 === 1;
 
               return (
-                <motion.div
+                <Motion.div
                   key={index}
                   initial={{ opacity: 0, scale: 0.95 }}
                   whileInView={{ opacity: 1, scale: 1 }}
@@ -104,12 +126,12 @@ const LandingPage = () => {
                   <p className="text-gray-700 xl:text-lg sm:text-md font-medium">
                     {beneficio.texto}
                   </p>
-                </motion.div>
+                </Motion.div>
               );
             })}
           </div>
 
-          <motion.div
+          <Motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.15 }}
@@ -120,7 +142,7 @@ const LandingPage = () => {
             <div className="absolute -right-16 -top-20 h-52 w-52 rounded-full bg-primary/20 blur-3xl" />
 
             <div className="relative z-10 grid items-center gap-7 md:grid-cols-[auto_1fr]">
-              <motion.img
+              <Motion.img
                 src={garantiaGotfix}
                 alt="Garantía GotFix de 6 meses"
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -143,7 +165,7 @@ const LandingPage = () => {
                 </p>
               </div>
             </div>
-          </motion.div>
+          </Motion.div>
         </div>{" "}
         <Dispositivos />
       </section>
@@ -177,7 +199,7 @@ const LandingPage = () => {
       {/* Proceso */}
       <section className="py-10 bg-white">
         <div className="max-w-6xl mx-auto px-6">
-          <motion.div
+          <Motion.div
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -190,7 +212,7 @@ const LandingPage = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {pasos.map((paso, index) => (
-                <motion.div
+                <Motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -204,7 +226,7 @@ const LandingPage = () => {
                     {paso.titulo}
                   </h3>
                   <p className="text-base">{paso.descripcion}</p>
-                </motion.div>
+                </Motion.div>
               ))}
             </div>
             <div className="mt-10 text-center ">
@@ -219,7 +241,7 @@ const LandingPage = () => {
                 Cotiza tu reparación.
               </a>
             </div>
-          </motion.div>
+          </Motion.div>
         </div>
       </section>
 

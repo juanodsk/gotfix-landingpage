@@ -2,8 +2,37 @@ import React, { useEffect, useRef, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import SEO from "../components/SEO";
+import { gotfixBusinessSchema } from "../data/seo";
 
 const WHATSAPP_URL = "https://wa.link/7jzopx";
+const servicesDescription =
+  "Servicios GotFix para equipos Apple en Neiva: cambio de batería, pantalla, cámaras, mantenimiento por humedad, placa electrónica, teclado, RAM y almacenamiento.";
+
+const servicesSchema = [
+  gotfixBusinessSchema,
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": "https://gotfix.co/servicios#servicio-tecnico-apple",
+    name: "Servicio técnico Apple en Neiva",
+    description: servicesDescription,
+    provider: {
+      "@id": "https://gotfix.co/#gotfix",
+    },
+    areaServed: {
+      "@type": "City",
+      name: "Neiva",
+    },
+    serviceType: [
+      "Cambio de batería",
+      "Cambio de pantalla",
+      "Reparación de placa electrónica",
+      "Mantenimiento por humedad",
+      "Diagnóstico de equipos Apple",
+    ],
+  },
+];
 
 const serviceImages = import.meta.glob("../assets/services/*.webp", {
   eager: true,
@@ -33,10 +62,6 @@ const getWrappedIndex = (index) => {
 const ServiciosPage = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const thumbsRef = useRef(null);
-
-  useEffect(() => {
-    document.title = "GotFix | Servicios";
-  }, []);
 
   const previousImage = () => {
     setActiveIndex((current) => getWrappedIndex(current - 1));
@@ -78,6 +103,12 @@ const ServiciosPage = () => {
 
   return (
     <div className="min-h-screen bg-[#02111f]">
+      <SEO
+        title="Servicios GotFix | Reparación Apple en Neiva"
+        description={servicesDescription}
+        path="/servicios"
+        schema={servicesSchema}
+      />
       <Navbar />
 
       <section className="overflow-hidden bg-[radial-gradient(circle_at_top,_rgba(69,146,218,0.2),_transparent_30%),linear-gradient(180deg,#00162b_0%,#02111f_54%,#042141_100%)] px-3 pb-6 pt-16 sm:px-5 sm:pb-8 sm:pt-18">

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gotfix.co/sitemap.xml
