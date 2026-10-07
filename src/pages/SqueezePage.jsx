@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
 import Countdown from "../components/Countdown.jsx";
 import axios from "axios";
 import flier from "../assets/squeeze/flier.png";

@@ -22,6 +22,10 @@ const videos = [
     titulo: "Aumento de memoria Iphone 16 Pro",
     url: "https://res.cloudinary.com/dkiltig52/video/upload/v1782331101/vid_4_vjmq4h.mp4",
   },
+  {
+    titulo: "Trabajo realizado por GotFix",
+    url: "https://www.youtube.com/shorts/Fm6k9bdQ2F0",
+  },
 ];
 
 const FlechaCarrusel = ({ className = "", onClick, direction }) => {

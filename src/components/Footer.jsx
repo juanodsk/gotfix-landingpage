@@ -1,53 +1,70 @@
-import React from "react";
-import {
-  FaUserCog,
-  FaLock,
-  FaWhatsapp,
-  FaBoxOpen,
-  FaTools,
-  FaSmile,
-  FaCheck,
-  FaFacebook,
-  FaInstagram,
-} from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { FaWhatsapp, FaFacebook, FaInstagram } from "react-icons/fa";
+import { LuMapPin, LuPhone } from "react-icons/lu";
 
 function Footer() {
   return (
-    <footer className="bg-[#00162b] text-white py-8">
-      <div className="container mx-auto px-4 text-center space-y-2">
-        <p>📍 Neiva, Huila — Atención de lunes a sábado</p>
-        <p>📞 (+57) 3125042689</p>
-        <p>Síguenos en nuestras redes sociales</p>
-        <div className="flex-1 hidden md:flex justify-center mr-5">
+    <footer className="bg-[#00162b] py-8 text-white">
+      <div className="container mx-auto space-y-2 px-4 text-center">
+        <p className="flex items-center justify-center gap-2">
+          <LuMapPin aria-hidden="true" />
+          <span>Neiva, Huila — Atención de lunes a sábado</span>
+        </p>
+        <a
+          href="tel:+573125042689"
+          className="flex items-center justify-center gap-2 hover:text-[#0087fa]"
+        >
+          <LuPhone aria-hidden="true" />
+          <span>(+57) 312 504 2689</span>
+        </a>
+
+        <nav
+          aria-label="Enlaces legales"
+          className="flex flex-wrap justify-center gap-x-5 gap-y-1 pt-2 text-[15px]"
+        >
+          <Link to="/condiciones" className="hover:text-[#0087fa]">
+            Condiciones
+          </Link>
+          <Link to="/pqrs" className="hover:text-[#0087fa]">
+            PQRS
+          </Link>
+          <Link
+            to="/politica-de-privacidad"
+            className="hover:text-[#0087fa]"
+          >
+            Política de privacidad
+          </Link>
+        </nav>
+
+        <p className="pt-2">Síguenos en nuestras redes sociales</p>
+        <div className="flex justify-center">
           <a
             href="https://www.facebook.com/Gotfixco/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Facebook"
           >
-            <FaFacebook className="text-white mx-2 cursor-pointer text-[22px] transition-transform duration-300 ease-in-out hover:text-[#0087fa] hover:scale-125" />
+            <FaFacebook className="mx-2 text-[22px] text-white transition-transform duration-300 hover:scale-125 hover:text-[#0087fa]" />
           </a>
-
           <a
             href="https://wa.link/7jzopx"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="WhatsApp"
           >
-            <FaWhatsapp className="text-white mx-2 cursor-pointer text-[22px] transition-transform duration-300 ease-in-out hover:text-[#0087fa] hover:scale-125" />
+            <FaWhatsapp className="mx-2 text-[22px] text-white transition-transform duration-300 hover:scale-125 hover:text-[#0087fa]" />
           </a>
-
           <a
             href="https://www.instagram.com/gotfix_co?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram"
           >
-            <FaInstagram className="text-white mx-2 cursor-pointer text-[22px] transition-transform duration-300 ease-in-out hover:text-[#0087fa] hover:scale-125" />
+            <FaInstagram className="mx-2 text-[22px] text-white transition-transform duration-300 hover:scale-125 hover:text-[#0087fa]" />
           </a>
         </div>
 
-        <hr className="my-4 border-white/20 w-1/2 mx-auto" />
+        <hr className="mx-auto my-4 w-1/2 border-white/20" />
         <p className="text-sm text-gray-300">
           © {new Date().getFullYear()} GotFix. Todos los derechos reservados.
         </p>

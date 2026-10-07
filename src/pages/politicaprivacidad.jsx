@@ -1,10 +1,7 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom"; // Asegúrate de tener esto importado
 
 const PoliticaDePrivacidad = () => {
-  const navigate = useNavigate();
-
   return (
     <main className="bg-[#111111] min-h-screen text-[#ececec] px-6 py-16">
       <div className="max-w-3xl mx-auto">
