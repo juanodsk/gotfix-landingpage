@@ -24,3 +24,8 @@ dist-ssr
 *.sw?
 
 .env
+
+# Evidencia local de la revisión en navegador (usa datos simulados).
+.playwright-cli/
+.impeccable/review/
+output/playwright/

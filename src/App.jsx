@@ -3,9 +3,7 @@ import InicioPage from "../src/pages/InicioPage";
 import ContactanosPage from "../src/pages/ContactanosPage";
 import ServiciosPage from "../src/pages/ServiciosPage";
 import ScrollToTop from "./components/ScrollTop";
-import SqueezePage from "../src/pages/SqueezePage";
-import GraciasPage from "../src/pages/graciasPage";
-import AdminPage from "../src/pages/adminPage";
+import { lazy, Suspense } from 'react';
 import PoliticaPage from "../src/pages/politicaprivacidad";
 import Condiciones from "./pages/Condiciones";
 import TemaCondicion from "./pages/TemaCondicion";
@@ -14,11 +12,13 @@ import Pqrs from "./pages/Pqrs";
 import CentroCondicionesLayout from "./components/condiciones/CentroCondicionesLayout";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+const AdminPage = lazy(() => import('./pages/adminPage'));
 function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
       <Routes>
+        <Route path="/admin" element={<Suspense fallback={<p role="status">Cargando administración…</p>}><AdminPage /></Suspense>} />
         <Route path="/" element={<InicioPage />}></Route>
         <Route path="/servicios" element={<ServiciosPage />}></Route>
         <Route path="/contactanos" element={<ContactanosPage />}></Route>
