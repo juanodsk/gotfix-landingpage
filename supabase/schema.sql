@@ -2,6 +2,7 @@
 -- GOTFIX · Centro de Condiciones — estructura de la base de datos en Supabase
 -- Cópialo completo en Supabase → SQL Editor → New query → Run.
 -- Se puede ejecutar más de una vez sin dañar nada.
+-- Para habilitar /admin, ejecuta después migrations/20261010_admin_pqrs.sql.
 -- ==========================================================================
 
 -- 1. Aceptaciones de Términos y Condiciones (página /formulario)

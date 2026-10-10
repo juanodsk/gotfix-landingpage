@@ -100,12 +100,79 @@ Al final copiarás 5 datos en **Vercel**, donde está publicado el sitio.
 
 ## Uso diario
 
-- **Ver firmas:** Supabase → Table Editor → `aceptaciones_terminos`. El PDF y la imagen de
-  cada firma están en Storage → `firmas` → año → identificador.
-- **Ver y gestionar PQRS:** Supabase → Table Editor → `pqrs`. Cambia la columna `estado`
-  a `en_tramite`, `respondido` o `cerrado` a medida que avances.
-- **Adjuntos de PQRS:** Storage → `pqrs-adjuntos`. Los enlaces del correo de aviso vencen
-  en 7 días; después, descárgalos desde aquí.
+Primero activa el panel siguiendo la sección siguiente. Luego entra a **https://gotfix.co/admin**
+con tu correo y contraseña.
+
+- **PQRS:** busca por nombre, documento, correo, WhatsApp, orden o radicado. Filtra por
+  **Radicado**, **En trámite**, **Respondido** o **Cerrado**. Cada página muestra hasta 25 registros.
+- **Ver caso:** muestra los datos del cliente, la descripción y los adjuntos. En
+  **Registrar seguimiento**, selecciona el estado, agrega una nota y pulsa **Guardar seguimiento**.
+  Puedes registrar notas sin cambiar el estado. Las notas son internas; no se envían al cliente.
+  El historial conserva la fecha, el administrador y el cambio realizado. Si el estado cambió
+  mientras lo tenías abierto, pulsa **Actualizar detalle** antes de guardar.
+- **Términos aceptados:** busca personas por nombre, documento, correo, WhatsApp, orden o equipo.
+  Pulsa **Descargar PDF** para obtener el archivo original que se generó al aceptar.
+  Se conservan las aceptaciones existentes; no se regeneran sus PDF con términos nuevos.
+- **Cerrar sesión:** al terminar, pulsa este botón. La sesión vence como máximo en una hora
+  (o antes si así está configurado Supabase Auth); vuelve a ingresar cuando lo solicite el panel.
+
+## Activar el panel administrativo
+
+### 1. Actualizar la base de datos
+
+Si ya guardas firmas y PQRS, **no necesitas borrar las tablas**. En Supabase → SQL Editor
+ejecuta el contenido de **`supabase/migrations/20261010_admin_pqrs.sql`**.
+En un proyecto nuevo, ejecuta primero **`supabase/schema.sql`** y después esa migración.
+
+Comprueba que `pqrs.estado` tenga tipo **estado_pqr**, que exista `pqrs.actualizado_en`
+y que aparezca la tabla **pqrs_seguimiento**. Los cuatro estados existentes se conservan.
+Los casos previos no tienen historial de cambios anteriores; el historial comienza con las
+gestiones registradas desde el panel.
+
+### 2. Crear tu usuario
+
+En Supabase → **Authentication → Users → Add user → Create new user**:
+
+- Escribe el correo que usarás para administrar y una contraseña segura.
+- Crea el usuario con el correo confirmado (**Auto Confirm User**, si se muestra esa opción).
+- En la configuración de Authentication, desactiva los registros públicos si no los necesitas.
+  Los formularios públicos de GOTFIX no crean cuentas, así que seguirán funcionando.
+
+Solo el correo que configures en `ADMIN_EMAIL` podrá entrar. Una cuenta de Supabase diferente
+no obtiene acceso al panel aunque tenga una contraseña válida.
+
+### 3. Agregar dos variables en Vercel
+
+Conserva las variables anteriores y agrega:
+
+| Key | Value |
+|---|---|
+| `SUPABASE_PUBLISHABLE_KEY` | Supabase → Project Settings → API Keys → Publishable key (`sb_publishable_...`); para proyectos antiguos también se admite `SUPABASE_ANON_KEY` |
+| `ADMIN_EMAIL` | El correo exacto del usuario administrador que acabas de crear |
+
+Estas variables se usan en las funciones del servidor. No les agregues el prefijo `VITE_`.
+La contraseña se guarda en Supabase Auth, **no en el código ni en una variable de Vercel**.
+Haz **Redeploy** para publicar el código actualizado con las variables nuevas.
+
+### 4. Comprobar el panel
+
+1. Entra a `/admin`. Sin sesión, debe aparecer el formulario de login.
+2. Inicia sesión y comprueba que aparezcan tus PQRS existentes.
+3. Abre un caso de prueba, cambia su estado y agrega una nota. Recarga y comprueba que el
+   estado y la nota sigan guardados. En Supabase aparecerá también la fila de seguimiento.
+4. En **Términos aceptados**, busca una aceptación anterior y descarga su PDF. Verifica
+   los datos y la versión del documento. Si no existe el archivo porque su generación falló,
+   el panel te lo indicará; la aceptación sigue conservada.
+5. Cierra sesión y comprueba que ya no puedas consultar los registros.
+
+### Pruebas locales para desarrollo
+
+- `npm test`: prueba los endpoints con respuestas simuladas de Supabase y ejecuta el SQL real
+  en PostgreSQL local mediante PGlite, sin conectarse a la base de datos de producción.
+- `npm run lint` y `npm run build`: comprueban código y compilación.
+- `npm run dev` sirve la interfaz con Vite. Para probar login, datos y descargas reales,
+  usa `vercel dev` con las variables de entorno locales o un despliegue Preview configurado.
+  Vite por sí solo no ejecuta las funciones `/api`.
 
 ## Si algo falla
 

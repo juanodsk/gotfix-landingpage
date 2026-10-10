@@ -56,6 +56,7 @@ function SEO({
   path = "/",
   image = defaultSeoImage,
   schema = gotfixBusinessSchema,
+  robots = 'index, follow',
 }) {
   useEffect(() => {
     const canonicalUrl = absoluteUrl(path);
@@ -65,7 +66,7 @@ function SEO({
     document.title = title;
 
     setMeta("name", "description", description);
-    setMeta("name", "robots", "index, follow");
+    setMeta("name", "robots", robots);
     setMeta("name", "author", "GotFix");
     setMeta("property", "og:locale", "es_CO");
     setMeta("property", "og:type", "website");
@@ -80,7 +81,7 @@ function SEO({
     setMeta("name", "twitter:image", imageUrl);
     setCanonical(canonicalUrl);
     setStructuredData(schema);
-  }, [description, image, path, schema, title]);
+  }, [description, image, path, schema, title, robots]);
 
   return null;
 }

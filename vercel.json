@@ -1,6 +1,14 @@
 {
   "headers": [
     {
+      "source": "/admin",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "Referrer-Policy", "value": "same-origin" }
+      ]
+    },
+    {
       "source": "/videos/(.*)",
       "headers": [
         { "key": "Content-Type", "value": "video/mp4" },

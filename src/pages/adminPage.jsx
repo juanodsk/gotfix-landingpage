@@ -1,180 +1,77 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { LuArrowLeft, LuLogOut } from 'react-icons/lu';
+import SEO from '../components/SEO';
+import { Aviso, Marca } from '../components/admin/Elementos';
+import Panel from '../components/admin/Panel';
+import { adminApi, escribirAdmin } from '../utils/adminApi';
+import '../styles/admin.css';
 
-const AdminPage = () => {
-  const [autenticado, setAutenticado] = useState(false);
-  const [clave, setClave] = useState("");
-  const [formularios, setFormularios] = useState([]);
-  const [fuente, setFuente] = useState("");
-  const [page, setPage] = useState(1);
-  const [total, setTotal] = useState(0);
-
-  const limit = 10;
-
+export default function AdminPage() {
+  const [sesion, setSesion] = useState(undefined);
+  const [mensaje, setMensaje] = useState('');
+  const [intento, setIntento] = useState(0);
+  const [saliendo, setSaliendo] = useState(false);
+  const expirar = useCallback((error) => { setSesion(null); setMensaje(error.message); }, []);
   useEffect(() => {
-    const saved = localStorage.getItem("adminAuth");
-    if (saved === "ok") setAutenticado(true);
-  }, []);
+    const controller = new AbortController();
+    adminApi('/api/admin-sesion', { signal: controller.signal }).then(setSesion).catch((error) => {
+      if (error.name === 'AbortError') return;
+      setSesion(null);
+      if (error.status !== 401) setMensaje(error.message);
+    });
+    return () => controller.abort();
+  }, [intento]);
 
-  useEffect(() => {
-    if (autenticado) {
-      fetchFormularios();
-    }
-  }, [page, fuente, autenticado]);
-
-  const manejarLogin = () => {
-    if (clave === "gotfix2025") {
-      setAutenticado(true);
-      localStorage.setItem("adminAuth", "ok");
-    } else {
-      alert("Contraseña incorrecta");
-    }
+  const salir = async () => {
+    setSaliendo(true);
+    try { await escribirAdmin('/api/admin-sesion', 'DELETE'); setSesion(null); setMensaje(''); }
+    catch (error) { setMensaje(error.message); }
+    finally { setSaliendo(false); }
   };
-
-  const cerrarSesion = () => {
-    setAutenticado(false);
-    localStorage.removeItem("adminAuth");
-  };
-
-  const fetchFormularios = async () => {
-    try {
-      const res = await axios.get(
-        `${import.meta.env.VITE_HOST_URI}/api/registro`,
-        {
-          params: { page, limit, fuente },
-        }
-      );
-      setFormularios(res.data.data);
-      setTotal(res.data.total);
-    } catch (err) {
-      console.error("Error al cargar los formularios:", err);
-    }
-  };
-
-  const handleExportCSV = async () => {
-    try {
-      const res = await fetch(
-        `${import.meta.env.VITE_HOST_URI}/api/registro?csv=true${
-          fuente ? `&fuente=${fuente}` : ""
-        }`
-      );
-      const blob = await res.blob();
-
-      const url = window.URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "registros_masterclass.csv";
-      a.click();
-      window.URL.revokeObjectURL(url);
-    } catch (err) {
-      console.error("Error al descargar el archivo:", err);
-      alert("No se pudo descargar el archivo.");
-    }
-  };
-
-  if (!autenticado) {
-    return (
-      <div className="h-screen flex items-center justify-center bg-gray-100">
-        <div className="bg-white p-6 rounded shadow-md">
-          <h2 className="text-lg font-bold mb-4">Acceso restringido</h2>
-          <input
-            type="password"
-            placeholder="Ingresa la contraseña"
-            value={clave}
-            onChange={(e) => setClave(e.target.value)}
-            className="border px-4 py-2 rounded w-full mb-4"
-          />
-          <button
-            onClick={manejarLogin}
-            className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-4 py-2 rounded w-full"
-          >
-            Entrar
-          </button>
-        </div>
-      </div>
-    );
-  }
 
   return (
-    <div className="p-4">
-      <div className="flex items-center justify-between mb-4">
-        <h2 className="text-xl font-bold">Registros de formularios</h2>
-
-        <div className="flex gap-4 items-center">
-          <select
-            value={fuente}
-            onChange={(e) => {
-              setFuente(e.target.value);
-              setPage(1);
-            }}
-            className="border border-gray-300 p-2 rounded"
-          >
-            <option value="">Todos</option>
-            <option value="organico">Orgánico</option>
-            <option value="pauta">Pauta</option>
-            <option value="desconocido">Desconocido</option>
-          </select>
-
-          <button
-            onClick={handleExportCSV}
-            className="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded"
-          >
-            Descargar Excel
-          </button>
-
-          <button
-            onClick={cerrarSesion}
-            className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded"
-          >
-            Cerrar sesión
-          </button>
-        </div>
-      </div>
-
-      <table className="w-full border text-left">
-        <thead>
-          <tr className="bg-gray-100">
-            <th className="p-2 border">Nombre</th>
-            <th className="p-2 border">Correo</th>
-            <th className="p-2 border">Fuente</th>
-            <th className="p-2 border">Fecha</th>
-          </tr>
-        </thead>
-        <tbody>
-          {formularios.map((f) => (
-            <tr key={f._id}>
-              <td className="p-2 border">{f.nombre}</td>
-              <td className="p-2 border">{f.correo}</td>
-              <td className="p-2 border">{f.fuente}</td>
-              <td className="p-2 border">
-                {new Date(f.createdAt).toLocaleString()}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-
-      <div className="mt-4 flex justify-between">
-        <button
-          onClick={() => setPage((p) => Math.max(p - 1, 1))}
-          disabled={page === 1}
-          className="bg-gray-300 hover:bg-gray-400 px-4 py-2 rounded"
-        >
-          Anterior
-        </button>
-
-        <span className="text-center font-medium">Página {page}</span>
-
-        <button
-          onClick={() => setPage((p) => (p * limit < total ? p + 1 : p))}
-          disabled={page * limit >= total}
-          className="bg-gray-300 hover:bg-gray-400 px-4 py-2 rounded"
-        >
-          Siguiente
-        </button>
-      </div>
+    <div className="admin-app">
+      <SEO title="Administración | GOTFIX" description="Panel privado de seguimiento de PQRS y aceptaciones de términos." path="/admin" robots="noindex, nofollow" schema={null} />
+      <a className="admin-saltar" href="#admin-contenido">Ir al contenido</a>
+      {sesion === undefined ? <main className="admin-login" id="admin-contenido"><Marca /><p role="status">Verificando tu sesión…</p></main> : !sesion ? (
+        <Login mensaje={mensaje} onLogin={(datos) => { setSesion(datos); setMensaje(''); }} onReintentar={() => { setMensaje(''); setSesion(undefined); setIntento((v) => v + 1); }} />
+      ) : <>
+        <header className="admin-cabecera"><Marca /><div className="admin-cuenta"><span>{sesion.correo}</span><button className="admin-boton admin-boton-secundario" onClick={salir} disabled={saliendo}><LuLogOut aria-hidden="true" />{saliendo ? 'Saliendo…' : 'Cerrar sesión'}</button></div></header>
+        <Panel onExpirar={expirar} mensajeSesion={mensaje} saliendo={saliendo} />
+      </>}
     </div>
   );
-};
+}
 
-export default AdminPage;
+function Login({ mensaje, onLogin, onReintentar }) {
+  const titulo = useRef(null);
+  useEffect(() => { titulo.current?.focus(); }, []);
+  const [correo, setCorreo] = useState('');
+  const [clave, setClave] = useState('');
+  const [error, setError] = useState('');
+  const [ocupado, setOcupado] = useState(false);
+  const entrar = async (e) => {
+    e.preventDefault(); setOcupado(true); setError('');
+    try { onLogin(await escribirAdmin('/api/admin-sesion', 'POST', { correo, clave })); }
+    catch (err) { setError(err.message); }
+    finally { setOcupado(false); setClave(''); }
+  };
+  return (
+    <main className="admin-login" id="admin-contenido"><Marca />
+      <section className="admin-login-formulario" aria-labelledby="admin-login-titulo">
+        <h1 ref={titulo} tabIndex={-1} id="admin-login-titulo">Administración</h1>
+        <p className="admin-muted">Consulta solicitudes, registra su seguimiento y descarga las aceptaciones de términos.</p>
+        <Aviso mensaje={mensaje} />
+        {mensaje && <button className="admin-enlace" onClick={onReintentar}>Comprobar conexión y sesión</button>}
+        <form onSubmit={entrar}>
+          <label htmlFor="admin-correo">Correo electrónico</label><input id="admin-correo" type="email" autoComplete="username" value={correo} onChange={(e) => setCorreo(e.target.value)} maxLength={254} required disabled={ocupado} />
+          <label htmlFor="admin-clave">Contraseña</label><input id="admin-clave" type="password" autoComplete="current-password" value={clave} onChange={(e) => setClave(e.target.value)} maxLength={1024} required disabled={ocupado} />
+          <Aviso mensaje={error} /><button className="admin-boton admin-boton-primario" disabled={ocupado}>{ocupado ? 'Ingresando…' : 'Entrar al panel'}</button>
+        </form>
+        <p className="admin-ayuda">Acceso exclusivo para la cuenta administradora de GOTFIX. Cuando tu sesión venza, vuelve a ingresar.</p>
+        <Link className="admin-enlace admin-volver" to="/"><LuArrowLeft aria-hidden="true" />Volver al sitio</Link>
+      </section>
+    </main>
+  );
+}
