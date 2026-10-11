@@ -48,7 +48,7 @@ Controles y botones con esquinas de 6 px, contenedores operativos de 8 px, login
 
 - **Login:** etiquetas persistentes, autocompletado de credenciales, aviso de error y estado de ingreso. El título recibe foco al entrar a la pantalla.
 - **Navegación:** dos destinos con icono y texto; el activo usa navy y `aria-current`. El logo y el enlace de login permiten volver al sitio público.
-- **Listados:** búsqueda explícita, filtro de estado solo en PQRS, actualización, contador, paginación, carga, error recuperable y estado vacío. Los resultados sin coincidencias explican cómo cambiar o limpiar los filtros.
+- **Listados:** búsqueda explícita, pestañas TODOS, Radicado, En trámite, Respondido y Cerrado solo en PQRS, actualización, contador, paginación, carga, error recuperable y estado vacío. Las pestañas filtran en el servidor, conservan la búsqueda y vuelven a la primera página; admiten flechas, Home y End. Los resultados sin coincidencias explican cómo cambiar o limpiar los filtros.
 - **Estados PQRS:** contrato compartido en `src/data/estadosPqrs.js`: `radicado` → Radicado, `en_tramite` → En trámite, `respondido` → Respondido y `cerrado` → Cerrado. Las flechas de esta lista expresan la traducción de valor a etiqueta, no restricciones de transición.
 - **Seguimiento:** selector de estado y nota interna; permite agregar una nota sin cambiar el estado. La ayuda aclara que guardar no envía correo al cliente. El historial muestra cambio o nota, fecha y administrador. Un conflicto ofrece actualizar el detalle. Tras guardar se restaura el foco en la nota.
 - **Descargas:** acciones rotuladas para adjuntos y PDF de aceptaciones, con indicación de descarga y recuperación de error.

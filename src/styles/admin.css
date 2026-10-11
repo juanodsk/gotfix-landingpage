@@ -68,7 +68,10 @@
 .admin-busqueda > div { position: relative; }
 .admin-busqueda svg { position: absolute; left: 12px; top: 15px; color: var(--admin-muted); width: 17px; height: 17px; }
 .admin-busqueda input { padding-left: 38px; }
-.admin-filtro-estado { width: 180px; }
+.admin-pestanas-estado { display: flex; flex-wrap: wrap; gap: 4px; margin: 0 0 20px; padding-bottom: 8px; border-bottom: 1px solid var(--admin-line); }
+.admin-pestanas-estado button { min-height: 44px; padding: 10px 16px; border: 0; border-radius: 6px; background: transparent; color: var(--admin-muted); font: inherit; font-weight: 600; transition: background-color .15s; }
+.admin-pestanas-estado button:hover { background: #e7eef5; color: var(--admin-ink); }
+.admin-pestanas-estado button[aria-selected="true"] { background: var(--admin-ink); color: var(--admin-paper); }
 .admin-resultados { color: var(--admin-muted); margin: 0 0 12px; font-size: 13px; }
 .admin-tabla-contenedor { overflow-x: auto; border: 1px solid var(--admin-line); border-radius: 8px; background: var(--admin-paper); }
 .admin-tabla { width: 100%; border-collapse: collapse; text-align: left; }
@@ -129,7 +132,8 @@
   .admin-app h1 { font-size: 24px; }
   .admin-filtros { gap: 12px; padding: 16px; }
   .admin-busqueda { flex-basis: 100%; }
-  .admin-filtro-estado { flex: 1; }
+  .admin-pestanas-estado { gap: 4px; }
+  .admin-pestanas-estado button { padding: 10px 12px; font-size: 13px; }
   .admin-tabla-contenedor { overflow: visible; }
   .admin-tabla, .admin-tabla tbody, .admin-tabla tr { display: block; }
   .admin-tabla thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
