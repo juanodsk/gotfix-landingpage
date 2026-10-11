@@ -3,6 +3,7 @@ async (page) => {
   const check = (valor, mensaje) => { if (!valor) throw new Error(mensaje); };
   const capturar = async (nombre) => {
     await page.setViewportSize({ width: 1440, height: 1000 });
+    if (await page.getByRole('tab', { selected: true }).count()) await page.waitForFunction(() => getComputedStyle(document.querySelector('[role="tab"][aria-selected="true"]')).backgroundColor === 'rgb(0, 22, 43)');
     await page.evaluate(() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))));
     await page.screenshot({ path: `.impeccable/review/${nombre}-desktop.png`, fullPage: true });
     check(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth), `${nombre}: desbordamiento en escritorio`);
@@ -24,9 +25,30 @@ async (page) => {
   await page.setViewportSize({ width: 390, height: 844 });
   check(await page.getByRole('columnheader').count() === 5, 'Los encabezados deben seguir presentes en la tabla móvil accesible');
   await page.setViewportSize({ width: 1440, height: 1000 });
-  await page.getByLabel('Estado del PQR', { exact: true }).selectOption('en_tramite');
+  check(await page.getByRole('tab').count() === 5, 'Debe haber TODOS y cuatro estados');
+  for (const [etiqueta, radicado] of [['Radicado', '0001'], ['En trámite', '0002'], ['Respondido', '0003'], ['Cerrado', '0004']]) {
+    await page.getByRole('tab', { name: etiqueta, exact: true }).click();
+    await page.getByRole('status').filter({ hasText: '1 registro encontrado' }).waitFor();
+    check(await page.getByRole('button', { name: `Ver caso PQRS-2026-${radicado}` }).count() === 1, `La pestaña ${etiqueta} debe mostrar su caso`);
+    check(await page.getByRole('button', { name: /^Ver caso PQRS/ }).count() === 1, `La pestaña ${etiqueta} debe excluir los demás estados`);
+    check(await page.getByRole('tabpanel', { name: etiqueta, exact: true }).count() === 1, 'El listado debe estar asociado a la pestaña activa');
+  }
+  await page.getByRole('tab', { name: 'Cerrado', exact: true }).press('ArrowRight');
+  await page.getByRole('status').filter({ hasText: '4 registros en total' }).waitFor();
+  check(await page.getByRole('tab', { name: 'TODOS' }).evaluate((el) => el === document.activeElement && el.getAttribute('aria-selected') === 'true'), 'La flecha debe volver a TODOS y conservar el foco');
+  await page.getByRole('tab', { name: 'TODOS' }).press('End');
   await page.getByRole('status').filter({ hasText: '1 registro encontrado' }).waitFor();
-  check(await page.getByRole('button', { name: 'Ver caso PQRS-2026-0001' }).count() === 0, 'El filtro debe excluir los casos radicados');
+  await page.getByRole('tab', { name: 'Cerrado' }).press('Home');
+  await page.getByRole('status').filter({ hasText: '4 registros en total' }).waitFor();
+  await page.getByRole('tab', { name: 'En trámite', exact: true }).click();
+  await page.getByRole('status').filter({ hasText: '1 registro encontrado' }).waitFor();
+  await capturar('pqrs-pestanas');
+  await page.getByLabel('Buscar solicitud').fill('Ana');
+  await page.getByRole('button', { name: 'Buscar', exact: true }).click();
+  await page.getByRole('heading', { name: 'No hay resultados con estos filtros' }).waitFor();
+  await page.getByRole('tab', { name: 'Radicado', exact: true }).click();
+  await page.getByRole('button', { name: 'Ver caso PQRS-2026-0001' }).waitFor();
+  check(await page.getByLabel('Buscar solicitud').inputValue() === 'Ana', 'Cambiar de pestaña debe conservar la búsqueda');
   await page.getByRole('button', { name: 'Limpiar', exact: true }).click();
   await page.getByRole('button', { name: 'Ver caso PQRS-2026-0001' }).waitFor();
   await page.getByLabel('Buscar solicitud').fill('persona inexistente');
@@ -34,6 +56,7 @@ async (page) => {
   await page.getByRole('heading', { name: 'No hay resultados con estos filtros' }).waitFor();
   await capturar('vacio');
   await page.getByRole('button', { name: 'Limpiar', exact: true }).click();
+  await page.getByRole('tab', { name: 'Radicado', exact: true }).click();
   await page.getByRole('button', { name: 'Ver caso PQRS-2026-0001' }).click();
   await page.getByRole('heading', { name: 'PQRS-2026-0001', exact: true }).waitFor();
   await page.waitForFunction(() => document.activeElement?.tagName === 'H1' && document.activeElement.textContent === 'PQRS-2026-0001');
@@ -44,6 +67,9 @@ async (page) => {
   await page.getByText('Radicado → En trámite', { exact: true }).waitFor();
   await page.waitForFunction(() => document.activeElement?.id === 'admin-nota');
   await capturar('detalle');
+  await page.getByRole('button', { name: 'Volver a las PQRS', exact: true }).click();
+  await page.getByRole('heading', { name: 'No hay resultados con estos filtros' }).waitFor();
+  check(await page.getByRole('tab', { name: 'Radicado', exact: true }).getAttribute('aria-selected') === 'true', 'Volver del detalle debe conservar la pestaña y retirar el caso que cambió de estado');
   await page.reload();
   await page.getByRole('button', { name: 'Ver caso PQRS-2026-0001' }).click();
   await page.getByText('Radicado → En trámite', { exact: true }).waitFor();
@@ -62,6 +88,7 @@ async (page) => {
   check((await adjunto).suggestedFilename() === 'foto-del-equipo.png', 'Nombre del adjunto incorrecto');
   await page.getByRole('button', { name: 'Términos aceptados', exact: true }).click();
   await page.getByRole('heading', { name: 'Términos aceptados', exact: true }).waitFor();
+  check(await page.getByRole('tab').count() === 0, 'Las pestañas por estado solo deben estar en PQRS');
   await page.getByRole('button', { name: 'Descargar PDF de Ana María Rodríguez', exact: true }).waitFor();
   await capturar('aceptaciones');
   await page.getByLabel('Buscar aceptación').fill('1075123456');
@@ -78,5 +105,5 @@ async (page) => {
   await page.reload();
   await page.getByRole('heading', { name: 'Administración', exact: true }).waitFor();
   check(await page.getByRole('button', { name: 'Términos aceptados', exact: true }).count() === 0, 'La sesión no debe sobrevivir al logout');
-  return 'Verificados con datos simulados: login y error, filtro, búsqueda vacía, cambio de estado, nota, persistencia al recargar, conflicto, adjunto, búsqueda por documento, descarga PDF y logout. Sin desbordamiento en 1440 y 390 px.';
+  return 'Verificados con datos simulados: las cinco pestañas, navegación por teclado, búsqueda entre estados, retiro del caso de su pestaña al cambiar estado, login, seguimiento, conflictos, descargas y logout. Sin desbordamiento en 1440 y 390 px.';
 }

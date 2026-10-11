@@ -1,4 +1,5 @@
 import Navbar from "../components/Navbar.jsx";
+import { Link } from "react-router-dom";
 import NuestroTrabajo from "../components/NuestroTrabajoSection.jsx";
 import { motion as Motion } from "framer-motion";
 import {
@@ -163,6 +164,12 @@ const LandingPage = () => {
                   Reparamos con técnicos especializados, repuestos de alta
                   calidad y un respaldo claro para que salgas tranquilo.
                 </p>
+                <Link
+                  to="/condiciones"
+                  className="mt-3 inline-flex min-h-11 items-center text-sm text-white/90 underline decoration-white/60 underline-offset-4 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                >
+                  Aplican términos y condiciones.
+                </Link>
               </div>
             </div>
           </Motion.div>

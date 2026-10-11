@@ -5,6 +5,10 @@ async (page) => {
     { id: '10000000-0000-4000-8000-000000000001', radicado: 'PQRS-2026-0001', nombre: 'Ana María Rodríguez', documento: '1075123456', correo: 'ana.rodriguez@ejemplo.test', whatsapp: '3101234567', orden: 'GF-2481', estado: 'radicado', creado_en: '2026-10-09T15:30:00Z', actualizado_en: '2026-10-09T15:30:00Z', descripcion: 'El equipo volvió a presentar la falla después de la reparación.\nSolicito una revisión de la garantía.', paso_por_tienda: true, adjuntos: [{ ruta: 'prueba/foto.png', nombre: 'foto-del-equipo.png' }] },
     { id: '20000000-0000-4000-8000-000000000002', radicado: 'PQRS-2026-0002', nombre: 'Carlos Andrés Martínez', documento: '1234567890', correo: 'carlos.martinez@ejemplo.test', whatsapp: '3207654321', orden: null, estado: 'en_tramite', creado_en: '2026-10-08T20:10:00Z', actualizado_en: '2026-10-09T17:10:00Z', descripcion: 'Quisiera conocer el resultado del diagnóstico.', paso_por_tienda: false, adjuntos: [] },
   ];
+  casos.push(
+    { ...casos[1], id: '30000000-0000-4000-8000-000000000003', radicado: 'PQRS-2026-0003', nombre: 'Lucía Torres', documento: '1234567891', correo: 'lucia@ejemplo.test', estado: 'respondido' },
+    { ...casos[1], id: '40000000-0000-4000-8000-000000000004', radicado: 'PQRS-2026-0004', nombre: 'Diego Rojas', documento: '1234567892', correo: 'diego@ejemplo.test', estado: 'cerrado' },
+  );
   const aceptaciones = [
     { id: casos[0].id, nombre: casos[0].nombre, documento: casos[0].documento, correo: casos[0].correo, whatsapp: casos[0].whatsapp, equipo: 'iPhone 13 Pro', orden: 'GF-2481', version_terminos: '2026-09', creado_en: casos[0].creado_en },
     { id: casos[1].id, nombre: casos[1].nombre, documento: casos[1].documento, correo: casos[1].correo, whatsapp: casos[1].whatsapp, equipo: 'MacBook Air M1', orden: 'GF-2450', version_terminos: '2026-09', creado_en: casos[1].creado_en },
