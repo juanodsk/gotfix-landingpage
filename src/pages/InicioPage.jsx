@@ -166,7 +166,7 @@ const LandingPage = () => {
                 </p>
                 <Link
                   to="/condiciones"
-                  className="mt-3 inline-flex min-h-11 items-center text-sm text-white/90 underline decoration-white/60 underline-offset-4 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                  className="mt-3 inline-flex min-h-11 cursor-pointer items-center text-sm text-white/90 underline decoration-white/60 underline-offset-4 transition-colors duration-150 hover:text-[#fcbc18] hover:decoration-[#fcbc18] focus-visible:text-[#fcbc18] focus-visible:decoration-[#fcbc18] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#fcbc18] motion-reduce:transition-none"
                 >
                   Aplican términos y condiciones.
                 </Link>
