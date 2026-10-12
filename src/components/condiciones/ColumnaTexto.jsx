@@ -29,14 +29,13 @@ function copiarSinGuionesInvisibles(e) {
   e.clipboardData.setData('text/plain', seleccion.replace(/­/g, ''));
 }
 
-// Fondo y tipografía base de las páginas nuevas: fondo blanco, texto gris y Arial (fuente del
-// sistema, sobria para textos legales; el header y el footer del sitio conservan Karst).
+// Fondo blanco y texto gris; comparte Arial con el resto del sitio.
 export function PaginaCondiciones({ children, conBanner = false }) {
   return (
     <main
       lang="es"
       onCopy={copiarSinGuionesInvisibles}
-      className={`min-h-screen bg-white pb-20 font-[Arial,Helvetica,sans-serif] font-normal text-gray-700 [&_.font-extrabold]:font-bold [&_.font-light]:font-normal ${
+      className={`min-h-screen bg-white pb-20 font-sans font-normal text-gray-700 [&_.font-extrabold]:font-bold [&_.font-light]:font-normal ${
         conBanner ? '' : 'pt-12 md:pt-16'
       }`}
     >

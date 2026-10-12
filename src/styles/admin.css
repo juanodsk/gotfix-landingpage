@@ -9,7 +9,7 @@
   min-height: 100dvh;
   color: var(--admin-ink);
   background: var(--admin-surface);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: var(--font-sans);
   font-size: 14px;
   line-height: 1.5;
   font-variant-numeric: tabular-nums;

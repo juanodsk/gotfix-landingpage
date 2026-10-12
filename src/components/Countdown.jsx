@@ -35,7 +35,7 @@ const Countdown = () => {
   }, []);
 
   return (
-    <div className="mt-6 flex gap-4 justify-center text-white font-mono text-lg md:text-2xl">
+    <div className="mt-6 flex gap-4 justify-center text-white font-sans text-lg md:text-2xl">
       {[
         { label: "d", value: timeLeft.days },
         { label: "h", value: timeLeft.hours },

@@ -1,24 +1,14 @@
-@font-face {
-  font-family: "karst";
-  src: url("../public/fonts/Karst-ExtraBold.woff") format("woff2");
-  font-weight: 600;
-  font-style: normal;
-}
+@import "tailwindcss";
 
-@font-face {
-  font-family: "karst";
-  src: url("../public/fonts/Karst-Light.woff2") format("woff2");
-  font-weight: 100;
-  font-style: normal;
+@theme {
+  --font-sans: Arial, Helvetica, sans-serif;
 }
 
 body {
-  font-family: "karst", sans-serif;
+  font-family: var(--font-sans);
   margin-left: auto;
   margin-right: auto;
 }
-
-@import "tailwindcss";
 
 @keyframes fade-in {
   from {

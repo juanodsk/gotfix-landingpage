@@ -24,7 +24,7 @@ El logo se importa directamente de `src/assets/Logo.png`; no se reconstruye con 
 
 ## Typography
 
-La administración usa `system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif`, con cuerpo de 14 px, interlineado 1.5 y cifras tabulares. La excepción es local a `.admin-app`; `src/index.css` conserva Karst para el sitio público.
+Por solicitud del usuario, desde el 11 de octubre de 2026 todo el sitio comparte `Arial, Helvetica, sans-serif` mediante `--font-sans`. La administración conserva cuerpo de 14 px, interlineado 1.5 y cifras tabulares.
 
 La jerarquía observada usa título de 28 px en escritorio y 24 px en móvil, secciones de 18 px y etiquetas de 13 px. Los campos heredan la fuente administrativa. Esta densidad pertenece al panel y no redefine los campos públicos de `Campo.jsx`, que mantienen su tamaño de 16 px.
 
@@ -65,7 +65,7 @@ Controles y botones con esquinas de 6 px, contenedores operativos de 8 px, login
 
 Se revisaron visualmente las diez capturas finales de `.impeccable/review/`: `login`, `pqrs`, `detalle`, `aceptaciones` y `vacio`, cada una en `desktop` y `mobile`. Las capturas corresponden a escritorio de 1440 × 1000 y móvil de 390 × 844; cuando hay desplazamiento vertical, la barra de Windows reduce 15 px el ancho útil. Se observan marca sobre navy, acciones amarillas, enlaces azules, tabla de escritorio, filas móviles y seguimiento con historial. Los contornos en los títulos del login y en la nota corresponden al foco programático.
 
-La comprobación de los archivos compilados `dist/assets/adminPage-*.css` e `index-*.css` confirma los tres colores administrativos, la fuente de sistema local y la permanencia de Karst en el CSS principal. El diff de los tres archivos incumbentes citados no contiene cambios en esta revisión.
+En la revisión del 10 de octubre, los archivos compilados `dist/assets/adminPage-*.css` e `index-*.css` confirmaron los tres colores administrativos, la fuente de sistema local y Karst en el CSS principal. Esa evidencia tipográfica precede al cambio posterior a Arial.
 
 Resultados comunicados por la ejecución principal de esta tarea, sin repetir las pruebas durante la documentación:
 
