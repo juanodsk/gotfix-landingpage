@@ -29,7 +29,7 @@ function copiarSinGuionesInvisibles(e) {
   e.clipboardData.setData('text/plain', seleccion.replace(/­/g, ''));
 }
 
-// Fondo blanco y texto gris; comparte Arial con el resto del sitio.
+// Fondo blanco y texto gris; hereda Arial del centro de condiciones.
 export function PaginaCondiciones({ children, conBanner = false }) {
   return (
     <main

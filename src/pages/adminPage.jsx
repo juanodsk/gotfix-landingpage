@@ -31,7 +31,7 @@ export default function AdminPage() {
   };
 
   return (
-    <div className="admin-app">
+    <div className="admin-app fuente-legal">
       <SEO title="Administración | GOTFIX" description="Panel privado de seguimiento de PQRS y aceptaciones de términos." path="/admin" robots="noindex, nofollow" schema={null} />
       <a className="admin-saltar" href="#admin-contenido">Ir al contenido</a>
       {sesion === undefined ? <main className="admin-login" id="admin-contenido"><Marca /><p role="status">Verificando tu sesión…</p></main> : !sesion ? (

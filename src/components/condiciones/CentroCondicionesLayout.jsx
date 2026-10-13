@@ -19,7 +19,7 @@ export default function CentroCondicionesLayout() {
   const description = esPqrs ? pqrsDescription : condicionesDescription;
 
   return (
-    <>
+    <div className="fuente-legal">
       <SEO
         title={title}
         description={description}
@@ -38,6 +38,6 @@ export default function CentroCondicionesLayout() {
       <Navbar />
       <Outlet />
       <Footer />
-    </>
+    </div>
   );
 }

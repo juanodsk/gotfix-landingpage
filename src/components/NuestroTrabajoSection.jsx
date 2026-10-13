@@ -3,28 +3,27 @@ import ReactPlayer from "react-player";
 import Slider from "react-slick";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
-// URLs servidas desde Vercel Blob (ya incluyen Accept‑Ranges y funcionan en Safari)
+// YouTube Shorts: títulos ajustados al contenido de cada video.
 const videos = [
   {
-    titulo: "Reemplazo de pantalla Iphone 15 pro max",
-    url: "https://res.cloudinary.com/dkiltig52/video/upload/v1782331059/vid_1_s6ls80.mp4",
+    titulo: "Revisión preventiva de MacBook",
+    url: "https://www.youtube.com/shorts/WUplW_HQ9Ek",
   },
   {
-    titulo: "Reemplazo de cristal trasero 16 Pro max",
-    url: "https://res.cloudinary.com/dkiltig52/video/upload/v1782331057/vid_2_xfjrnw.mp4",
-  },
-
-  {
-    titulo: "Cristal de pantalla iphone 16 pro max",
-    url: "https://res.cloudinary.com/dkiltig52/video/upload/v1782331070/vid_3_mvjinq.mp4",
+    titulo: "Diagnóstico profesional de equipos Apple",
+    url: "https://www.youtube.com/shorts/zFd7m93lal0",
   },
   {
-    titulo: "Aumento de memoria Iphone 16 Pro",
-    url: "https://res.cloudinary.com/dkiltig52/video/upload/v1782331101/vid_4_vjmq4h.mp4",
+    titulo: "Cambio de pantalla de iPhone",
+    url: "https://www.youtube.com/shorts/11I40PVdW1E",
   },
   {
-    titulo: "Trabajo realizado por GotFix",
-    url: "https://www.youtube.com/shorts/Fm6k9bdQ2F0",
+    titulo: "Restauración de cristal trasero de iPhone",
+    url: "https://www.youtube.com/shorts/uvmbumswrPY",
+  },
+  {
+    titulo: "Cambio de batería de iPhone",
+    url: "https://www.youtube.com/shorts/hdxtgwI0_08",
   },
 ];
 
@@ -81,7 +80,7 @@ const VideoCarrusel = () => {
   };
 
   return (
-    <section className="relative py-16 bg-[#00162b] text-white">
+    <section id="nuestro-trabajo" className="relative py-16 bg-[#00162b] text-white">
       <div className="absolute inset-0 z-0 bg-gradient-to-br from-[#002c57] via-[#00162b] to-black opacity-60 blur-md" />
 
       <div className="relative z-10 container mx-auto px-8 text-center">

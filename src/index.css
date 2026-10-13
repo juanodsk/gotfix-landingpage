@@ -1,13 +1,32 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: Arial, Helvetica, sans-serif;
+  --font-sans: "karst", sans-serif;
+}
+
+@font-face {
+  font-family: "karst";
+  src: url("/fonts/Karst-ExtraBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "karst";
+  src: url("/fonts/Karst-Light.woff2") format("woff2");
+  font-weight: 100;
+  font-style: normal;
 }
 
 body {
   font-family: var(--font-sans);
   margin-left: auto;
   margin-right: auto;
+}
+
+.fuente-legal {
+  --font-sans: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
 }
 
 @keyframes fade-in {

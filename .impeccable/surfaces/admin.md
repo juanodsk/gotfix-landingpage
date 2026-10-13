@@ -24,7 +24,7 @@ El logo se importa directamente de `src/assets/Logo.png`; no se reconstruye con 
 
 ## Typography
 
-Por solicitud del usuario, desde el 11 de octubre de 2026 todo el sitio comparte `Arial, Helvetica, sans-serif` mediante `--font-sans`. La administración conserva cuerpo de 14 px, interlineado 1.5 y cifras tabulares.
+Por solicitud del usuario, términos, PQRS y administración usan `Arial, Helvetica, sans-serif` mediante la clase `fuente-legal`, que delimita `--font-sans` a esas vistas. La landing conserva Karst. El panel conserva cuerpo de 14 px, interlineado 1.5 y cifras tabulares.
 
 La jerarquía observada usa título de 28 px en escritorio y 24 px en móvil, secciones de 18 px y etiquetas de 13 px. Los campos heredan la fuente administrativa. Esta densidad pertenece al panel y no redefine los campos públicos de `Campo.jsx`, que mantienen su tamaño de 16 px.
 
@@ -57,7 +57,7 @@ Controles y botones con esquinas de 6 px, contenedores operativos de 8 px, login
 ## Do's and Don'ts
 
 - Conservar en esta superficie el logo existente, navy, amarillo y azul de enlace GOTFIX.
-- Mantener la fuente administrativa y los estilos limitados al panel; el sitio público conserva su autoridad visual.
+- Mantener Arial en administración, términos y PQRS; limitar los estilos de disposición y densidad al panel.
 - Conservar etiquetas textuales de estado y estructura accesible al apilar los listados.
 - No extrapolar la densidad, composición, colores auxiliares ni radios del admin al sistema global.
 
@@ -65,7 +65,7 @@ Controles y botones con esquinas de 6 px, contenedores operativos de 8 px, login
 
 Se revisaron visualmente las diez capturas finales de `.impeccable/review/`: `login`, `pqrs`, `detalle`, `aceptaciones` y `vacio`, cada una en `desktop` y `mobile`. Las capturas corresponden a escritorio de 1440 × 1000 y móvil de 390 × 844; cuando hay desplazamiento vertical, la barra de Windows reduce 15 px el ancho útil. Se observan marca sobre navy, acciones amarillas, enlaces azules, tabla de escritorio, filas móviles y seguimiento con historial. Los contornos en los títulos del login y en la nota corresponden al foco programático.
 
-En la revisión del 10 de octubre, los archivos compilados `dist/assets/adminPage-*.css` e `index-*.css` confirmaron los tres colores administrativos, la fuente de sistema local y Karst en el CSS principal. Esa evidencia tipográfica precede al cambio posterior a Arial.
+En la revisión del 10 de octubre, los archivos compilados `dist/assets/adminPage-*.css` e `index-*.css` confirmaron los tres colores administrativos, la fuente de sistema local y Karst en el CSS principal. La decisión vigente del 13 de octubre de 2026 deja Arial en términos, PQRS y administración, y Karst en la landing.
 
 Resultados comunicados por la ejecución principal de esta tarea, sin repetir las pruebas durante la documentación:
 
