@@ -1,0 +1,592 @@
+<!doctype html>
+<html lang="es" data-variant="B">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Curso en vivo de reparación de placas de iPhone | Ricardo Hernández</title>
+  <meta name="description" content="¿Sabes cambiar piezas de un iPhone, pero cuando la falla está en la placa no sabes por dónde empezar? Curso en vivo por Zoom, nivel básico–intermedio, con énfasis en fallas de encendido. Inicia el 2 de noviembre de 2026.">
+  <meta name="theme-color" content="#0B0B0C">
+  <link rel="canonical" href="https://gotfix.co/ricardo-academy">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_LA">
+  <meta property="og:site_name" content="Ricardo Hernández">
+  <meta property="og:title" content="¿Sabes cambiar piezas de un iPhone, pero cuando la falla está en la placa no sabes por dónde empezar?">
+  <meta property="og:description" content="Curso en vivo de reparación de placas de iPhone con Ricardo Hernández. Fundamentos, consumos, esquemáticos y mediciones, con énfasis en fallas de encendido.">
+  <meta property="og:image" content="https://gotfix.co/ricardo-academy/img/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://gotfix.co/ricardo-academy">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Curso en vivo de reparación de placas de iPhone · Ricardo Hernández">
+  <meta name="twitter:description" content="Empieza tu camino para convertirte en un técnico experto en reparación de placas de iPhone.">
+  <meta name="twitter:image" content="https://gotfix.co/ricardo-academy/img/og-image.jpg">
+
+  <link rel="icon" href="/ricardo-academy/img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/ricardo-academy/img/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="/ricardo-academy/img/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Fuentes sin bloquear el primer pintado (font-display: swap) -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;600&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;600&display=swap"></noscript>
+  <link rel="stylesheet" href="/ricardo-academy/css/styles.css">
+
+  <!-- Config + variante antes de pintar (evita parpadeo entre A y B) -->
+  <script src="/ricardo-academy/js/config.js"></script>
+  <script>
+    (function () {
+      var v = (window.LANDING_CONFIG && window.LANDING_CONFIG.variant) || "B";
+      var m = location.search.match(/[?&]v=([ab])\b/i);
+      if (m) v = m[1].toUpperCase();
+      document.documentElement.setAttribute("data-variant", v === "A" ? "A" : "B");
+    })();
+  </script>
+  <script src="/ricardo-academy/js/main.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#identificacion">Saltar al contenido</a>
+
+<!-- ============================ HERO ============================ -->
+<header class="sec sec--dark hero" id="hero">
+  <div class="wrap hero__grid">
+    <div class="hero__copy">
+      <div class="brandline"><span class="brandline__logo">RICARDO HERNÁNDEZ</span><span class="brandline__sep"></span><span>con el respaldo de GOTFIX</span></div>
+      <p class="badge">NIVEL BÁSICO – INTERMEDIO · EN VIVO POR ZOOM</p>
+      <h1 class="h1">
+        <span class="h1__kicker">¿Sabes cambiar piezas de un iPhone…</span>
+        <span class="h1__main">…pero cuando la falla está en la placa <mark class="hl">no sabes por dónde empezar?</mark></span>
+      </h1>
+      <p class="hero__h2">Empieza tu camino para convertirte en un técnico experto en reparación de placas de iPhone.</p>
+      <div class="cta-group hero__cta">
+        <a class="btn btn--gold btn--pulse" data-cta="checkout" data-cta-loc="hero" href="#precio">Inscribirme al curso — <span data-precio-actual>US$257</span></a>
+        <p class="microline" data-price-line>Preventa US$257 · Ahorras US$213 · Pago único en USD</p>
+      </div>
+      <p class="lead">Aprende cómo funciona una placa de iPhone, a interpretar consumos y esquemáticos, a medir con propósito, a identificar circuitos y a aplicar técnicas de diagnóstico y reparación, con <strong>énfasis especial en fallas de encendido</strong>.</p>
+      <p class="hero__meta">8 SEMANAS · 24 SESIONES · 48 H EN VIVO · INICIA <span data-fecha-inicio>2 DE NOVIEMBRE</span></p>
+    </div>
+
+    <!-- Variante A: VSL. Arranca en silencio, nunca activa el audio sin que la persona toque -->
+    <div class="hero__media hero__media--a" data-only="A">
+      <div class="vsl" id="vsl">
+        <div class="vsl__frame" id="vslFrame">
+          <div class="placeholder placeholder--dark vsl__ph">[VSL – PENDIENTE]<small>Guion en VSL_GUION_RICARDO_HERNANDEZ.md · configura <code>vslUrl</code></small></div>
+        </div>
+        <button class="vsl__unmute" id="vslUnmute" type="button" hidden>
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M3 9v6h4l5 5V4L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></svg>
+          Toca para ver con sonido
+        </button>
+      </div>
+      <p class="vsl__note">Video de Ricardo Hernández · el sonido solo se activa si tú lo eliges.</p>
+    </div>
+
+    <!-- Variante B: pieza promocional oficial (la misma del anuncio) + viñetas -->
+    <div class="hero__media hero__media--b" data-only="B">
+      <figure class="hero__photo hero__photo--art">
+        <picture>
+          <source type="image/webp" srcset="/ricardo-academy/img/arte-promocional-480.webp 480w, /ricardo-academy/img/arte-promocional-800.webp 800w, /ricardo-academy/img/arte-promocional-1080.webp 1080w" sizes="(min-width: 960px) 460px, 92vw">
+          <img src="/ricardo-academy/img/arte-promocional-800.jpg" width="800" height="1000" alt="Pieza del curso: Aprende a reparar placas de iPhone con Ricardo Hernández. Preventa US$257 hasta el 25 de octubre; US$470 desde el 26 de octubre. Inicia el 2 de noviembre: 8 semanas, 48 horas de clases en vivo por Zoom." decoding="async">
+        </picture>
+      </figure>
+      <ul class="hero__bullets">
+        <li><span class="tick" aria-hidden="true"></span>Para técnicos que ya cambian pantallas, baterías, cámaras y flexores, en iPhone o en Android.</li>
+        <li><span class="tick" aria-hidden="true"></span>Fundamentos, mediciones, esquemáticos y consumos, con más profundidad en fallas de encendido.</li>
+        <li><span class="tick" aria-hidden="true"></span>Lunes, miércoles y viernes · 1:00–3:00 p. m. (hora Colombia) · grabaciones por 6 meses.</li>
+      </ul>
+    </div>
+
+    <div class="hero__bottom">
+      <p class="stats__cap">Respaldo de laboratorio · trayectoria del taller GOTFIX</p>
+      <div class="stats" role="list">
+        <div class="stat" role="listitem"><span class="stat__num">7+</span><span class="stat__lbl">años de operación</span></div>
+        <div class="stat" role="listitem"><span class="stat__num">5.000+</span><span class="stat__lbl">equipos reparados</span></div>
+        <div class="stat" role="listitem"><span class="stat__num">4,9★</span><span class="stat__lbl">en Google<br><small>(reseñas del taller)</small></span></div>
+      </div>
+      <a class="btn btn--ghost" data-cta="whatsapp" data-cta-loc="hero" href="#" target="_blank" rel="noopener">
+        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-wa"/></svg> Hablar con el Asesor Académico
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ============================ 1. IDENTIFICACIÓN ============================ -->
+<section class="sec sec--light" id="identificacion">
+  <div class="wrap">
+    <p class="eyebrow" data-n="01">¿Es para ti?</p>
+    <h2 class="h2">Ya sabes trabajar en un iPhone. La placa es otra historia.</h2>
+    <div class="split">
+      <div class="prose">
+        <p>Desarmas sin miedo. Cambias pantallas, baterías, cámaras y flexores. Quizás vienes de reparar Android y quieres dar el paso a iPhone, o ya trabajas con iPhone pero solo haces recambios. Hasta ahí, todo bajo control.</p>
+        <p>Hasta que llega un equipo que no enciende y la falla no está en ninguna pieza que se pueda cambiar. Lo pones en la fuente, miras la placa… y empiezan las preguntas.</p>
+      </div>
+      <div class="bench" aria-label="Preguntas que aparecen frente a una placa">
+        <p class="bench__title">En el banco, frente a la placa:</p>
+        <ul class="bench__qs">
+          <li>¿Qué consumo está haciendo?</li>
+          <li>¿Qué línea debo revisar?</li>
+          <li>¿Dónde está ese componente en el esquemático?</li>
+          <li>¿Cómo compruebo si hay un corto?</li>
+          <li>¿Qué parte del circuito debería funcionar primero?</li>
+        </ul>
+      </div>
+    </div>
+    <p class="punch">“Tengo la placa enfrente, pero <mark class="hl">no sé qué hacer primero.</mark>”</p>
+  </div>
+</section>
+
+<!-- ============================ 2. DOLOR TÉCNICO ============================ -->
+<section class="sec sec--light sec--light2" id="problema">
+  <div class="wrap">
+    <p class="eyebrow" data-n="02">Lo que realmente falta</p>
+    <h2 class="h2">Tienes las herramientas. Lo difícil es entender lo que te están diciendo.</h2>
+    <div class="gaps">
+      <article class="gap"><span class="gap__tag">Fuente</span><p>Conectas la fuente y ves un consumo. No sabes si es normal o anormal, ni qué medir después.</p></article>
+      <article class="gap"><span class="gap__tag">Multímetro</span><p>No tienes claro dónde poner la primera punta ni con qué comparar el valor que te sale.</p></article>
+      <article class="gap"><span class="gap__tag">Esquemático</span><p>Lo abres y ves cientos de líneas y referencias, pero no sabes cómo llegar al circuito que necesitas revisar.</p></article>
+      <article class="gap"><span class="gap__tag">Líneas y secuencias</span><p>No distingues líneas principales de secundarias, ni en qué orden debería despertar la placa.</p></article>
+      <article class="gap"><span class="gap__tag">Componentes</span><p>PMIC, controladores de carga, memoria, CPU: sabes que están ahí, pero no qué hacen ni cómo se comunican entre sí.</p></article>
+      <article class="gap"><span class="gap__tag">Cortos y soldadura</span><p>Sospechas un corto, pero no sabes cómo rastrearlo. Y la microsoldadura todavía te da respeto.</p></article>
+    </div>
+    <p class="punch">Identificas el síntoma, pero no sabes relacionarlo con un circuito. Lo que falta no es otra herramienta: <mark class="hl">son fundamentos, conocimiento organizado y criterio de diagnóstico.</mark></p>
+  </div>
+</section>
+
+<!-- ============================ 3. ESCENAS DEL TALLER ============================ -->
+<section class="sec sec--dark" id="escenas">
+  <div class="wrap">
+    <p class="eyebrow" data-n="03">Escenas de taller</p>
+    <h2 class="h2">Así se ve en el día a día</h2>
+    <p class="intro">No a todos les pasa todo. Pero si reparas iPhone, seguro reconoces alguna.</p>
+    <div class="scenes-grid">
+      <ol class="scenes">
+        <li class="scene"><span class="scene__time">El cliente esperando</span><p>Mandaste el equipo a otro técnico porque no sabes diagnosticar la placa. Ahora el cliente te escribe a ti, y tú tienes que esperar a que el otro te conteste para poder responderle.</p></li>
+        <li class="scene"><span class="scene__time">El trabajo rechazado</span><p>Llega un equipo con una posible falla electrónica. Le cambias pantalla y batería con los ojos cerrados, pero la placa no sabes cómo abordarla. Terminas rechazándolo o derivándolo.</p></li>
+        <li class="scene"><span class="scene__time">La intervención sin diagnóstico</span><p>Pruebas sin un criterio claro: cambias un componente, luego otro, a ver si prende. Es girar la ruleta de las piezas, y cada intento sin diagnóstico aumenta el riesgo de dañar algo más.</p></li>
+      </ol>
+      <div class="phone-chat" aria-label="Ejemplo de conversación de WhatsApp con un cliente">
+        <div class="phone-chat__bar">
+          <span class="phone-chat__avatar" aria-hidden="true"></span>
+          <div><strong>Cliente</strong><small>en línea</small></div>
+        </div>
+        <div class="phone-chat__body">
+          <p class="bubble bubble--in">¿Y mi iPhone? ¿Ya saben qué tiene?<span>9:02</span></p>
+          <p class="bubble bubble--out">Todavía estoy esperando respuesta del técnico…<span>9:40 ✓✓</span></p>
+          <p class="bubble bubble--in">Ya van 5 días 😤<span>9:41</span></p>
+          <p class="typing" aria-hidden="true"><i></i><i></i><i></i></p>
+        </div>
+      </div>
+    </div>
+    <div class="conseq">
+      <h3 class="h3">Y detrás de esas escenas</h3>
+      <ul class="conseq__list">
+        <li>Dependes de otro taller: pierdes control del proceso, parte del margen y, a veces, respondes la garantía de un trabajo que no hiciste.</li>
+        <li>Sientes que te quedaste en los recambios, aunque quieres crecer.</li>
+        <li>Buscas en videos y grupos, pero la información llega en pedazos y no sabes cómo conectarla.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ 4. CAMBIO DE PERSPECTIVA ============================ -->
+<section class="sec sec--light" id="perspectiva">
+  <div class="wrap">
+    <p class="eyebrow" data-n="04">Cambio de perspectiva</p>
+    <h2 class="h2">No necesitas memorizar cada falla. Necesitas entender la placa.</h2>
+    <div class="versus">
+      <div class="versus__col versus__col--off">
+        <h3>Memorizar fallas</h3>
+        <ul>
+          <li>“En este modelo casi siempre es tal componente.”</li>
+          <li>Funciona… hasta que la falla no es la de siempre.</li>
+          <li>Cada modelo nuevo es volver a empezar.</li>
+          <li>Si no funciona, no sabes por qué.</li>
+        </ul>
+      </div>
+      <div class="versus__col versus__col--on">
+        <h3>Entender el circuito</h3>
+        <ul>
+          <li>Sabes qué debería pasar en la placa y en qué orden.</li>
+          <li>Mides con propósito: sabes qué buscas y con qué comparar.</li>
+          <li>El razonamiento te sirve aunque cambien el modelo y los componentes.</li>
+          <li>Si algo no cuadra, sabes dónde seguir investigando.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="punch">No se trata de aprender a cambiar más componentes. Se trata de <mark class="hl">comprender la placa para saber qué medir, dónde buscar y cómo empezar a diagnosticar.</mark></p>
+  </div>
+</section>
+
+<!-- ============================ 5. RUTA DE APRENDIZAJE ============================ -->
+<section class="sec sec--dark sec--dark2" id="metodo">
+  <div class="wrap">
+    <p class="eyebrow" data-n="05">Ruta de aprendizaje</p>
+    <h2 class="h2">De cambiar componentes a comenzar a diagnosticar placas</h2>
+    <ol class="steps steps--7">
+      <li class="step"><span class="step__n">1</span><div><h3>Comprender</h3><p>Fundamentos de electrónica y arquitectura de la placa.</p></div></li>
+      <li class="step"><span class="step__n">2</span><div><h3>Identificar</h3><p>Componentes, circuitos, líneas y etapas de funcionamiento.</p></div></li>
+      <li class="step"><span class="step__n">3</span><div><h3>Medir</h3><p>Fuente y multímetro, con un propósito y un criterio.</p></div></li>
+      <li class="step"><span class="step__n">4</span><div><h3>Interpretar</h3><p>Consumos, valores y esquemáticos: qué te dicen.</p></div></li>
+      <li class="step"><span class="step__n">5</span><div><h3>Diagnosticar</h3><p>Relacionar el síntoma con un circuito concreto.</p></div></li>
+      <li class="step"><span class="step__n">6</span><div><h3>Intervenir</h3><p>Cuando corresponde, y sabiendo hasta dónde llegar.</p></div></li>
+      <li class="step"><span class="step__n">7</span><div><h3>Verificar</h3><p>Comprobar que la intervención resolvió la falla.</p></div></li>
+    </ol>
+    <p class="note">Es un marco para aprender a razonar, no una receta rígida: cada falla pide su propio camino.</p>
+    <p class="punch">Antes de reparar una falla, <mark class="hl">necesitas entender cómo funciona el circuito.</mark></p>
+  </div>
+</section>
+
+<!-- ============================ 6. ENCENDIDO ============================ -->
+<section class="sec sec--dark" id="encendido">
+  <div class="wrap">
+    <p class="eyebrow" data-n="06">Profundización principal</p>
+    <div class="focus">
+      <div>
+        <h2 class="h2">Comienza a comprender lo que ocurre dentro de un iPhone cuando no enciende</h2>
+        <p class="prose--dark">El curso recorre los fundamentos de varios sistemas, pero el encendido es donde vamos más a fondo. Primero construyes la base (electrónica, arquitectura, herramientas, mediciones, esquemáticos, consumos y secuencias de alimentación) y después la aplicas a equipos que no encienden.</p>
+        <p class="focus__aside">Carga, audio, cámaras y radiofrecuencia: fundamentos, funcionamiento de los circuitos y orientación diagnóstica inicial. No es una especialización en esos sistemas.</p>
+      </div>
+      <div class="focus__box">
+        <p class="focus__lbl">Fallas de encendido · lo que se trabaja</p>
+        <ul class="checklist checklist--dark">
+          <li>Equipos que no encienden: por dónde empezar</li>
+          <li>Consumos iniciales, ausencia de consumo y consumos anormales</li>
+          <li>Cortocircuitos: cómo investigarlos y localizarlos</li>
+          <li>Líneas de alimentación y secuencias de arranque</li>
+          <li>Comprobación de circuitos relacionados con el encendido</li>
+          <li>Diagnóstico con fuente, multímetro y documentación técnica</li>
+          <li>Técnicas de intervención y verificación</li>
+        </ul>
+        <p class="focus__foot">El detalle final depende del temario definitivo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ CTA INTERMEDIO ============================ -->
+<section class="band" aria-label="Inscripción">
+  <div class="wrap band__inner">
+    <p class="band__txt">Deja de mirar la fuente sin saber qué significa el consumo.</p>
+    <div class="cta-group cta-group--band">
+      <a class="btn btn--dark" data-cta="checkout" data-cta-loc="banda" href="#precio">Inscribirme al curso — <span data-precio-actual>US$257</span></a>
+      <p class="microline microline--dark" data-price-line>Preventa US$257 · Ahorras US$213 · Pago único en USD</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ 7. LO QUE VAS A TRABAJAR ============================ -->
+<section class="sec sec--light" id="capacidades">
+  <div class="wrap">
+    <p class="eyebrow" data-n="07">Lo que vas a trabajar</p>
+    <h2 class="h2">Aprendizajes concretos, no promesas de dominio</h2>
+    <ul class="checklist">
+      <li>Identificarás los componentes y circuitos principales de una placa.</li>
+      <li>Comprenderás las bases del funcionamiento electrónico del iPhone.</li>
+      <li>Aprenderás a interpretar los consumos de una fuente de alimentación.</li>
+      <li>Desarrollarás habilidades para medir y contrastar resultados.</li>
+      <li>Aprenderás a usar los esquemáticos como herramienta de diagnóstico.</li>
+      <li>Conocerás procedimientos para investigar cortocircuitos.</li>
+      <li>Comprenderás mejor los sistemas involucrados en el encendido.</li>
+      <li>Practicarás el razonamiento para investigar fallas de placa.</li>
+      <li>Conocerás técnicas de soldadura, microsoldadura y reballing.</li>
+      <li>Tendrás más criterio para decidir cuándo intervenir y cuándo buscar apoyo.</li>
+    </ul>
+    <p class="punch">La próxima vez que tengas la placa enfrente, vas a saber <mark class="hl">qué mirar, qué medir y por dónde empezar.</mark></p>
+    <p class="note note--light">No significa resolver todas las fallas: significa tener fundamentos, un método para empezar y criterio para saber hasta dónde intervenir. Tu avance depende también de cuánto practiques entre sesiones.</p>
+  </div>
+</section>
+
+<!-- ============================ 9. INSTRUCTOR + EVIDENCIA ============================ -->
+<section class="sec sec--dark sec--dark2" id="instructor">
+  <div class="wrap">
+    <div class="instr">
+      <figure class="instr__photo">
+        <picture>
+          <source type="image/webp" srcset="/ricardo-academy/img/ricardo-gotfix-480.webp 480w, /ricardo-academy/img/ricardo-gotfix-800.webp 800w, /ricardo-academy/img/ricardo-gotfix-1200.webp 1200w" sizes="(min-width: 960px) 420px, 92vw">
+          <img src="/ricardo-academy/img/ricardo-gotfix-800.jpg" width="800" height="800" alt="Ricardo Hernández, instructor del curso" loading="lazy" decoding="async">
+        </picture>
+      </figure>
+      <div class="instr__copy">
+        <p class="eyebrow" data-n="09">Quién enseña</p>
+        <h2 class="h2">Ricardo Hernández</h2>
+        <p class="instr__role">Técnico en reparación de placas · Fundador del taller GOTFIX, especializado en dispositivos Apple · Neiva, Colombia</p>
+        <div class="prose prose--dark">
+          <p>Ricardo dirige GOTFIX, un taller con más de 7 años de operación y más de 5.000 equipos reparados, con una calificación de 4,9★ en Google (reseñas de clientes del taller).</p>
+          <p>En el curso vas a ver el mismo proceso que usa en el laboratorio: equipos reales, mediciones reales y explicaciones en vivo, con espacio para tus preguntas.</p>
+        </div>
+        <blockquote class="philo">
+          <p>“No necesitas memorizar cada componente. Necesitas aprender a interpretar lo que sucede en la placa.”</p>
+          <cite>Ricardo Hernández</cite>
+        </blockquote>
+      </div>
+    </div>
+    <h3 class="h3 evidence__title">Desde el laboratorio</h3>
+    <div class="evidence" id="evidencia"></div>
+  </div>
+</section>
+
+<!-- ============================ 10. TESTIMONIOS ============================ -->
+<section class="sec sec--light" id="prueba">
+  <div class="wrap">
+    <p class="eyebrow" data-n="10">Exalumnos</p>
+    <h2 class="h2">Lo que cuentan quienes ya estudiaron con Ricardo</h2>
+    <div class="testis" id="testimonios"></div>
+  </div>
+</section>
+
+<!-- ============================ 11. TEMARIO ============================ -->
+<section class="sec sec--dark" id="temario">
+  <div class="wrap wrap--narrow">
+    <p class="eyebrow" data-n="11">Temario</p>
+    <h2 class="h2">Una formación progresiva: primero la base, después el encendido</h2>
+    <p class="tag-pending">[AGRUPACIÓN PROVISIONAL – VALIDAR]</p>
+    <div class="acc" data-acc>
+      <details class="acc__item">
+        <summary><span class="acc__wk">Bloque 1</span><span class="acc__t">Fundamentos electrónicos y arquitectura de placas</span><span class="acc__s">La base para entender todo lo demás.</span></summary>
+        <div class="acc__body"><ul><li>Conceptos esenciales de electrónica.</li><li>Componentes electrónicos.</li><li>Arquitectura de la placa.</li><li>Circuitos y etapas de funcionamiento.</li><li>Líneas principales y secundarias.</li><li>Fundamentos de alimentación y comunicación.</li></ul></div>
+      </details>
+      <details class="acc__item">
+        <summary><span class="acc__wk">Bloque 2</span><span class="acc__t">Herramientas, esquemáticos y mediciones</span><span class="acc__s">Medir con propósito y leer la documentación.</span></summary>
+        <div class="acc__body"><ul><li>Herramientas de diagnóstico.</li><li>Fuente de alimentación.</li><li>Multímetro.</li><li>Software y documentación técnica.</li><li>Lectura e interpretación de esquemáticos.</li><li>Procedimientos y criterios de medición.</li></ul></div>
+      </details>
+      <details class="acc__item">
+        <summary><span class="acc__wk">Bloque 3</span><span class="acc__t">Diagnóstico electrónico</span><span class="acc__s">Del síntoma al circuito sospechoso.</span></summary>
+        <div class="acc__body"><ul><li>Interpretación de consumos.</li><li>Análisis de síntomas.</li><li>Identificación de circuitos sospechosos.</li><li>Comprobación de líneas.</li><li>Localización de cortocircuitos.</li><li>Procedimientos iniciales de diagnóstico.</li></ul></div>
+      </details>
+      <details class="acc__item acc__item--main" open>
+        <summary><span class="acc__wk">Bloque 4 · <b class="acc__flag">Profundización principal</b></span><span class="acc__t">Encendido: diagnóstico y reparación</span><span class="acc__s">Donde el curso va más a fondo.</span></summary>
+        <div class="acc__body"><ul><li>Arquitectura y secuencia de encendido.</li><li>Circuitos de alimentación.</li><li>Patrones de consumo.</li><li>Comprobación de fallas.</li><li>Análisis de casos reales.</li><li>Métodos de diagnóstico.</li><li>Técnicas de reparación aplicables.</li></ul></div>
+      </details>
+      <details class="acc__item">
+        <summary><span class="acc__wk">Bloque 5</span><span class="acc__t">Introducción a otros sistemas</span><span class="acc__s">Fundamentos y orientación diagnóstica inicial.</span></summary>
+        <div class="acc__body"><ul><li>Carga y controladores relacionados.</li><li>Audio.</li><li>Cámaras.</li><li>Radiofrecuencia.</li><li>Otros circuitos y componentes importantes.</li></ul></div>
+      </details>
+      <details class="acc__item">
+        <summary><span class="acc__wk">Bloque 6</span><span class="acc__t">Técnicas de intervención y buenas prácticas</span><span class="acc__s">Intervenir con cuidado y comprobar el resultado.</span></summary>
+        <div class="acc__body"><ul><li>Soldadura.</li><li>Microsoldadura.</li><li>Reballing.</li><li>Manejo de herramientas e insumos.</li><li>Evaluación de riesgos.</li><li>Verificación posterior a una intervención.</li></ul></div>
+      </details>
+    </div>
+    <p class="note">Los bloques agrupan los contenidos; no son semanas. La distribución de las 24 sesiones se publicará con el calendario definitivo.</p>
+    <div class="center-cta">
+      <a class="btn btn--gold" data-cta="precio" data-cta-loc="temario" href="#precio">Ver condiciones e inscripción</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ BONOS (solo si config.bonos tiene elementos) ============================ -->
+<section class="sec sec--dark sec--dark2" id="bonos" hidden>
+  <div class="wrap">
+    <p class="eyebrow" data-n="--">Bonos</p>
+    <h2 class="h2">Además del curso</h2>
+    <div class="cards cards--3" id="bonosList"></div>
+  </div>
+</section>
+
+<!-- ============================ 13. PRECIO ============================ -->
+<section class="sec sec--dark price" id="precio">
+  <div class="wrap">
+    <p class="eyebrow" data-n="13">Inscripción</p>
+    <h2 class="h2">Una sola oferta, con un precio de preventa real</h2>
+    <p class="urgency" data-urgency></p>
+    <div class="lotes" id="lotes"></div>
+    <p class="contrast" data-contrast></p>
+
+    <div class="price__box">
+      <div class="price__inc">
+        <h3 class="h3">Cómo funciona</h3>
+        <dl class="conds conds--dark">
+          <div><dt>Formato</dt><dd>En vivo por Zoom · 8 semanas · 24 sesiones · 48 horas</dd></div>
+          <div><dt>Horario</dt><dd>Lunes, miércoles y viernes · 1:00–3:00 p. m. (hora Colombia)</dd></div>
+          <div><dt>Inicio</dt><dd data-fecha-inicio-larga>lunes, 2 de noviembre de 2026</dd></div>
+          <div><dt>Metodología</dt><dd>Demostración técnica guiada en vivo + práctica autónoma</dd></div>
+          <div><dt>Grabaciones</dt><dd>Disponibles durante 6 meses</dd></div>
+          <div><dt>Certificado</dt><dd>Digital, de participación y finalización, con asistencia mínima del 80 % (20 de 24 sesiones)</dd></div>
+        </dl>
+        <details class="sched-toggle">
+          <summary>Ver el horario en tu país</summary>
+          <table class="sched__table" data-horarios><tbody></tbody></table>
+          <p class="note">Calculado con el horario vigente en noviembre de 2026. <span class="tag-pending tag-pending--inline">[CALENDARIO COMPLETO DE SESIONES – PENDIENTE]</span></p>
+        </details>
+      </div>
+      <div class="price__cta">
+        <p class="price__lote" data-lote-nombre>Preventa</p>
+        <p class="price__amount"><span class="price__old" data-precio-tachado>US$470</span><span class="price__now" data-precio-actual>US$257</span></p>
+        <div data-cd-block>
+          <p class="price__cd-lbl" data-countdown-label>La preventa cierra en</p>
+          <div class="countdown countdown--big" data-countdown>
+            <div><span data-d>00</span><small>días</small></div>
+            <div><span data-h>00</span><small>horas</small></div>
+            <div><span data-m>00</span><small>min</small></div>
+            <div><span data-s>00</span><small>seg</small></div>
+          </div>
+        </div>
+        <a class="btn btn--gold btn--pulse btn--xl" data-cta="checkout" data-cta-loc="precio" href="#">Inscribirme al curso — <span data-precio-actual>US$257</span></a>
+        <p class="microline" data-price-line>Preventa US$257 · Ahorras US$213 · Pago único en USD</p>
+        <p class="cobro" data-cobro hidden></p>
+        <p class="tag-pending" data-checkout-pending hidden>[ENLACE DE PAGO – PENDIENTE: configúralo en config.js → lotes[].checkoutUrl]</p>
+        <a class="btn btn--ghost btn--sm" data-cta="whatsapp" data-cta-loc="precio" href="#" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-wa"/></svg> Tengo preguntas: hablar con el asesor</a>
+        <p class="pay">Pago: <span data-metodos>[PASARELA Y MÉTODOS DE PAGO – PENDIENTE]</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ GARANTÍA (solo si config.garantia.activa) ============================ -->
+<section class="sec sec--light" id="garantia" hidden>
+  <div class="wrap wrap--narrow guarantee">
+    <div class="seal" aria-hidden="true"><span>GARANTÍA</span></div>
+    <div>
+      <h2 class="h2" data-garantia-titulo></h2>
+      <p data-garantia-texto></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ 14. FILTRO ============================ -->
+<section class="sec sec--light sec--light2" id="filtro">
+  <div class="wrap">
+    <p class="eyebrow" data-n="14">Antes de inscribirte</p>
+    <h2 class="h2">Este curso no es para todo el mundo (y está bien)</h2>
+    <div class="filter">
+      <div class="fcard fcard--yes">
+        <h3>Esto es para ti ✅</h3>
+        <ul>
+          <li>Ya cambias pantallas, baterías, cámaras y flexores en iPhone, y quieres entender la placa.</li>
+          <li>Reparas Android y quieres dar el paso a iPhone con bases sólidas.</li>
+          <li>Tienes (o vas a conseguir) fuente, multímetro y estación de soldadura.</li>
+          <li>Buscas fundamentos y un método, no trucos sueltos.</li>
+          <li>Puedes conectarte en vivo a la mayoría de las sesiones o ver las grabaciones.</li>
+        </ul>
+      </div>
+      <div class="fcard fcard--no">
+        <h3>Esto NO es para ti ❌</h3>
+        <ul>
+          <li>Nunca has abierto un iPhone → empieza por un curso de cambio de piezas; aquí vas a sufrir.</li>
+          <li>Esperas salir experto en 8 semanas → esto es el comienzo del camino, no la meta.</li>
+          <li>Buscas el truco que arregla todo en 5 minutos → ese truco no existe.</li>
+          <li>Quieres el certificado sin conectarte → pide 80 % de asistencia, no buena intención.</li>
+          <li>No piensas practicar entre clases → la placa no se aprende mirando.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ 15. FAQ ============================ -->
+<section class="sec sec--light" id="faq">
+  <div class="wrap wrap--narrow">
+    <p class="eyebrow" data-n="15">Preguntas frecuentes</p>
+    <h2 class="h2">Las preguntas que nos llegan por WhatsApp</h2>
+    <div class="acc acc--light" data-acc>
+      <details class="acc__item"><summary><span class="acc__t">¿Necesito saber reparar iPhone antes de entrar?</span></summary><div class="acc__body"><p>Necesitas experiencia de taller a nivel de recambios: desarmar el equipo y cambiar pantalla, batería, cámaras o flexores. El curso no enseña a cambiar la primera pantalla; empieza donde termina el recambio.</p></div></details>
+      <details class="acc__item"><summary><span class="acc__t">¿El curso es para técnicos que solamente cambian piezas?</span></summary><div class="acc__body"><p>Sí. Está pensado justamente para el técnico que ya hace recambios y quiere empezar a comprender, diagnosticar y reparar fallas de placa.</p></div></details>
+      <details class="acc__item"><summary><span class="acc__t">¿Puedo participar si tengo experiencia reparando Android?</span></summary><div class="acc__body"><p>Sí. Tu experiencia de taller te sirve como base. El curso se enfoca en placas de iPhone, así que conviene que ya hayas abierto y desarmado alguno.</p></div></details>
+      <details class="acc__item"><summary><span class="acc__t">¿Aprenderé desde los fundamentos de electrónica?</span></summary><div class="acc__body"><p>Sí. El programa empieza con conceptos esenciales de electrónica, componentes y arquitectura de la placa, antes de pasar a mediciones y diagnóstico.</p></div></details>
+      <details class="acc__item"><summary><span class="acc__t">¿Aprenderé a interpretar consumos de una fuente?</span></summary><div class="acc__body"><p>Sí. La interpretación de consumos y sus patrones es una parte central del curso, sobre todo en el diagnóstico de fallas de encendido.</p></div></details>
+      <details class="acc__item"><summary><span class="acc__t">¿Aprenderé a leer esquemáticos?</span></summary><div class="acc__body"><p>Sí. Se trabaja la lectura e interpretación de esquemáticos y el uso de documentación técnica como herramienta de diagnóstico.</p></div></details>
+      <details class="acc__item"><summary><span class="acc__t">¿El curso profundiza en fallas de encendido?</span></summary><div class="acc__body"><p>Sí. Es la profundización principal: primero se construye la base y después se aplica a equipos que no encienden, consumos anormales, cortos, líneas de alimentación y secuencias de arranque.</p></div></details>
+      <details class="acc__item"><summary><span class="acc__t">¿También veremos carga, audio, cámaras y radiofrecuencia?</span></summary><div class="acc__body"><p>Sí, a nivel de fundamentos, funcionamiento de los circuitos y orientación diagnóstica inicial. No es una especialización en esos sistemas.</p></div></details>
+      <details class="acc__item"><summary><span class="acc__t">¿Aprenderé a reparar todas las fallas de placa?</span></summary><div class="acc__body"><p>No, y desconfía de quien te lo prometa en 8 semanas. Vas a trabajar los fundamentos y las habilidades de diagnóstico para empezar a reparar placas con más criterio, especialmente en encendido, y a reconocer hasta dónde puedes intervenir y cuándo buscar apoyo.</p></div></details>
+      <details class="acc__item"><summary><span class="acc__t">¿Necesito herramientas y placas para practicar?</span></summary><div class="acc__body"><p>Para practicar necesitas herramientas básicas de banco, como fuente de alimentación, multímetro y estación de soldadura. Las placas dañadas o de descarte son muy útiles para practicar. [LISTA MÍNIMA DE HERRAMIENTAS Y REQUISITO DE PLACAS – PENDIENTE]</p></div></details>
+      <details class="acc__item"><summary><span class="acc__t">¿Qué pasa si no puedo asistir a una clase?</span></summary><div class="acc__body"><p>Todas las sesiones quedan grabadas. Ten en cuenta que el certificado requiere asistencia mínima del 80 % (20 de 24 sesiones).</p></div></details>
+      <details class="acc__item"><summary><span class="acc__t">¿Durante cuánto tiempo podré ver las grabaciones?</span></summary><div class="acc__body"><p>Durante 6 meses. [CONFIRMAR DESDE QUÉ FECHA SE CUENTAN]</p></div></details>
+      <details class="acc__item"><summary><span class="acc__t">¿Cómo funciona el certificado?</span></summary><div class="acc__body"><p>Es un certificado digital de participación y finalización que se entrega con una asistencia mínima del 80 % (20 de 24 sesiones). No es una certificación profesional oficial.</p></div></details>
+      <details class="acc__item"><summary><span class="acc__t">¿Puedo participar desde otro país?</span></summary><div class="acc__body"><p>Sí. Las clases son en vivo por Zoom y el curso está pensado para técnicos de Latinoamérica, Estados Unidos y España.</p><p class="sched__days" data-sched-days>Lunes, miércoles y viernes</p><table class="sched__table sched__table--light" data-horarios><tbody></tbody></table></div></details>
+      <details class="acc__item"><summary><span class="acc__t">¿Cómo se realiza el pago?</span></summary><div class="acc__body"><p>Es un pago único a través de Wompi (Bancolombia). El precio se publica en dólares, pero el cobro se hace en pesos colombianos: la preventa de US$257 se cobra como COP 817.466.</p><p>Desde Colombia puedes pagar con tarjeta débito o crédito, PSE, Nequi, transferencia o corresponsales Bancolombia. Desde otro país, con tarjeta de crédito o débito; tu banco hace la conversión y puede aplicar su propia comisión. [CONFIRMAR CON WOMPI QUE SE ACEPTAN TARJETAS EMITIDAS FUERA DE COLOMBIA]</p><p>Si tu medio de pago no funciona, escríbele al Asesor Académico.</p></div></details>
+      <details class="acc__item"><summary><span class="acc__t">¿Hay reembolsos?</span></summary><div class="acc__body"><p>[POLÍTICA PENDIENTE]. Consulta la <a href="/ricardo-academy/reembolsos.html">Política de reembolsos</a>.</p></div></details>
+      <details class="acc__item"><summary><span class="acc__t">¿Puedo hablar con un asesor antes de matricularme?</span></summary><div class="acc__body"><p>Sí. Escríbele al Asesor Académico por <a href="#" data-cta="whatsapp" data-cta-loc="faq-respuesta" target="_blank" rel="noopener">WhatsApp</a> y resuelve tus dudas antes de inscribirte.</p></div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ 16. CIERRE ============================ -->
+<section class="sec sec--dark closing" id="cierre">
+  <div class="wrap wrap--narrow center">
+    <p class="eyebrow eyebrow--center" data-n="16">Última cosa</p>
+    <h2 class="h2">Las próximas 8 semanas van a pasar igual.</h2>
+    <p class="closing__lead">La diferencia es si las pasas mirando la fuente sin saber qué significa, o <mark class="hl">aprendiendo a interpretarla.</mark></p>
+    <div data-cd-block>
+      <p class="price__cd-lbl" data-countdown-label>La preventa cierra en</p>
+      <div class="countdown" data-countdown>
+        <div><span data-d>00</span><small>días</small></div>
+        <div><span data-h>00</span><small>horas</small></div>
+        <div><span data-m>00</span><small>min</small></div>
+        <div><span data-s>00</span><small>seg</small></div>
+      </div>
+    </div>
+    <div class="cta-group cta-group--center">
+      <a class="btn btn--gold btn--xl" data-cta="checkout" data-cta-loc="cierre" href="#">Quiero comenzar mi formación</a>
+      <p class="microline" data-price-line>Preventa US$257 · Ahorras US$213 · Pago único en USD</p>
+      <a class="btn btn--ghost btn--sm" data-cta="whatsapp" data-cta-loc="cierre" href="#" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-wa"/></svg> Hablar con el Asesor Académico</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <p class="footer__brand">RICARDO HERNÁNDEZ</p>
+    <nav class="footer__links" aria-label="Legal">
+      <a href="/ricardo-academy/terminos.html">Términos de compra</a>
+      <a href="/ricardo-academy/reembolsos.html">Política de reembolsos</a>
+      <a href="/ricardo-academy/datos-personales.html">Tratamiento de datos personales</a>
+    </nav>
+    <p class="footer__note">Formación técnica con el respaldo del taller GOTFIX (Neiva, Colombia). Los datos de 7+ años, 5.000+ equipos y 4,9★ en Google corresponden a la trayectoria del taller, no a una calificación de este curso. No está afiliado a Apple Inc.; iPhone es una marca de Apple Inc.</p>
+    <p class="footer__copy">© <span data-year>2026</span> Ricardo Hernández · GOTFIX. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<!-- Barra fija inferior (móvil) -->
+<div class="stickybar" id="stickybar" aria-hidden="true">
+  <div class="stickybar__info">
+    <p class="stickybar__price"><span data-precio-actual>US$257</span> <s data-precio-tachado>US$470</s></p>
+    <p class="stickybar__cd"><span data-countdown-short>Preventa cierra en 00d : 00h : 00m</span></p>
+  </div>
+  <a class="btn btn--gold btn--sm" data-cta="checkout" data-cta-loc="barra" href="#" tabindex="-1">Inscribirme</a>
+</div>
+
+<!-- WhatsApp flotante -->
+<a class="wa-float" data-cta="whatsapp" data-cta-loc="flotante" href="#" target="_blank" rel="noopener" aria-label="Hablar con el Asesor Académico por WhatsApp">
+  <svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><use href="#i-wa"/></svg>
+</a>
+
+<!-- Formulario de contacto (solo se abre si la persona lo pide) -->
+<div class="modal" id="leadModal" role="dialog" aria-modal="true" aria-labelledby="leadTitle" hidden>
+  <div class="modal__backdrop" data-close-lead></div>
+  <div class="modal__card">
+    <button class="modal__x" type="button" data-close-lead aria-label="Cerrar">×</button>
+    <h2 class="h3" id="leadTitle">Habla con el Asesor Académico</h2>
+    <p class="modal__sub">Déjanos tus datos y te llevamos a WhatsApp para que resuelvas tus dudas sobre el curso.</p>
+    <form id="leadForm" novalidate>
+      <label>Nombre<input name="nombre" autocomplete="name" required minlength="2"></label>
+      <label>Correo<input name="correo" type="email" autocomplete="email" required></label>
+      <label>País
+        <select name="pais" required>
+          <option value="">Selecciona tu país</option>
+          <option>Colombia</option><option>México</option><option>Perú</option><option>Chile</option><option>Argentina</option><option>Ecuador</option><option>Venezuela</option><option>Bolivia</option><option>Paraguay</option><option>Uruguay</option><option>Guatemala</option><option>Honduras</option><option>El Salvador</option><option>Nicaragua</option><option>Costa Rica</option><option>Panamá</option><option>República Dominicana</option><option>Puerto Rico</option><option>Cuba</option><option>Estados Unidos</option><option>España</option><option>Otro</option>
+        </select>
+      </label>
+      <label>WhatsApp (con indicativo)<input name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" placeholder="+57 300 000 0000" required></label>
+      <fieldset>
+        <legend>Tu experiencia técnica</legend>
+        <label class="radio"><input type="radio" name="experiencia" value="recambios_iphone" required> Hago recambios en iPhone</label>
+        <label class="radio"><input type="radio" name="experiencia" value="android"> Reparo Android y quiero pasar a iPhone</label>
+        <label class="radio"><input type="radio" name="experiencia" value="microsoldadura"> Ya hago algo de microsoldadura</label>
+        <label class="radio"><input type="radio" name="experiencia" value="otro"> Otro</label>
+      </fieldset>
+      <p class="form__err" id="leadErr" role="alert"></p>
+      <p class="form__ok" id="leadOk" role="status" hidden></p>
+      <button class="btn btn--gold" type="submit">Continuar a WhatsApp</button>
+      <p class="form__legal">Al enviar aceptas el <a href="/ricardo-academy/datos-personales.html" target="_blank">tratamiento de datos personales</a>.</p>
+    </form>
+  </div>
+</div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2a9.9 9.9 0 0 0-8.5 15l-1.4 5 5.1-1.3A9.9 9.9 0 1 0 12.04 2zm0 18.1a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3a8.2 8.2 0 1 1 6.9 3.8zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 2.9 2.9 0 0 0-.9 2.2 5 5 0 0 0 1 2.7 11.5 11.5 0 0 0 4.4 3.9c1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></symbol>
+</svg>
+</body>
+</html>

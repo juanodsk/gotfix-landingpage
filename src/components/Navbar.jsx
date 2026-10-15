@@ -12,6 +12,7 @@ import {
 const enlaces = [
   { to: "/", texto: "Inicio", end: true },
   { to: "/servicios", texto: "Servicios" },
+  { to: "/ricardo-academy", texto: "Cursos", reloadDocument: true },
   { to: "/condiciones", texto: "Condiciones" },
   { to: "/pqrs", texto: "PQRS" },
   { to: "/contactanos", texto: "Contáctanos" },
@@ -59,12 +60,13 @@ const Navbar = () => {
           </NavLink>
         </div>
 
-        <ul className="hidden items-center gap-7 lg:flex xl:gap-9">
+        <ul className="hidden items-center gap-4 lg:flex xl:gap-7">
           {enlaces.map((enlace) => (
             <li key={enlace.to}>
               <NavLink
                 to={enlace.to}
                 end={enlace.end}
+                reloadDocument={enlace.reloadDocument}
                 className={claseEnlace}
               >
                 {enlace.texto}
@@ -107,6 +109,7 @@ const Navbar = () => {
                 <NavLink
                   to={enlace.to}
                   end={enlace.end}
+                  reloadDocument={enlace.reloadDocument}
                   className={({ isActive }) =>
                     `block rounded-lg px-3 py-2.5 transition hover:bg-white/5 hover:text-[#0087fa] ${
                       isActive ? "bg-white/5 text-[#0087fa]" : "text-white"

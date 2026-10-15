@@ -4,7 +4,8 @@ import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 
 export default [
-  { ignores: ['dist'] },
+  // Scripts clásicos de la landing entregada: se validan con node --check.
+  { ignores: ['dist', 'public/ricardo-academy/js/config.js', 'public/ricardo-academy/js/main.js'] },
   {
     files: ['**/*.{js,jsx}'],
     languageOptions: {

@@ -33,7 +33,12 @@
     }
   ],
 
+  "redirects": [
+    { "source": "/cursos/:path*", "destination": "/ricardo-academy/:path*", "permanent": true }
+  ],
   "rewrites": [
+    { "source": "/ricardo-academy", "destination": "/ricardo-academy/index.html" },
+    { "source": "/ricardo-academy/", "destination": "/ricardo-academy/index.html" },
     { "source": "/((?!api/).*)", "destination": "/index.html" }
   ]
 }
