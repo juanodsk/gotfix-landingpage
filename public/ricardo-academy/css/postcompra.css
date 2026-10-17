@@ -47,8 +47,6 @@
 .purchase-course > span { color: var(--muted-light); font-size: 13px; }
 .purchase-footer { display: flex; justify-content: space-between; gap: 16px; border-top: 1px solid var(--line-dark); padding-top: 24px; padding-bottom: 28px; color: #C4C4CB; font-size: 12px; }
 .purchase-footer p { margin: 0; }
-.purchase-footer a { text-underline-offset: 4px; }
-.purchase-footer a:hover { color: var(--gold); }
 @media (max-width: 960px) { .purchase-layout { gap: 36px; } .purchase-contact { padding: 26px; } }
 @media (max-width: 740px) {
   .purchase-header { align-items: flex-start; gap: 14px; padding-top: 22px; padding-bottom: 22px; }
