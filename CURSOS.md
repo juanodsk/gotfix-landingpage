@@ -40,6 +40,8 @@ Los MOV originales sumaban 234.231.530 bytes; los MP4 suman 23.396.401 bytes (ap
 
 Los nombres incluyen hash de contenido. `vercel.json` configura caché inmutable para esta carpeta; no sustituir archivos manteniendo su nombre. Para actualizar material, generar archivos nuevos y cambiar `video`/`poster` en `config.js`.
 
+Los MP4 de esta carpeta se guardan como binarios normales mediante la excepción en `.gitattributes`. Vercel entregaba punteros Git LFS de 132 bytes en el primer despliegue; las rutas `720p-web` evitan reutilizar esas respuestas cacheadas. Al verificar un despliegue, comprobar tamaño real y firma MP4 (`ftyp`), además de MIME `video/mp4` y respuesta 206 para peticiones Range.
+
 La conversión se puede reproducir con `node src/scripts/optimizarTestimonios.mjs` y un FFmpeg con libx264/libwebp en PATH, o mediante `FFMPEG_PATH`. El script descarga los originales en `output/playwright/video-optimization/` (ignorado por Git), conserva su contenido y publica solo las versiones optimizadas. Su `report.json` indica las rutas que deben actualizarse en configuración. Las herramientas de conversión son locales y no se ejecutan en la web ni en Vercel.
 
 Comparación local en Chrome con limitación CDP de 1,5 Mbps/150ms y caché desactivada, primer testimonio:

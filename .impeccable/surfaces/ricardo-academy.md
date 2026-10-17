@@ -22,6 +22,8 @@ Los títulos usan Barlow Condensed, el cuerpo IBM Plex Sans y las cifras y rótu
 
 ## Testimonios en video
 
+Corrección de entrega en producción: los MP4 de `public/ricardo-academy/videos/` quedan excluidos de Git LFS para que Vercel reciba los binarios reales. Las nuevas URLs `720p-web` evitan la caché de los punteros de texto entregados anteriormente. Los controles, códecs y calidad de imagen se conservan.
+
 Camilo F., Juan, Kevin y Yan Carlos aparecen en `/ricardo-academy#prueba`. `video` y `poster` en `js/config.js` apuntan a archivos locales de `public/ricardo-academy/videos/`; `original` conserva cada URL firmada de Supabase para recuperación. No se añaden citas ni países. Los MP4 usan H.264 a 720 × 1280/30fps y audio AAC, con `faststart`; las portadas WebP proceden del segundo 0,3 de los videos reales.
 
 Los reproductores mantienen controles nativos, `playsinline` y nombre accesible. Comienzan con `preload="none"`; `IntersectionObserver` cambia a `preload="auto"` cuando están a 240px de entrar en pantalla para preparar el búfer antes del clic. Si `navigator.connection.saveData` indica ahorro de datos, se limita a `metadata`. Sin ese observador se aplica directamente la misma selección de precarga. Al reproducir uno se pausan los demás. Por solicitud del usuario, se retiró el aviso con enlace al archivo original ante errores. Por solicitud del usuario, los videos se presentan sin nombres visibles ni tarjetas blancas: se retiraron fondo, borde y relleno exterior; se conservan los marcos del reproductor y los nombres accesibles; la cuadrícula presenta una columna en móvil, dos desde 640px y cuatro desde 1200px cuando hay cuatro testimonios.

@@ -57,7 +57,7 @@ for (let i = 0; i < videos.length; i++) {
     '-c:a', 'aac', '-b:a', '96k', '-ac', '2', '-movflags', '+faststart', '-map_metadata', '-1', mp4]);
   await run(['-ss', '0.3', '-i', original, '-frames:v', '1', '-vf', 'scale=360:-2',
     '-c:v', 'libwebp', '-quality', '78', '-map_metadata', '-1', poster]);
-  const optimized = await publish(mp4, `testimonio-${slug}-720p`, 'mp4');
+  const optimized = await publish(mp4, `testimonio-${slug}-720p-web`, 'mp4');
   const cover = await publish(poster, `testimonio-${slug}-poster`, 'webp');
   const originalBytes = (await stat(original)).size;
   const item = { nombre: video.nombre, originalBytes, video: optimized, poster: cover,
