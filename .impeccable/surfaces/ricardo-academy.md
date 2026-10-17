@@ -13,6 +13,8 @@ Los títulos usan Barlow Condensed, el cuerpo IBM Plex Sans y las cifras y rótu
 
 ## Integración y configuración
 
+Por solicitud del usuario se retiraron de la landing el bloque «Desde el laboratorio» con sus cuatro placeholders, el aviso «AGRUPACIÓN PROVISIONAL – VALIDAR» y la navegación legal del footer. El temario, instructor, testimonios y los documentos auxiliares conservan su contenido.
+
 - `/ricardo-academy` y `/ricardo-academy/` sirven `public/ricardo-academy/index.html` mediante Vite en desarrollo/preview y las reglas de Vercel en despliegue.
 - Documentos auxiliares: `/ricardo-academy/gracias.html`, `/ricardo-academy/terminos.html`, `/ricardo-academy/reembolsos.html` y `/ricardo-academy/datos-personales.html`.
 - **Cursos** en `src/components/Navbar.jsx` usa `NavLink` con `reloadDocument` en ambos menús.

@@ -15,6 +15,8 @@ Vite sirve la landing mediante el middleware de `vite.config.js`, tanto en desar
 
 ## Configuración conservada
 
+La landing ya no muestra el bloque pendiente «Desde el laboratorio», el aviso de agrupación provisional del temario ni los tres enlaces legales del footer, retirados a petición del usuario. Los documentos legales siguen disponibles en sus rutas.
+
 Editar `public/ricardo-academy/js/config.js` para cambiar fechas, precios, pagos, videos o medición. El dominio de referencia es `https://gotfix.co/ricardo-academy`. La entrega fija el inicio para el 2 de noviembre de 2026 y el cierre de preventa para el 25 de octubre a las 23:59:59, hora de Colombia.
 
 El enlace de preventa de Wompi viene configurado. En el comercio de Wompi, la URL de retorno debe apuntar a `https://gotfix.co/ricardo-academy/gracias.html`. Esta configuración externa no se modifica desde el repositorio.
