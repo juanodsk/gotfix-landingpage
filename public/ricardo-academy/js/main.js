@@ -285,14 +285,28 @@
 
   function renderTestimonios() {
     var t = cfg.testimonios || [], ph = cfg.mostrarPlaceholders !== false, tw = $("#testimonios");
+    tw.classList.toggle("testis--four", t.length === 4);
     if (t.length) {
       tw.innerHTML = t.map(function (x) {
-        var vid = x.video ? '<div class="phonevid"><video src="' + esc(x.video) + '"' + (x.poster ? ' poster="' + esc(x.poster) + '"' : "") + ' controls playsinline preload="none"></video></div>' : "";
-        return '<article class="testi">' + vid +
-          '<p class="testi__name">' + esc(x.nombre) + '</p><p class="testi__meta">' + esc(x.pais || "") + "</p>" +
+        var vid = x.video ? '<div class="phonevid"><video src="' + esc(x.video) + '" aria-label="Testimonio de ' + esc(x.nombre) + '"' + (x.poster ? ' poster="' + esc(x.poster) + '"' : "") + ' controls playsinline preload="none"></video></div>' : "";
+        return '<article class="testi' + (x.video ? ' testi--video' : '') + '">' + vid +
+          (x.video ? "" : '<p class="testi__name">' + esc(x.nombre) + '</p><p class="testi__meta">' + esc(x.pais || "") + "</p>") +
           (x.tema ? '<span class="testi__fail">' + esc(x.tema) + "</span>" : "") +
           (x.texto ? '<p class="testi__txt">“' + esc(x.texto) + '”</p>' : "") + "</article>";
       }).join("");
+      var videos = $$("video", tw);
+      videos.forEach(function (video) {
+        video.addEventListener("play", function () { videos.forEach(function (other) { if (other !== video) other.pause(); }); });
+      });
+      // MP4 compactos con el índice al comienzo: preparar el búfer antes del clic.
+      // En ahorro de datos se limita a metadatos, conservando el control del visitante.
+      function loadVideo(video) { video.preload = navigator.connection && navigator.connection.saveData ? "metadata" : "auto"; video.load(); }
+      if ("IntersectionObserver" in window) {
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) { if (entry.isIntersecting) { loadVideo(entry.target); observer.unobserve(entry.target); } });
+        }, { rootMargin: "240px" });
+        videos.forEach(function (video) { observer.observe(video); });
+      } else videos.forEach(loadVideo);
     } else if (ph) {
       tw.innerHTML = [1, 2, 3].map(function () { return '<article class="testi testi--ph"><div class="phonevid phonevid--ph">[TESTIMONIO EN VIDEO – PENDIENTE]</div></article>'; }).join("");
     } else {

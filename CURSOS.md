@@ -24,9 +24,32 @@ El enlace de preventa de Wompi viene configurado. En el comercio de Wompi, la UR
 - Enlace de pago y monto en COP del precio normal (desde el 26 de octubre).
 - `leadWebhookUrl`: sin configurar, el formulario continúa a WhatsApp y no guarda el contacto en un CRM.
 - Textos legales de compra, reembolsos y tratamiento de datos: contienen avisos de pendiente; no equivalen a los términos del servicio de reparación.
-- Video de la variante A, testimonios, evidencia e identificadores de medición.
+- Video de la variante A, evidencia e identificadores de medición.
 
 Se conserva `mostrarPlaceholders: true`, como en el material recibido. No se inventaron políticas, testimonios ni integraciones externas.
+
+## Testimonios en video
+
+Los cuatro videos enviados (Camilo F., Juan, Kevin y Yan Carlos) están configurados en `js/config.js`, dentro de `testimonios`, y aparecen en `/ricardo-academy#prueba`. Se reproducen copias MP4 optimizadas alojadas en `public/ricardo-academy/videos/`; los enlaces firmados de Supabase suministrados se conservan como `original` para recuperación. No se inventaron citas ni datos personales adicionales.
+
+Los reproductores mantienen controles y reproducción en la propia página. Preparan el búfer con `preload="auto"` al acercarse a la sección (240px), y usan solo metadatos si el navegador indica ahorro de datos. Esto busca reducir la espera **después de pulsar play**. Pausan los otros testimonios cuando comienza uno. La cuadrícula presenta cuatro columnas en escritorio amplio, dos en tablet y una en celular. Por solicitud del usuario, no se muestra el aviso ni el enlace externo cuando falla un video.
+
+### Optimización del arranque de reproducción
+
+Los MOV originales sumaban 234.231.530 bytes; los MP4 suman 23.396.401 bytes (aproximadamente 90 % menos). Se conserva la duración y el audio, con video H.264 a 720 × 1280/30fps, audio AAC y `faststart` para situar el índice antes de los datos. Las portadas WebP extraídas del segundo 0,3 suman 84.440 bytes.
+
+Los nombres incluyen hash de contenido. `vercel.json` configura caché inmutable para esta carpeta; no sustituir archivos manteniendo su nombre. Para actualizar material, generar archivos nuevos y cambiar `video`/`poster` en `config.js`.
+
+La conversión se puede reproducir con `node src/scripts/optimizarTestimonios.mjs` y un FFmpeg con libx264/libwebp en PATH, o mediante `FFMPEG_PATH`. El script descarga los originales en `output/playwright/video-optimization/` (ignorado por Git), conserva su contenido y publica solo las versiones optimizadas. Su `report.json` indica las rutas que deben actualizarse en configuración. Las herramientas de conversión son locales y no se ejecutan en la web ni en Vercel.
+
+Comparación local en Chrome con limitación CDP de 1,5 Mbps/150ms y caché desactivada, primer testimonio:
+
+| Momento del clic | MOV original | MP4 optimizado |
+| --- | ---: | ---: |
+| Al llegar a la sección | 12.554 ms | 3.687 ms |
+| Tras 5 segundos en la sección | 6.471 ms | 45 ms |
+
+Se midió desde solicitar reproducción hasta presentar el primer fotograma. Es una medición puntual simulada, no una garantía de tiempos en producción ni una prueba en un teléfono físico. El MOV se sirvió desde Supabase y el MP4 desde el servidor local; la comprobación de red/CDN tras desplegar sigue pendiente.
 
 ## Validación local
 

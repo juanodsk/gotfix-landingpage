@@ -53,7 +53,32 @@ window.LANDING_CONFIG = {
 
   /* TESTIMONIOS REALES Y AUTORIZADOS (no inventar ni editar lo que dijo el estudiante).
      { nombre, pais, video: "img/testi-1.mp4", poster: "img/testi-1.webp", texto (cita literal opcional), tema: "Interpretar consumos" } */
-  testimonios: [],
+  testimonios: [
+    {
+      "nombre": "Camilo F.",
+      "video": "/ricardo-academy/videos/testimonio-camilo-f-720p-f520c45d8f4e.mp4",
+      "poster": "/ricardo-academy/videos/testimonio-camilo-f-poster-e2eb92147587.webp",
+      "original": "https://gotfix-supabase-cb387e-152-53-91-93.sslip.io/storage/v1/object/sign/VIDEOS/LANDING%20CURSO/TESTIMONIO%20CAMILO%20F.MOV?token=eyJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJWSURFT1MvTEFORElORyBDVVJTTy9URVNUSU1PTklPIENBTUlMTyBGLk1PViIsImlhdCI6MTc5MjEwNjEwMiwiZXhwIjozMzMyODEwNjEwMn0.RBF6Yp7ilswDJpNWfPo0h6EHa-w9J1W0Ftb_SjQOj9U"
+    },
+    {
+      "nombre": "Juan",
+      "video": "/ricardo-academy/videos/testimonio-juan-720p-37366abec936.mp4",
+      "poster": "/ricardo-academy/videos/testimonio-juan-poster-1f2958c069b7.webp",
+      "original": "https://gotfix-supabase-cb387e-152-53-91-93.sslip.io/storage/v1/object/sign/VIDEOS/LANDING%20CURSO/TESTIMONIO%20JUAN%20.MOV?token=eyJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJWSURFT1MvTEFORElORyBDVVJTTy9URVNUSU1PTklPIEpVQU4gLk1PViIsImlhdCI6MTc5MjEwNjE1MywiZXhwIjozMzMyODEwNjE1M30.z74sLSPZgb85Tmd5dDyAHqgDClneomU0ap5WShaVLb0"
+    },
+    {
+      "nombre": "Kevin",
+      "video": "/ricardo-academy/videos/testimonio-kevin-720p-ceec84478119.mp4",
+      "poster": "/ricardo-academy/videos/testimonio-kevin-poster-da46b39994f2.webp",
+      "original": "https://gotfix-supabase-cb387e-152-53-91-93.sslip.io/storage/v1/object/sign/VIDEOS/LANDING%20CURSO/TESTIMONIO%20KEVIN.MOV?token=eyJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJWSURFT1MvTEFORElORyBDVVJTTy9URVNUSU1PTklPIEtFVklOLk1PViIsImlhdCI6MTc5MjEwNjE2NSwiZXhwIjozMzMyODEwNjE2NX0.qvsruj-FAET_uvSaiUggrmUbzWZ1hOUIFG9gR5Y5pE0"
+    },
+    {
+      "nombre": "Yan Carlos",
+      "video": "/ricardo-academy/videos/testimonio-yan-carlos-720p-2e59cf9987a4.mp4",
+      "poster": "/ricardo-academy/videos/testimonio-yan-carlos-poster-f7171ba79138.webp",
+      "original": "https://gotfix-supabase-cb387e-152-53-91-93.sslip.io/storage/v1/object/sign/VIDEOS/LANDING%20CURSO/TESTIMONIO%20YAN%20CARLOS%20.MOV?token=eyJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJWSURFT1MvTEFORElORyBDVVJTTy9URVNUSU1PTklPIFlBTiBDQVJMT1MgLk1PViIsImlhdCI6MTc5MjEwNjE4NCwiZXhwIjozMzMyODEwNjE4NH0.ey5f6AJyhzO5Vx1hTatnqXXKnk9ofbqsAQ8lhSICbKg"
+    }
+  ],
 
   /* EVIDENCIA DEL LABORATORIO: videos y fotos reales de Ricardo.
      { tipo: "video" | "foto", src, poster (video), titulo, vertical: true|false } */

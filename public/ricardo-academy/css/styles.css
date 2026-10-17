@@ -300,6 +300,8 @@ html[data-variant="A"] .hero__bottom { order: 3; }
 /* ---------- Prueba real ---------- */
 .testis { display: grid; gap: 16px; }
 .testi { background: #fff; padding: 22px; border: 1px solid var(--line-light); }
+.testi--video { background: transparent; padding: 0; border: 0; }
+.testi--video .phonevid { margin-bottom: 0; }
 .testi__head { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
 .testi__av { width: 44px; height: 44px; display: grid; place-items: center; background: var(--ink); color: var(--gold); font-family: var(--font-mono); font-weight: 600; }
 .testi__name { font-weight: 700; margin: 0; line-height: 1.2; }
@@ -532,6 +534,7 @@ body.has-sticky .wa-float { bottom: calc(var(--sticky-h) + 12px); }
   .cards--4 { grid-template-columns: repeat(4, 1fr); }
   .instr { grid-template-columns: 420px 1fr; gap: 56px; }
   .testis { grid-template-columns: repeat(3, 1fr); }
+  .testis--four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 /* ==========================================================================
    Reestructuración: componentes nuevos
@@ -671,6 +674,10 @@ body.has-sticky .wa-float { bottom: calc(var(--sticky-h) + 12px); }
   .steps--7 .step h3 { font-size: 22px; }
   .steps--7 .step p { font-size: 14.5px; }
 }
+@media (min-width: 1200px) {
+  .testis--four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
   .reveal, .bubble, .typing { opacity: 1 !important; transform: none !important; }

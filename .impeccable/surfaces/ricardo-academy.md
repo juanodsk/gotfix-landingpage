@@ -1,8 +1,8 @@
 # Ricardo Academy
 
 - **Modo:** Persuade en la landing; Operate en el retorno postcompra.
-- **Alcance:** integración literal de la landing entregada y ampliación autorizada de su página de retorno postcompra; sin rediseño de la landing principal ni cambio del sistema visual global.
-- **Autoridad visual y de contenido:** `C:/Users/juanp/Downloads/landing-placas-entrega/landing-placas`. Conservar HTML, CSS, JavaScript, fuentes, imágenes, claims y comportamiento de la landing principal. Las adaptaciones de integración corresponden a rutas bajo `/ricardo-academy/`, dominio `https://gotfix.co/ricardo-academy` y acceso desde el menú existente. La excepción autorizada es `gracias.html`, ampliada con estilos y lógica separados para agradecer la compra y preparar el contacto por WhatsApp.
+- **Alcance:** integración de la landing entregada, ampliación autorizada de su retorno postcompra e incorporación y optimización de cuatro testimonios suministrados por el usuario para reducir la espera después de pulsar play; sin rediseño de la landing principal ni cambio del sistema visual global.
+- **Autoridad visual y de contenido:** `C:/Users/juanp/Downloads/landing-placas-entrega/landing-placas`, más los cuatro videos suministrados. Conservar el mundo visual, fuentes, imágenes y claims de la entrega. Las adaptaciones de integración corresponden a rutas bajo `/ricardo-academy/`, dominio `https://gotfix.co/ricardo-academy` y acceso desde el menú existente. Las ampliaciones autorizadas son `gracias.html`, con estilos y lógica separados, y los testimonios, con configuración, copias MP4 optimizadas, portadas extraídas de los videos y cambios acotados en carga, reproducción, recuperación y cuadrícula adaptable.
 - **Artefacto:** `public/ricardo-academy/`, documento independiente de React y sus estilos globales.
 
 ## Apariencia observada
@@ -18,7 +18,15 @@ Los títulos usan Barlow Condensed, el cuerpo IBM Plex Sans y las cifras y rótu
 - **Cursos** en `src/components/Navbar.jsx` usa `NavLink` con `reloadDocument` en ambos menús.
 - `public/ricardo-academy/js/config.js` concentra precios, fechas, enlaces, videos y medición. Variante B predeterminada; `?v=A` y `?v=B` conservan las variantes originales.
 - La devolución de Wompi debe configurarse externamente como `https://gotfix.co/ricardo-academy/gracias.html`.
-- [CURSOS.md](../../CURSOS.md) detalla operación, validación y pendientes: pago normal y monto COP; webhook/CRM; textos legales; video A, testimonios, evidencia e identificadores de medición. Se conserva `mostrarPlaceholders: true`.
+- [CURSOS.md](../../CURSOS.md) detalla operación, validación y pendientes: pago normal y monto COP; webhook/CRM; textos legales; video A, evidencia e identificadores de medición. Los cuatro testimonios suministrados ya están configurados. Se conserva `mostrarPlaceholders: true` para el material restante.
+
+## Testimonios en video
+
+Camilo F., Juan, Kevin y Yan Carlos aparecen en `/ricardo-academy#prueba`. `video` y `poster` en `js/config.js` apuntan a archivos locales de `public/ricardo-academy/videos/`; `original` conserva cada URL firmada de Supabase para recuperación. No se añaden citas ni países. Los MP4 usan H.264 a 720 × 1280/30fps y audio AAC, con `faststart`; las portadas WebP proceden del segundo 0,3 de los videos reales.
+
+Los reproductores mantienen controles nativos, `playsinline` y nombre accesible. Comienzan con `preload="none"`; `IntersectionObserver` cambia a `preload="auto"` cuando están a 240px de entrar en pantalla para preparar el búfer antes del clic. Si `navigator.connection.saveData` indica ahorro de datos, se limita a `metadata`. Sin ese observador se aplica directamente la misma selección de precarga. Al reproducir uno se pausan los demás. Por solicitud del usuario, se retiró el aviso con enlace al archivo original ante errores. Por solicitud del usuario, los videos se presentan sin nombres visibles ni tarjetas blancas: se retiraron fondo, borde y relleno exterior; se conservan los marcos del reproductor y los nombres accesibles; la cuadrícula presenta una columna en móvil, dos desde 640px y cuatro desde 1200px cuando hay cuatro testimonios.
+
+Los cuatro MP4 suman 23.396.401 bytes frente a 234.231.530 bytes de los MOV originales (aproximadamente 90 % menos); las portadas suman 84.440 bytes. Los ocho nombres incorporan hash de contenido. `vercel.json` aplica caché inmutable a la carpeta de videos: generar nombres nuevos y actualizar `video`/`poster` al cambiar material, sin sobrescribir esos nombres. `src/scripts/optimizarTestimonios.mjs` reproduce la conversión mediante FFmpeg local o `FFMPEG_PATH`; originales y herramientas temporales permanecen en `output/playwright/`, ignorado por Git. La conversión no forma parte de la ejecución de la web ni del despliegue.
 
 ## Retorno postcompra
 
@@ -30,13 +38,12 @@ La consulta usa `/api/academy-pago`: la variable `WOMPI_PRIVATE_KEY` permanece e
 
 ## Evidencia de conservación
 
-Comparación SHA256 de original e integrado realizada el 15 de octubre de 2026:
+La conservación se refiere al diseño y contenido recibidos, con las ampliaciones autorizadas descritas. `styles.css` y `main.js` ya incluyen ajustes de testimonios y no son idénticos a la entrega original. Se contrastaron las fuentes, paleta y tarjetas del CSS vigente, la función `renderTestimonios`, la configuración de los cuatro videos, el script de conversión, la caché de Vercel y la documentación de optimización en `CURSOS.md`, sin reproducir los tokens de las URLs firmadas.
 
-- `css/styles.css`: `944F9E430996E1CE12185EA106D26AF073F012983DB7298AB4CB15CE2D41B8A4` en ambas carpetas.
-- `js/main.js`: `49DB572271C5466EFD48513875DFEED0C512D485D6AC70A326C98F87540CC6E7` en ambas carpetas.
+La validación de optimización reportada al cierre confirma H.264/AAC y el átomo `moov` antes de `mdat` en los cuatro MP4; petición Range con respuesta 206 y 1024 bytes, portadas con respuesta 200 y respeto de ahorro de datos. Se reprodujeron los cuatro videos en anchos de 1440, 1024 y 390px, sin errores ni desbordamiento. La pausa entre videos ya se había comprobado; el enlace de recuperación se retiró posteriormente por solicitud del usuario. Las comprobaciones de sintaxis, lint y build pasaron. Las capturas actualizadas conservaron el mundo visual.
 
-Los hashes se comprobaron de nuevo tras ampliar la postcompra y conservan estos valores. La extensión se limita a `gracias.html`, `css/postcompra.css`, `js/postcompra.js` y la API descrita; no modifica el CSS ni la lógica principal de la landing.
+Para el primer testimonio, una medición puntual en Chrome con limitación CDP de 1,5 Mbps/150ms y caché desactivada registró 12.554 → 3.687ms desde solicitar reproducción hasta el primer fotograma al llegar a la sección, y 6.471 → 45ms tras permanecer 5 segundos en ella. Compara MOV desde Supabase con MP4 desde servidor local. Es evidencia simulada local, no una prueba en teléfono físico ni garantía de reproducción instantánea; falta comprobar red y CDN después del despliegue.
 
-El cierre de implementación reporta 26 pruebas, lint y build correctos, además del flujo de navegador con respuestas simuladas. Esta ficha se contrastó con los cuatro artefactos de postcompra, `config.js` y la sección «Página postcompra» de `CURSOS.md`. No se realizaron pagos ni mensajes reales; siguen pendientes la configuración de Wompi y la verificación del proveedor y retorno en producción.
+El cierre de implementación de postcompra reporta 26 pruebas, lint y build correctos, además del flujo de navegador con respuestas simuladas. Esta ficha se contrastó con los cuatro artefactos de postcompra, `config.js` y la sección «Página postcompra» de `CURSOS.md`. No se realizaron pagos ni mensajes reales; siguen pendientes la configuración de Wompi y la verificación del proveedor y retorno en producción.
 
 No se convierten recursos específicos de la entrega en reglas globales, ni se repara el contexto histórico de PQRS en `PRODUCT.md`. Esta ficha no sustituye los archivos normativos existentes ni afirma validación en producción.

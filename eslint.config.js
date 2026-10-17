@@ -40,4 +40,9 @@ export default [
       globals: globals.node,
     },
   },
+  {
+    files: ['src/scripts/**/*.mjs'],
+    languageOptions: { globals: globals.node },
+    rules: js.configs.recommended.rules,
+  },
 ]
