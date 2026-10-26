@@ -69,7 +69,7 @@ const LandingPage = () => {
     {
       icon: <FaTools className="text-4xl text-primary" />,
       texto:
-        "Llevamos más de 7 años en el mercado y más de 5.000 dispositivos apple reparados",
+        "Llevamos más de 7 años en el mercado y más de 7.000 dispositivos apple reparados",
     },
     {
       icon: <FaUserCog className="text-4xl text-primary" />,

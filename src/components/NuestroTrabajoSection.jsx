@@ -6,12 +6,16 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 // YouTube Shorts: títulos ajustados al contenido de cada video.
 const videos = [
   {
-    titulo: "Revisión preventiva de MacBook",
-    url: "https://www.youtube.com/shorts/WUplW_HQ9Ek",
+    titulo: "Cambio de batería de iPhone",
+    url: "https://www.youtube.com/shorts/hdxtgwI0_08",
   },
   {
     titulo: "Diagnóstico profesional de equipos Apple",
     url: "https://www.youtube.com/shorts/zFd7m93lal0",
+  },
+  {
+    titulo: "Revisión preventiva de MacBook",
+    url: "https://www.youtube.com/shorts/WUplW_HQ9Ek",
   },
   {
     titulo: "Cambio de pantalla de iPhone",
@@ -20,10 +24,6 @@ const videos = [
   {
     titulo: "Restauración de cristal trasero de iPhone",
     url: "https://www.youtube.com/shorts/uvmbumswrPY",
-  },
-  {
-    titulo: "Cambio de batería de iPhone",
-    url: "https://www.youtube.com/shorts/hdxtgwI0_08",
   },
 ];
 
@@ -80,7 +80,10 @@ const VideoCarrusel = () => {
   };
 
   return (
-    <section id="nuestro-trabajo" className="relative py-16 bg-[#00162b] text-white">
+    <section
+      id="nuestro-trabajo"
+      className="relative py-16 bg-[#00162b] text-white"
+    >
       <div className="absolute inset-0 z-0 bg-gradient-to-br from-[#002c57] via-[#00162b] to-black opacity-60 blur-md" />
 
       <div className="relative z-10 container mx-auto px-8 text-center">
