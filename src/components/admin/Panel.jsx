@@ -1,12 +1,18 @@
 import { useEffect, useRef, useState } from 'react';
-import { LuChevronLeft, LuChevronRight, LuClipboardList, LuDownload, LuFileCheck, LuRefreshCw, LuSearch } from 'react-icons/lu';
+import { LuChevronLeft, LuChevronRight, LuClipboardList, LuDownload, LuFileCheck, LuRefreshCw, LuSearch, LuUsers } from 'react-icons/lu';
 import { ESTADOS_PQRS } from '../../data/estadosPqrs';
 import { adminApi, descargarAdmin } from '../../utils/adminApi';
 import { fechaAdmin as fecha } from '../../utils/fechaAdmin';
 import { Aviso, Estado } from './Elementos';
 import Detalle from './Detalle';
+import ContactosCursos from './ContactosCursos';
 
 const PESTANAS_ESTADO = [['', 'TODOS'], ...Object.entries(ESTADOS_PQRS)];
+const SECCIONES = {
+  pqrs: { titulo: 'PQRS', descripcion: 'Revisa cada solicitud y registra los avances de su atención.', buscar: 'solicitud', placeholder: 'Nombre, documento, correo, orden o radicado', vacio: 'Aún no hay PQRS radicadas', ayuda: 'Las solicitudes enviadas desde el formulario de PQRS aparecerán aquí.', Icono: LuClipboardList },
+  aceptaciones: { titulo: 'Términos aceptados', descripcion: 'Busca las personas que aceptaron los términos y descarga su documento firmado.', buscar: 'aceptación', placeholder: 'Nombre, documento, correo, orden o equipo', vacio: 'Aún no hay aceptaciones', ayuda: 'Las personas que firmen el formulario de términos aparecerán aquí con su PDF.', Icono: LuFileCheck },
+  cursos: { titulo: 'Interesados en cursos', descripcion: 'Consulta los datos y la experiencia técnica de quienes contactan a Ricardo Academy.', buscar: 'interesado', placeholder: 'Nombre, correo, WhatsApp o país', vacio: 'Aún no hay interesados registrados', ayuda: 'Los contactos que completen el formulario de Ricardo Academy aparecerán aquí.', Icono: LuUsers },
+};
 
 export default function Panel({ onExpirar, mensajeSesion, saliendo }) {
   const titulo = useRef(null);
@@ -23,6 +29,8 @@ export default function Panel({ onExpirar, mensajeSesion, saliendo }) {
   const [caso, setCaso] = useState(null);
   const [descargando, setDescargando] = useState('');
   const esPqrs = seccion === 'pqrs';
+  const esCurso = seccion === 'cursos';
+  const actual = SECCIONES[seccion];
   useEffect(() => { if (!caso) titulo.current?.focus(); }, [seccion, caso]);
   useEffect(() => {
     const controller = new AbortController();
@@ -57,24 +65,24 @@ export default function Panel({ onExpirar, mensajeSesion, saliendo }) {
   const totalPaginas = Math.max(1, Math.ceil((datos?.total || 0) / (datos?.limite || 25)));
   return (
     <div className="admin-layout">
-      <aside className="admin-lateral"><nav aria-label="Administración"><button className={esPqrs ? 'admin-nav-activo' : ''} aria-current={esPqrs ? 'page' : undefined} onClick={() => cambiarSeccion('pqrs')}><LuClipboardList aria-hidden="true" />PQRS</button><button className={!esPqrs ? 'admin-nav-activo' : ''} aria-current={!esPqrs ? 'page' : undefined} onClick={() => cambiarSeccion('aceptaciones')}><LuFileCheck aria-hidden="true" />Términos aceptados</button></nav><p>Seguimiento de clientes<br />GOTFIX</p></aside>
+      <aside className="admin-lateral"><nav aria-label="Administración">{Object.entries(SECCIONES).map(([valor, { titulo: etiqueta, Icono }]) => <button key={valor} className={seccion === valor ? 'admin-nav-activo' : ''} aria-current={seccion === valor ? 'page' : undefined} onClick={() => cambiarSeccion(valor)}><Icono aria-hidden="true" />{etiqueta}</button>)}</nav><p>Seguimiento de clientes<br />GOTFIX</p></aside>
       <main className="admin-contenido" id="admin-contenido"><Aviso mensaje={mensajeSesion} />
         {caso ? <Detalle key={caso} id={caso} onVolver={() => setCaso(null)} onExpirar={onExpirar} onGuardar={() => setRevision((v) => v + 1)} /> : <>
-          <div className="admin-titulo"><div><h1 ref={titulo} tabIndex={-1}>{esPqrs ? 'PQRS' : 'Términos aceptados'}</h1><p className="admin-muted">{esPqrs ? 'Revisa cada solicitud y registra los avances de su atención.' : 'Busca las personas que aceptaron los términos y descarga su documento firmado.'}</p></div><button className="admin-boton admin-boton-secundario" disabled={cargando || saliendo} onClick={() => setRevision((v) => v + 1)}><LuRefreshCw aria-hidden="true" />Actualizar</button></div>
+          <div className="admin-titulo"><div><h1 ref={titulo} tabIndex={-1}>{actual.titulo}</h1><p className="admin-muted">{actual.descripcion}</p></div><button className="admin-boton admin-boton-secundario" disabled={cargando || saliendo} onClick={() => setRevision((v) => v + 1)}><LuRefreshCw aria-hidden="true" />Actualizar</button></div>
           {esPqrs && <div className="admin-pestanas-estado" role="tablist" aria-label="Estado del PQR">
             {PESTANAS_ESTADO.map(([valor, etiqueta], indice) => <button key={valor} ref={(elemento) => { pestanas.current[indice] = elemento; }} type="button" role="tab" id={`admin-pestana-${valor || 'todos'}`} aria-controls="admin-listado" aria-selected={estado === valor} tabIndex={estado === valor ? 0 : -1} disabled={saliendo} onClick={() => cambiarEstado(valor)} onKeyDown={(event) => navegarPestanas(event, indice)}>{etiqueta}</button>)}
           </div>}
           <section id="admin-listado" role={esPqrs ? 'tabpanel' : undefined} aria-labelledby={esPqrs ? `admin-pestana-${estado || 'todos'}` : undefined}>
           <form className="admin-filtros" onSubmit={(e) => { e.preventDefault(); setPagina(1); setBuscar(texto.trim()); setRevision((v) => v + 1); }}>
-            <div className="admin-busqueda"><label htmlFor="admin-buscar">Buscar {esPqrs ? 'solicitud' : 'aceptación'}</label><div><LuSearch aria-hidden="true" /><input id="admin-buscar" type="search" value={texto} onChange={(e) => setTexto(e.target.value)} maxLength={100} placeholder={esPqrs ? 'Nombre, documento, correo, orden o radicado' : 'Nombre, documento, correo, orden o equipo'} /></div></div>
+            <div className="admin-busqueda"><label htmlFor="admin-buscar">Buscar {actual.buscar}</label><div><LuSearch aria-hidden="true" /><input id="admin-buscar" type="search" value={texto} onChange={(e) => setTexto(e.target.value)} maxLength={100} placeholder={actual.placeholder} /></div></div>
             <button className="admin-boton admin-boton-primario" disabled={saliendo}>Buscar</button>
             {(buscar || estado || texto) && <button type="button" className="admin-enlace" onClick={() => { setTexto(''); setBuscar(''); setEstado(''); setPagina(1); }}>Limpiar</button>}
           </form>
           <Aviso mensaje={error} />{error && !datos && <button className="admin-boton admin-boton-secundario" onClick={() => setRevision((v) => v + 1)}>Volver a cargar</button>}
           {cargando ? <div className="admin-cargando" role="status"><span className="admin-sr">Cargando registros…</span>{[1, 2, 3, 4].map((i) => <div key={i} />)}</div> : datos && <>
             <p className="admin-resultados" role="status">{datos.total.toLocaleString('es-CO')} {datos.total === 1 ? 'registro' : 'registros'}{buscar || estado ? datos.total === 1 ? ' encontrado' : ' encontrados' : ' en total'}</p>
-            {!datos.registros.length ? <section className="admin-vacio"><h2>{buscar || estado ? 'No hay resultados con estos filtros' : esPqrs ? 'Aún no hay PQRS radicadas' : 'Aún no hay aceptaciones'}</h2><p>{buscar || estado ? 'Prueba con otro nombre, documento o estado, o limpia la búsqueda.' : esPqrs ? 'Las solicitudes enviadas desde el formulario de PQRS aparecerán aquí.' : 'Las personas que firmen el formulario de términos aparecerán aquí con su PDF.'}</p></section> : (
-              <div className="admin-tabla-contenedor"><table className="admin-tabla" role="table"><caption className="admin-sr">{esPqrs ? 'Solicitudes PQRS' : 'Aceptaciones de términos'}, página {pagina}</caption><thead role="rowgroup"><tr role="row"><th role="columnheader" id="admin-col-persona" scope="col">{esPqrs ? 'Radicado / Fecha' : 'Persona / Fecha'}</th><th role="columnheader" id="admin-col-contacto" scope="col">{esPqrs ? 'Cliente' : 'Contacto'}</th><th role="columnheader" id="admin-col-orden" scope="col">{esPqrs ? 'Orden' : 'Equipo / Orden'}</th><th role="columnheader" id="admin-col-estado" scope="col">{esPqrs ? 'Estado del PQR' : 'Versión'}</th><th role="columnheader" id="admin-col-accion" scope="col">{esPqrs ? 'Seguimiento' : 'Documento'}</th></tr></thead><tbody role="rowgroup">{datos.registros.map((r) => <tr key={r.id} role="row">
+            {!datos.registros.length ? <section className="admin-vacio"><h2>{buscar || estado ? 'No hay resultados con estos filtros' : actual.vacio}</h2><p>{buscar || estado ? 'Prueba con otro término o limpia la búsqueda.' : actual.ayuda}</p></section> : (
+              esCurso ? <ContactosCursos registros={datos.registros} pagina={pagina} /> : <div className="admin-tabla-contenedor"><table className="admin-tabla" role="table"><caption className="admin-sr">{esPqrs ? 'Solicitudes PQRS' : 'Aceptaciones de términos'}, página {pagina}</caption><thead role="rowgroup"><tr role="row"><th role="columnheader" id="admin-col-persona" scope="col">{esPqrs ? 'Radicado / Fecha' : 'Persona / Fecha'}</th><th role="columnheader" id="admin-col-contacto" scope="col">{esPqrs ? 'Cliente' : 'Contacto'}</th><th role="columnheader" id="admin-col-orden" scope="col">{esPqrs ? 'Orden' : 'Equipo / Orden'}</th><th role="columnheader" id="admin-col-estado" scope="col">{esPqrs ? 'Estado del PQR' : 'Versión'}</th><th role="columnheader" id="admin-col-accion" scope="col">{esPqrs ? 'Seguimiento' : 'Documento'}</th></tr></thead><tbody role="rowgroup">{datos.registros.map((r) => <tr key={r.id} role="row">
                 <td role="cell" headers="admin-col-persona" data-label={esPqrs ? 'Radicado / Fecha' : 'Persona / Fecha'}><strong>{esPqrs ? r.radicado : r.nombre}</strong><span>{!esPqrs && <>Documento: {r.documento}<br /></>}{fecha(r.creado_en)}</span></td>
                 <td role="cell" headers="admin-col-contacto" data-label={esPqrs ? 'Cliente' : 'Contacto'}>{esPqrs && <strong>{r.nombre}</strong>}<span>{esPqrs ? `Documento: ${r.documento}` : r.correo}</span><span>{esPqrs ? r.correo : r.whatsapp}</span></td>
                 <td role="cell" headers="admin-col-orden" data-label={esPqrs ? 'Orden' : 'Equipo / Orden'}>{!esPqrs && <strong>{r.equipo}</strong>}<span>{r.orden || 'Sin orden'}</span></td>

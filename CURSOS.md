@@ -25,11 +25,24 @@ El enlace de Wompi del precio único viene configurado. En el comercio de Wompi,
 
 ## Pendientes que ya venían en la entrega
 
-- `leadWebhookUrl`: sin configurar, el formulario continúa a WhatsApp y no guarda el contacto en un CRM.
 - Textos legales de compra, reembolsos y tratamiento de datos: contienen avisos de pendiente; no equivalen a los términos del servicio de reparación.
 - Video de la variante A, evidencia e identificador de GA4.
 
 Se conserva `mostrarPlaceholders: true`, como en el material recibido. No se inventaron políticas, testimonios ni integraciones externas.
+
+## Formulario de contacto y WhatsApp
+
+Al pulsar «Continuar a WhatsApp», el formulario valida los datos y envía el contacto a `/api/academy-contactos`, configurado como `leadWebhookUrl`. La función guarda nombre, correo, país, teléfono y experiencia técnica en la tabla privada `curso_contactos`; el servidor fija la fecha y el curso, y conserva variante, ubicación del botón y UTM de origen, medio y campaña. Las claves de Supabase permanecen en el servidor. El listado está disponible en `/admin` → **Interesados en cursos**, con búsqueda y paginación de 25 registros; usa la misma sesión administradora que PQRS y términos.
+
+El borrador de WhatsApp incluye los cinco datos, con el texto legible de la experiencia elegida. El visitante debe pulsar Enviar dentro de WhatsApp para que el asesor reciba el mensaje; el contacto se registra al continuar desde el formulario, aunque después no envíe el mensaje. `sessionStorage.lp_lead` sigue ayudando a rellenar el formulario durante la sesión. Cada envío tiene un identificador: reintentar un guardado no confirmado no duplica ni sobrescribe el registro anterior. Si falla la API o tarda más de tres segundos, el borrador se prepara igualmente y el formulario conserva los datos y avisa que el guardado no pudo confirmarse. `Lead` solo se registra tras una confirmación válida de almacenamiento.
+
+### Activar el almacenamiento en Supabase
+
+1. En el mismo proyecto de Supabase usado por GOTFIX, abrir SQL Editor y ejecutar **completo** `supabase/migrations/20261029_curso_contactos.sql`. No borra datos y se puede repetir. Para un proyecto nuevo, `supabase/base_nueva.sql` incluye también esta migración.
+2. Desplegar la función y el frontend. Se reutilizan `SUPABASE_URL`, `SUPABASE_SECRET_KEY` (o `SUPABASE_SERVICE_ROLE_KEY`) y la configuración existente de `ADMIN_EMAIL`; no se agregan claves públicas ni contraseñas al navegador.
+3. Completar el formulario de la academia y comprobar el nuevo registro en **Interesados en cursos** con la cuenta administradora.
+
+La migración se validó localmente con PostgreSQL/PGlite, dos ejecuciones y permisos de `anon`, `authenticated` y `service_role`. Las pruebas de API verifican normalización, validación, reintentos, sesión del administrador y búsqueda; el recorrido visual usa respuestas simuladas para no crear contactos ni enviar mensajes reales. Vite por sí solo no ejecuta funciones `/api`: para un ensayo sin simulación se requiere `vercel dev` con el entorno configurado o un despliegue de Vercel. La aplicación de este SQL al Supabase real queda a cargo del usuario; los contactos históricos no enviados a una base no se recuperan automáticamente.
 
 ## Testimonios en video
 

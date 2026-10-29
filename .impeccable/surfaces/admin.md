@@ -4,7 +4,9 @@ Registro de superficie revisada el 10 de octubre de 2026. Alcance: `/admin`, en 
 
 ## Overview
 
-El administrador consulta PQRS, registra su seguimiento, busca aceptaciones de términos y descarga sus PDF. La entrada usa correo y contraseña, con verificación de sesión y cierre de sesión. La navegación tiene dos opciones: **PQRS** y **Términos aceptados**.
+El administrador consulta PQRS, registra su seguimiento, busca aceptaciones de términos y descarga sus PDF. La entrada usa correo y contraseña, con verificación de sesión y cierre de sesión. La navegación tiene tres opciones: **PQRS**, **Términos aceptados** e **Interesados en cursos**.
+
+Ampliación del 29 de octubre de 2026: `ContactosCursos.jsx` muestra persona/fecha, correo y WhatsApp, país y experiencia técnica. Conserva los tokens, Arial y controles del panel; usa búsqueda en servidor y paginación de 25 registros mediante `api/admin.js?recurso=cursos`. Los enlaces de contacto permiten envolver textos largos; la navegación móvil permite varias líneas. Se revisaron capturas de 1440, 1024 y 390px sin desbordamiento. Las pruebas de API y SQL pasaron dentro de un conjunto de 35 pruebas; el flujo de navegador validó registros, errores, reintentos y búsqueda con datos simulados. La aplicación de la migración en Supabase y el despliegue quedan pendientes; no se registraron contactos ni mensajes reales.
 
 Autoridad de producto: `PRODUCT.md`. Autoridad visual incumbente: `src/components/condiciones/Banner.jsx`, `src/components/forms/Campo.jsx`, `src/index.css` y `src/assets/Logo.png`. Las acciones amarillas y los enlaces azules también tienen precedentes en `src/components/condiciones/FormularioFirma.jsx` y `src/components/condiciones/CtaDudas.jsx`.
 

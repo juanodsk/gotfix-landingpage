@@ -126,7 +126,7 @@ window.LANDING_CONFIG = {
   ga4Id: "",
   /* Formulario de WhatsApp → CRM/webhook (POST con JSON). Ver ENTREGA_INGENIERO.md.
      leadWebhookSimple: true si el destino es Google Apps Script (envía el JSON como text/plain). */
-  leadWebhookUrl: "",
+  leadWebhookUrl: "/api/academy-contactos",
   leadWebhookSimple: false,
 
   siteUrl: "https://gotfix.co/ricardo-academy",

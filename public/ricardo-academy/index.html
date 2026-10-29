@@ -552,17 +552,17 @@
   <div class="modal__card">
     <button class="modal__x" type="button" data-close-lead aria-label="Cerrar">×</button>
     <h2 class="h3" id="leadTitle">Habla con el Asesor Académico</h2>
-    <p class="modal__sub">Déjanos tus datos y te llevamos a WhatsApp para que resuelvas tus dudas sobre el curso.</p>
+    <p class="modal__sub">Completa tus datos para preparar el mensaje de WhatsApp. Podrás revisarlo y enviarlo al asesor.</p>
     <form id="leadForm" novalidate>
-      <label>Nombre<input name="nombre" autocomplete="name" required minlength="2"></label>
-      <label>Correo<input name="correo" type="email" autocomplete="email" required></label>
+      <label>Nombre<input name="nombre" autocomplete="name" required minlength="2" maxlength="160"></label>
+      <label>Correo<input name="correo" type="email" autocomplete="email" required maxlength="254"></label>
       <label>País
         <select name="pais" required>
           <option value="">Selecciona tu país</option>
           <option>Colombia</option><option>México</option><option>Perú</option><option>Chile</option><option>Argentina</option><option>Ecuador</option><option>Venezuela</option><option>Bolivia</option><option>Paraguay</option><option>Uruguay</option><option>Guatemala</option><option>Honduras</option><option>El Salvador</option><option>Nicaragua</option><option>Costa Rica</option><option>Panamá</option><option>República Dominicana</option><option>Puerto Rico</option><option>Cuba</option><option>Estados Unidos</option><option>España</option><option>Otro</option>
         </select>
       </label>
-      <label>WhatsApp (con indicativo)<input name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" placeholder="+57 300 000 0000" required></label>
+      <label>WhatsApp (con indicativo)<input name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" placeholder="+57 300 000 0000" required maxlength="32"></label>
       <fieldset>
         <legend>Tu experiencia técnica</legend>
         <label class="radio"><input type="radio" name="experiencia" value="recambios_iphone" required> Hago recambios en iPhone</label>

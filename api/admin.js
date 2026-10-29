@@ -8,6 +8,7 @@ const esId = (id) => typeof id === 'string' && UUID.test(id);
 const LIMITE = 25;
 const CAMPOS_PQRS = 'id,radicado,nombre,documento,correo,whatsapp,orden,tipo,estado,creado_en,actualizado_en';
 const CAMPOS_ACEPTACIONES = 'id,nombre,documento,correo,whatsapp,equipo,orden,version_terminos,creado_en';
+const CAMPOS_CURSOS = 'id,nombre,correo,pais,whatsapp,experiencia,curso,creado_en';
 
 export function crearManejadorAdmin({ servicio = clienteSupabase } = {}) {
   return async function handler(req, res) {
@@ -23,7 +24,7 @@ export function crearManejadorAdmin({ servicio = clienteSupabase } = {}) {
       if (!user) return;
       if (req.method === 'PATCH') return await actualizar(supabase, req.body ?? {}, user, res);
       const consulta = req.query ?? {};
-      if (['pqrs', 'aceptaciones'].includes(consulta.recurso)) return await listar(supabase, consulta, res);
+      if (['pqrs', 'aceptaciones', 'cursos'].includes(consulta.recurso)) return await listar(supabase, consulta, res);
       if (!esId(consulta.id)) return res.status(400).json({ mensaje: 'Identificador no válido.' });
       if (consulta.recurso === 'detalle') {
         const pqr = verificar(await supabase.from('pqrs').select('*').eq('id', consulta.id).maybeSingle(), 'Consultar PQRS');
@@ -43,12 +44,13 @@ async function listar(supabase, consulta, res) {
     return res.status(400).json({ mensaje: 'Los filtros de búsqueda no son válidos.' });
   }
   const esPqrs = consulta.recurso === 'pqrs';
+  const esCurso = consulta.recurso === 'cursos';
   if (esPqrs && consulta.estado && !esEstadoPqrs(consulta.estado)) return res.status(400).json({ mensaje: 'Estado no válido.' });
-  let query = supabase.from(esPqrs ? 'pqrs' : 'aceptaciones_terminos').select(esPqrs ? CAMPOS_PQRS : CAMPOS_ACEPTACIONES, { count: 'exact' });
+  let query = supabase.from(esCurso ? 'curso_contactos' : esPqrs ? 'pqrs' : 'aceptaciones_terminos').select(esCurso ? CAMPOS_CURSOS : esPqrs ? CAMPOS_PQRS : CAMPOS_ACEPTACIONES, { count: 'exact' });
   // Solo texto literal en la gramática PostgREST; no se interpolan comas, paréntesis ni comodines del usuario.
   const buscar = String(consulta.buscar || '').slice(0, 100).replace(/[^\p{L}\p{N}@.'+\-\s]/gu, ' ').trim();
   if (buscar) {
-    const campos = ['nombre', 'documento', 'correo', 'whatsapp', 'orden', esPqrs ? 'radicado' : 'equipo'];
+    const campos = esCurso ? ['nombre', 'correo', 'whatsapp', 'pais'] : ['nombre', 'documento', 'correo', 'whatsapp', 'orden', esPqrs ? 'radicado' : 'equipo'];
     query = query.or(campos.map((campo) => `${campo}.ilike."*${buscar}*"`).join(','));
   }
   if (esPqrs && consulta.estado) query = query.eq('estado', consulta.estado);

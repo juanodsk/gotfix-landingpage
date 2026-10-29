@@ -457,13 +457,14 @@
   /* ---------------- Formulario antes de WhatsApp ----------------
      Los botones de WhatsApp abren este formulario. Al enviarlo:
      1) se registra en el webhook/CRM (leadWebhookUrl) → evento Lead solo si el webhook responde OK
-     2) se abre WhatsApp con el nombre y el país en el mensaje → evento Contact
+     2) se abre WhatsApp con los datos del formulario en un borrador → evento Contact
+        El visitante revisa el mensaje y pulsa Enviar en WhatsApp.
      Si el webhook falla o tarda más de 3 s, WhatsApp se abre igual: nunca se pierde la conversación. */
   var openLead = function () {};
   function initLead() {
     var modal = $("#leadModal"), form = $("#leadForm"), err = $("#leadErr"), ok = $("#leadOk");
     if (!modal || !form) return;
-    var lastFocus = null, ctaLoc = "";
+    var lastFocus = null, ctaLoc = "", ultimoEnvio = null;
     openLead = function (loc) {
       ctaLoc = loc || "";
       lastFocus = document.activeElement;
@@ -505,9 +506,22 @@
         lote: state.active ? state.active.id : ""
       });
       payload.cta = ctaLoc;
+      var huella = JSON.stringify(data);
+      if (!ultimoEnvio || ultimoEnvio.huella !== huella) {
+        ultimoEnvio = { huella: huella, id: window.crypto && window.crypto.randomUUID ? window.crypto.randomUUID() : undefined };
+      }
+      payload.envioId = ultimoEnvio.id;
       var submit = form.querySelector('button[type="submit"]');
       submit.disabled = true; submit.textContent = "Abriendo WhatsApp…";
-      var url = waUrl(null, "Soy " + data.nombre + " (" + data.pais + ").");
+      var seleccion = form.querySelector('[name="experiencia"]:checked');
+      var experiencia = seleccion ? seleccion.closest("label").textContent.trim() : data.experiencia;
+      var url = waUrl(null, [
+        "Nombre: " + data.nombre,
+        "Correo: " + data.correo,
+        "País: " + data.pais,
+        "WhatsApp: " + data.whatsapp,
+        "Experiencia técnica: " + experiencia
+      ].join("\n"));
       // La ventana se abre ya (dentro del clic) para que el navegador no la bloquee; se le pone la URL al terminar
       var win = null;
       try { win = window.open("", "_blank"); } catch (x) {}
@@ -521,7 +535,12 @@
         track("Contact", { method: "whatsapp", cta: ctaLoc });
         if (win && !win.closed) win.location.href = url; else location.href = url;
         submit.disabled = false; submit.textContent = "Continuar a WhatsApp";
-        form.reset(); close();
+        if (!saved && cfg.leadWebhookUrl) {
+          err.textContent = "El mensaje de WhatsApp está preparado, pero no pudimos confirmar el registro de tus datos. Puedes volver a intentarlo.";
+        } else {
+          ultimoEnvio = null;
+          form.reset(); close();
+        }
       }
       var timer = setTimeout(function () { finish(false); }, 3000);
       if (!cfg.leadWebhookUrl) {
@@ -534,7 +553,11 @@
           method: "POST",
           headers: { "Content-Type": cfg.leadWebhookSimple ? "text/plain;charset=UTF-8" : "application/json" },
           body: JSON.stringify(payload), keepalive: true, mode: "cors"
-        }).then(function (r) { finish(r.ok); }, function () { finish(false); });
+        }).then(function (r) {
+          if (!r.ok) return false;
+          if (cfg.leadWebhookUrl === "/api/academy-contactos") return r.json().then(function (datos) { return datos && datos.ok === true; }, function () { return false; });
+          return true;
+        }).then(finish, function () { finish(false); });
       } catch (x) { finish(false); }
     });
   }

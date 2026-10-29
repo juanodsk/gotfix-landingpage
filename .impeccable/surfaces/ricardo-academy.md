@@ -34,6 +34,12 @@ Los reproductores mantienen controles nativos, `playsinline` y nombre accesible.
 
 Los cuatro MP4 suman 23.396.401 bytes frente a 234.231.530 bytes de los MOV originales (aproximadamente 90 % menos); las portadas suman 84.440 bytes. Los ocho nombres incorporan hash de contenido. `vercel.json` aplica caché inmutable a la carpeta de videos: generar nombres nuevos y actualizar `video`/`poster` al cambiar material, sin sobrescribir esos nombres. `src/scripts/optimizarTestimonios.mjs` reproduce la conversión mediante FFmpeg local o `FFMPEG_PATH`; originales y herramientas temporales permanecen en `output/playwright/`, ignorado por Git. La conversión no forma parte de la ejecución de la web ni del despliegue.
 
+## Contactos del curso
+
+El formulario conserva sus fuentes, colores y campos. El mensaje de WhatsApp incluye nombre, correo, país, teléfono y experiencia legible; el visitante lo revisa y envía allí. Al continuar, `/api/academy-contactos` registra el contacto en la tabla privada `curso_contactos`. La API valida los datos, utiliza la clave de servidor y permite reintentar el mismo envío sin duplicarlo. Ante un guardado no confirmado se mantiene el formulario con sus datos y un aviso, y el borrador de WhatsApp sigue disponible.
+
+El panel existente añade **Interesados en cursos**, con búsqueda, paginación y los mismos estilos y sesión de administración. La tabla muestra persona/fecha, contacto, país y experiencia; en móvil se apilan las celdas y se permite envolver la navegación. Se conservaron las secciones de PQRS y términos. Validación: pruebas de API y SQL local, más recorrido de navegador con datos simulados en 1440, 1024 y 390px. La migración `20261029_curso_contactos.sql` está preparada para que el usuario la ejecute en su Supabase; no se afirma aplicación remota ni contactos reales guardados.
+
 ## Retorno postcompra
 
 `gracias.html` conserva los negros, dorado, hueso y fuentes de la academia. `css/postcompra.css` añade una composición de dos columnas en escritorio; hasta 740px ordena bienvenida, formulario y pasos. La superficie permite completar una tarea: corregir el nombre, revisar el mensaje y abrir WhatsApp para confirmar la inscripción con el asesor.

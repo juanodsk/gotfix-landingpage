@@ -20,6 +20,7 @@ function fixture(opciones = {}) {
     if (u.pathname.includes('/rpc/')) return opciones.rpcError ? respuesta({ code: opciones.rpcError, message: 'Prueba de conflicto' }, 400) : respuesta(null);
     if (u.pathname.includes('/storage/v1/object/sign/')) return opciones.sinArchivo ? respuesta({ statusCode: '404', error: 'not_found', message: 'Object not found' }, 404) : respuesta({ signedURL: '/object/sign/firmas/prueba.pdf?token=temporal' });
     if (u.pathname === '/rest/v1/pqrs_seguimiento') return respuesta([]);
+    if (u.pathname === '/rest/v1/curso_contactos') return respuesta([{ id: ID, nombre: 'Ana', correo: 'ana@example.test', pais: 'Colombia', whatsapp: '+573101234567', experiencia: 'android' }], 200, { 'Content-Range': '0-0/1' });
     if (u.pathname === '/rest/v1/pqrs') return respuesta(opciones.sinRegistro ? [] : [PQR], 200, { 'Content-Range': '0-0/26' });
     if (u.pathname === '/rest/v1/aceptaciones_terminos') return respuesta(opciones.sinRegistro ? [] : [{ id: ID, nombre: 'Ana', firma_url: `firmas/2026/${ID}/firma.png` }], 200, { 'Content-Range': '0-0/1' });
     throw new Error(`Petición inesperada: ${u.pathname}`);
@@ -35,7 +36,7 @@ async function llamar(handler, { method = 'GET', query = { recurso: 'pqrs' }, bo
   await handler(req, res); return res;
 }
 
-for (const recurso of ['pqrs', 'aceptaciones', 'detalle', 'pdf', 'adjunto']) {
+for (const recurso of ['pqrs', 'aceptaciones', 'cursos', 'detalle', 'pdf', 'adjunto']) {
   test(`${recurso}: sin sesión se rechaza y no se consulta ningún registro`, async () => {
     const f = fixture(); const r = await llamar(f.admin, { cookie: '', query: { recurso, id: ID } });
     assert.equal(r.statusCode, 401); assert.equal(f.llamadas.length, 0);
@@ -80,6 +81,15 @@ test('listado busca en servidor, filtra estado y pagina sin exponer datos de fir
   const a = await llamar(f.admin, { query: { recurso: 'aceptaciones', buscar: '123' } }); assert.equal(a.statusCode, 200);
   assert.doesNotMatch(f.llamadas.at(-1).url.searchParams.get('select'), /(^|,)(firma_url|hash_terminos|user_agent|ip)(,|$)/);
 });
+test('cursos: listado privado paginado busca únicamente en las columnas del contacto', async () => {
+  const f = fixture(); const r = await llamar(f.admin, { query: { recurso: 'cursos', buscar: 'Ana', pagina: '2' } });
+  assert.equal(r.statusCode, 200); assert.equal(r.body.registros[0].experiencia, 'android');
+  const u = f.llamadas.at(-1).url;
+  assert.equal(u.pathname, '/rest/v1/curso_contactos'); assert.equal(u.searchParams.get('offset'), '25');
+  assert.match(u.searchParams.get('or'), /pais.ilike/); assert.doesNotMatch(u.searchParams.get('or'), /documento|orden/);
+  assert.equal(u.searchParams.get('select'), 'id,nombre,correo,pais,whatsapp,experiencia,curso,creado_en');
+});
+
 test('búsqueda escapa operadores de PostgREST', async () => {
   const f = fixture(); await llamar(f.admin, { query: { recurso: 'pqrs', buscar: 'Ana"),estado.eq.cerrado,%' } });
   const filtro = f.llamadas.at(-1).url.searchParams.get('or');

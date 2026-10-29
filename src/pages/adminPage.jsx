@@ -32,7 +32,7 @@ export default function AdminPage() {
 
   return (
     <div className="admin-app fuente-legal">
-      <SEO title="Administración | GOTFIX" description="Panel privado de seguimiento de PQRS y aceptaciones de términos." path="/admin" robots="noindex, nofollow" schema={null} />
+      <SEO title="Administración | GOTFIX" description="Panel privado de PQRS, aceptaciones de términos e interesados en cursos." path="/admin" robots="noindex, nofollow" schema={null} />
       <a className="admin-saltar" href="#admin-contenido">Ir al contenido</a>
       {sesion === undefined ? <main className="admin-login" id="admin-contenido"><Marca /><p role="status">Verificando tu sesión…</p></main> : !sesion ? (
         <Login mensaje={mensaje} onLogin={(datos) => { setSesion(datos); setMensaje(''); }} onReintentar={() => { setMensaje(''); setSesion(undefined); setIntento((v) => v + 1); }} />
@@ -61,7 +61,7 @@ function Login({ mensaje, onLogin, onReintentar }) {
     <main className="admin-login" id="admin-contenido"><Marca />
       <section className="admin-login-formulario" aria-labelledby="admin-login-titulo">
         <h1 ref={titulo} tabIndex={-1} id="admin-login-titulo">Administración</h1>
-        <p className="admin-muted">Consulta solicitudes, registra su seguimiento y descarga las aceptaciones de términos.</p>
+        <p className="admin-muted">Consulta solicitudes, aceptaciones de términos e interesados en cursos.</p>
         <Aviso mensaje={mensaje} />
         {mensaje && <button className="admin-enlace" onClick={onReintentar}>Comprobar conexión y sesión</button>}
         <form onSubmit={entrar}>
