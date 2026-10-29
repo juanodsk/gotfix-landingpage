@@ -17,7 +17,7 @@ Por solicitud del usuario se retiraron de la landing el bloque «Desde el labora
 
 - `/ricardo-academy` y `/ricardo-academy/` sirven `public/ricardo-academy/index.html` mediante Vite en desarrollo/preview y las reglas de Vercel en despliegue.
 - Documentos auxiliares: `/ricardo-academy/gracias.html`, `/ricardo-academy/terminos.html`, `/ricardo-academy/reembolsos.html` y `/ricardo-academy/datos-personales.html`.
-- **Cursos** en `src/components/Navbar.jsx` usa `NavLink` con `reloadDocument` en ambos menús.
+- Por solicitud del usuario, se retiró **Cursos** de los menús de escritorio y móvil en `src/components/Navbar.jsx`; la URL directa de la academia sigue disponible.
 - `public/ricardo-academy/js/config.js` concentra precios, fechas, enlaces, videos y medición. Variante B predeterminada; `?v=A` y `?v=B` conservan las variantes originales.
 - La devolución de Wompi debe configurarse externamente como `https://gotfix.co/ricardo-academy/gracias.html`.
 - [CURSOS.md](../../CURSOS.md) detalla operación, validación y pendientes: pago normal y monto COP; webhook/CRM; textos legales; video A, evidencia e identificadores de medición. Los cuatro testimonios suministrados ya están configurados. Se conserva `mostrarPlaceholders: true` para el material restante.

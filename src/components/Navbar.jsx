@@ -12,7 +12,6 @@ import {
 const enlaces = [
   { to: "/", texto: "Inicio", end: true },
   { to: "/servicios", texto: "Servicios" },
-  { to: "/ricardo-academy", texto: "Cursos", reloadDocument: true },
   { to: "/condiciones", texto: "Condiciones" },
   { to: "/pqrs", texto: "PQRS" },
   { to: "/contactanos", texto: "Contáctanos" },

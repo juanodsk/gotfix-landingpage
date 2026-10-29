@@ -1,6 +1,6 @@
 # Landing de cursos
 
-La página `/ricardo-academy` conserva el HTML, CSS, JavaScript, imágenes, contenido y variantes de la entrega `landing-placas`. Sus archivos están en `public/ricardo-academy/`; no recibe los estilos globales de React. El menú principal incluye **Cursos** y realiza una navegación de documento completo.
+La página `/ricardo-academy` conserva el HTML, CSS, JavaScript, imágenes, contenido y variantes de la entrega `landing-placas`. Sus archivos están en `public/ricardo-academy/`; no recibe los estilos globales de React. Por solicitud del usuario, el menú principal ya no incluye **Cursos**; la landing sigue disponible mediante su URL directa.
 
 ## Rutas
 
