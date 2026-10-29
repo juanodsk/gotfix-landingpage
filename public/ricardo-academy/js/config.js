@@ -46,7 +46,7 @@ window.LANDING_CONFIG = {
       id: "preventa",
       nombre: "Preventa",
       precio: 257,
-      cierre: "2026-11-02T23:59:59-05:00",
+      cierre: "2026-11-08T23:59:59-05:00",
       estado: "auto",
       bonos: [],
       checkoutUrl: "https://checkout.wompi.co/l/ClzfzW",
