@@ -13,6 +13,8 @@ Los títulos usan Barlow Condensed, el cuerpo IBM Plex Sans y las cifras y rótu
 
 ## Integración y configuración
 
+La oferta ahora mantiene únicamente US$257 (COP 817.466 en Wompi), sin paso automático a US$470 ni comparación de ahorro. El hero usa el retrato existente de Ricardo en lugar del arte con fechas y precios vencidos. El píxel de Meta `2349540535781835` registra `PageView` en la landing e `InitiateCheckout` al salir hacia Wompi desde los botones de inscripción, incluido el hero señalado por el usuario; su base se carga una sola vez y el respaldo `noscript` cubre visitas sin JavaScript.
+
 Por solicitud del usuario se retiraron de la landing el bloque «Desde el laboratorio» con sus cuatro placeholders, el aviso «AGRUPACIÓN PROVISIONAL – VALIDAR» y la navegación legal del footer. El temario, instructor, testimonios y los documentos auxiliares conservan su contenido.
 
 - `/ricardo-academy` y `/ricardo-academy/` sirven `public/ricardo-academy/index.html` mediante Vite en desarrollo/preview y las reglas de Vercel en despliegue.

@@ -15,18 +15,19 @@ Vite sirve la landing mediante el middleware de `vite.config.js`, tanto en desar
 
 ## Configuración conservada
 
+Meta Pixel `2349540535781835` se configura una sola vez en `js/config.js` y se carga desde `main.js`, sin añadir un segundo script base. La landing registra `PageView` al cargar y `InitiateCheckout` al pulsar un CTA de inscripción con enlace de pago válido, antes de salir a Wompi; incluye ubicación del botón, lote, valor y moneda. Si falta el enlace, el botón lleva a `#precio` y no registra inicio de pago. El respaldo `noscript` del HTML envía `PageView` únicamente cuando JavaScript está desactivado. La recepción real se comprueba en «Probar eventos» de Meta tras desplegar; la web solo puede medir la salida hacia Wompi, no acreditar la carga de la página de Wompi. La integración existente de `Purchase` sigue condicionada a pago `APPROVED` verificado por servidor.
+
 La landing ya no muestra el bloque pendiente «Desde el laboratorio», el aviso de agrupación provisional del temario ni los tres enlaces legales del footer, retirados a petición del usuario. Los documentos legales siguen disponibles en sus rutas.
 
-Editar `public/ricardo-academy/js/config.js` para cambiar fechas, precios, pagos, videos o medición. El dominio de referencia es `https://gotfix.co/ricardo-academy`. La entrega fija el inicio para el 2 de noviembre de 2026 y el cierre de preventa para el 25 de octubre a las 23:59:59, hora de Colombia.
+Editar `public/ricardo-academy/js/config.js` para cambiar fechas, precios, pagos, videos o medición. El dominio de referencia es `https://gotfix.co/ricardo-academy`. El inicio está configurado para el 2 de noviembre de 2026. Por solicitud del usuario, se maneja un único precio de US$257, cobrado por Wompi como COP 817.466, sin aumento automático, precio tachado ni cuenta regresiva de preventa. El identificador `preventa` se conserva para continuidad de los parámetros de seguimiento. El retrato de Ricardo sustituye el arte que anunciaba fechas y precios anteriores.
 
-El enlace de preventa de Wompi viene configurado. En el comercio de Wompi, la URL de retorno debe apuntar a `https://gotfix.co/ricardo-academy/gracias.html`. Esta configuración externa no se modifica desde el repositorio.
+El enlace de Wompi del precio único viene configurado. En el comercio de Wompi, la URL de retorno debe apuntar a `https://gotfix.co/ricardo-academy/gracias.html`. Esta configuración externa no se modifica desde el repositorio.
 
 ## Pendientes que ya venían en la entrega
 
-- Enlace de pago y monto en COP del precio normal (desde el 26 de octubre).
 - `leadWebhookUrl`: sin configurar, el formulario continúa a WhatsApp y no guarda el contacto en un CRM.
 - Textos legales de compra, reembolsos y tratamiento de datos: contienen avisos de pendiente; no equivalen a los términos del servicio de reparación.
-- Video de la variante A, evidencia e identificadores de medición.
+- Video de la variante A, evidencia e identificador de GA4.
 
 Se conserva `mostrarPlaceholders: true`, como en el material recibido. No se inventaron políticas, testimonios ni integraciones externas.
 

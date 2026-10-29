@@ -32,36 +32,20 @@ window.LANDING_CONFIG = {
     fin: "15:00",
   },
 
-  /* LOTES DE PRECIO (solo los reales: preventa y precio normal)
-     - cierre: fecha/hora ISO en que el lote deja de estar disponible.
-     - El último lote lleva cierre: null.
-     - Mientras la preventa esté abierta se muestra su cuenta regresiva.
-       Al cerrar, la página pasa sola a US$470 y la cuenta regresiva desaparece.
-     - estado: "auto" (por fecha) o "cerrado" (cerrar a mano).
-     - checkoutUrl: enlace de pago de ESE lote (cada lote tiene su propio monto en Wompi).
-       Al cerrar la preventa, los botones usan solos el enlace del precio normal.
-     - cobro: lo que de verdad cobra la pasarela (Wompi cobra en pesos colombianos). */
+  /* PRECIO ÚNICO: US$257, sin aumento automático ni cierre de preventa.
+     El enlace de Wompi conserva el cobro de COP 817.466.
+     Se conserva el identificador "preventa" en los parámetros de seguimiento. */
   lotes: [
     {
       id: "preventa",
-      nombre: "Preventa",
+      nombre: "Precio del curso",
       precio: 257,
-      cierre: "2026-11-08T23:59:59-05:00",
+      cierre: null,
       estado: "auto",
       bonos: [],
       checkoutUrl: "https://checkout.wompi.co/l/ClzfzW",
       cobro: "COP 817.466",
     },
-    {
-      id: "normal",
-      nombre: "Precio normal",
-      precio: 470,
-      cierre: null,
-      estado: "auto",
-      bonos: [],
-      checkoutUrl: "",
-      cobro: "COP ",
-    }, // ⛔ PENDIENTE: enlace de Wompi por el valor de US$470 en COP
   ],
   moneda: "USD",
 
@@ -138,7 +122,7 @@ window.LANDING_CONFIG = {
     "Hola, quiero hablar con el Asesor Académico sobre el curso de placas de iPhone. Ref: {variante}-{utm_campaign}",
 
   /* Tracking (vacío = desactivado) */
-  metaPixelId: "",
+  metaPixelId: "2349540535781835",
   ga4Id: "",
   /* Formulario de WhatsApp → CRM/webhook (POST con JSON). Ver ENTREGA_INGENIERO.md.
      leadWebhookSimple: true si el destino es Google Apps Script (envía el JSON como text/plain). */
